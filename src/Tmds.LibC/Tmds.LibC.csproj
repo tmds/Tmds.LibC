@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <BuildOutputTargetFolder>ref</BuildOutputTargetFolder>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <VersionPrefix>0.1.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
