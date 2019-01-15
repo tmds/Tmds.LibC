@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>Tmds.LibC</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../Sources/linux.common/*.cs" />
+    <!-- architecture -->
+    <Compile Include="../Sources/linux.arch-arm64/*.cs" />
+    <Compile Include="../Sources/linux.specific/*.64.cs" />
+    <!-- libc specific -->
+  </ItemGroup>
+</Project>

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <BuildOutputTargetFolder>ref</BuildOutputTargetFolder>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../Sources/linux.common/*.cs" />
+    <!-- architecture -->
+    <Compile Include="../Sources/linux.arch-x86_64/*.cs" />
+    <Compile Include="../Sources/linux.specific/*.64.cs" />
+    <!-- libc specific -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Tmds.LibC.linux-glibc-x86_64\bin\$(Configuration)\netstandard2.0\Tmds.LibC.dll" Pack = "true">
+      <PackagePath>runtimes/linux-x64/lib/netstandard2.0</PackagePath>
+    </None>
+    <None Include="..\Tmds.LibC.linux-glibc-arm64\bin\$(Configuration)\netstandard2.0\Tmds.LibC.dll" Pack = "true">
+      <PackagePath>runtimes/linux-arm64/lib/netstandard2.0</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <Target Name="BuildPlatform" BeforeTargets="Restore">
+    <Exec Command="dotnet build -c $(Configuration) ../Tmds.LibC.linux-glibc-x86_64" />
+    <Exec Command="dotnet build -c $(Configuration) ../Tmds.LibC.linux-glibc-arm64" />
+  </Target>
+</Project>
