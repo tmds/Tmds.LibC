@@ -13,5 +13,7 @@
     <Compile Include="../Sources/linux.arch-x86_64/*.cs" />
     <Compile Include="../Sources/linux.specific/*.64.cs" />
     <!-- libc specific -->
+    <Compile Include="../Sources/linux.specific/LibraryNames.glibc.cs" />
+    <Compile Include="../Sources/linux.specific/string.lsb.cs" />
   </ItemGroup>
 </Project>
