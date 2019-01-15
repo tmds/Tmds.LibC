@@ -7,5 +7,8 @@ namespace Tmds.LibC
 
         public static explicit operator uint(size_t arg) => arg.ToUInt32();
         public static implicit operator size_t(uint arg) => new size_t(arg);
+
+        // .NET uses 'int' mostly to for lengths.
+        public static implicit operator size_t(int arg) => new size_t((uint)arg);
     }
 }
