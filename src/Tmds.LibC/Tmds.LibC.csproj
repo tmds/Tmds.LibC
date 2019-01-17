@@ -5,6 +5,7 @@
     <BuildOutputTargetFolder>ref</BuildOutputTargetFolder>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <VersionPrefix>0.1.0</VersionPrefix>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,7 @@
     <!-- architecture -->
     <Compile Include="../Sources/linux.arch-x86_64/*.cs" />
     <Compile Include="../Sources/linux.specific/*.64.cs" />
+    <Compile Include="../Sources/linux.specific/Endian.little.cs" />
     <!-- libc specific -->
     <Compile Include="../Sources/linux.specific/LibraryNames.glibc.cs" />
     <Compile Include="../Sources/linux.specific/string.lsb.cs" />
