@@ -84,4 +84,14 @@ namespace Tmds.LibC
         public static bool operator>(socklen_t lhs, socklen_t rhs) => lhs._value > rhs._value;
         public static bool operator<(socklen_t lhs, socklen_t rhs) => lhs._value < rhs._value;
     }
+
+    public struct off_t
+    {
+        private long _value;
+
+        private off_t(long value) => _value = value;
+
+        public static implicit operator long(off_t arg) => arg._value;
+        public static implicit operator off_t(long arg) => new off_t(arg);
+    }
 }
