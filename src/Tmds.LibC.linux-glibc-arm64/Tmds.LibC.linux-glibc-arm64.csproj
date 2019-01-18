@@ -17,5 +17,6 @@
     <!-- libc specific -->
     <Compile Include="../Sources/linux.specific/LibraryNames.glibc.cs" />
     <Compile Include="../Sources/linux.specific/string.lsb.cs" />
+    <Compile Include="../Sources/linux.specific/unistd.off64.cs" />
   </ItemGroup>
 </Project>
