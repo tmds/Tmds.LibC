@@ -228,5 +228,22 @@ namespace Tmds.LibC
         public static extern int euidaccess(byte* pathname, int mode);
         [DllImport(libc, SetLastError = true)]
         public static extern int eaccess(byte* pathname, int mode);
+
+        [DllImport(libc, SetLastError = true)]
+        public static extern syscall_arg syscall(syscall_arg number);
+        [DllImport(libc, SetLastError = true)]
+        public static extern syscall_arg syscall(syscall_arg number, syscall_arg arg1);
+        [DllImport(libc, SetLastError = true)]
+        public static extern syscall_arg syscall(syscall_arg number, syscall_arg arg1, syscall_arg arg2);
+        [DllImport(libc, SetLastError = true)]
+        public static extern syscall_arg syscall(syscall_arg number, syscall_arg arg1, syscall_arg arg2, syscall_arg arg3);
+        [DllImport(libc, SetLastError = true)]
+        public static extern syscall_arg syscall(syscall_arg number, syscall_arg arg1, syscall_arg arg2, syscall_arg arg3, syscall_arg arg4);
+        [DllImport(libc, SetLastError = true)]
+        public static extern syscall_arg syscall(syscall_arg number, syscall_arg arg1, syscall_arg arg2, syscall_arg arg3, syscall_arg arg4, syscall_arg arg5);
+        [DllImport(libc, SetLastError = true)]
+        public static extern syscall_arg syscall(syscall_arg number, syscall_arg arg1, syscall_arg arg2, syscall_arg arg3, syscall_arg arg4, syscall_arg arg5, syscall_arg arg6);
+        [DllImport(libc, SetLastError = true)]
+        public static extern syscall_arg syscall(syscall_arg number, syscall_arg arg1, syscall_arg arg2, syscall_arg arg3, syscall_arg arg4, syscall_arg arg5, syscall_arg arg6, syscall_arg arg7);
     }
 }
