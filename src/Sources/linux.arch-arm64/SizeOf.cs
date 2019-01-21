@@ -26,5 +26,7 @@ namespace Tmds.LibC
         public static ushort group_filter => 272;
         public static ushort sockaddr_un => 110;
         public static ushort sock_extended_err => 16;
+        public static ushort epoll_data_t => 8;
+        public static ushort epoll_event => 16;
     }
 }
