@@ -61,11 +61,11 @@ namespace GenerateDoc
 
                     if (string.IsNullOrEmpty(url))
                     {
-                        sb.Append($"{methodName}, ");
+                        sb.AppendLine($"{methodName},");
                     }
                     else
                     {
-                        sb.Append($"[{methodName}]({url}), ");
+                        sb.AppendLine($"[{methodName}]({url}),");
                     }
                 }
             }
