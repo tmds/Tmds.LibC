@@ -1,5 +1,3 @@
-using long_t = Tmds.LibC.ssize_t;
-
 namespace Tmds.LibC
 {
     public struct io_event
@@ -47,6 +45,11 @@ namespace Tmds.LibC
         }
     }
 
+    public struct aio_context_t
+    {
+        public unsafe aio_ring* ring;
+    }
+
     public unsafe static partial class Definitions
     {
         public static ushort IOCB_CMD_PREAD => 0;
@@ -57,35 +60,30 @@ namespace Tmds.LibC
         public static ushort IOCB_CMD_PREADV => 7;
         public static ushort IOCB_CMD_PWRITEV => 8;
 
-        public static int io_setup(int nr_events, aio_ring** ring)
+        public static int io_setup(uint nr_events, aio_context_t* ctx)
         {
-            int rv = (int)syscall(SYS_io_setup, nr_events, ring);
-
-            if (rv == -1)
-            {
-                *ring = null;
-            }
+            int rv = (int)syscall(SYS_io_setup, nr_events, ctx);
 
             return rv;
         }
 
-        public static int io_destroy(aio_ring* ring)
+        public static int io_destroy(aio_context_t ctx)
         {
-            int rv = (int)syscall(SYS_io_destroy, ring);
+            int rv = (int)syscall(SYS_io_destroy, ctx.ring);
 
             return rv;
         }
 
-        public static int io_submit(aio_ring* ring, int nr, iocb** iocbpp)
+        public static int io_submit(aio_context_t ctx, long_t nr, iocb** iocbpp)
         {
-            int rv = (int)syscall(SYS_io_submit, ring, nr, iocbpp);
+            int rv = (int)syscall(SYS_io_submit, ctx.ring, nr, iocbpp);
 
             return rv;
         }
 
-        public static int io_getevents(aio_ring* ring, int min_nr, int nr, io_event* events, timespec* timeout)
+        public static int io_getevents(aio_context_t ctx, long_t min_nr, long_t nr, io_event* events, timespec* timeout)
         {
-            int rv = (int)syscall(SYS_io_getevents, ring, min_nr, nr, events, timeout);
+            int rv = (int)syscall(SYS_io_getevents, ctx.ring, min_nr, nr, events, timeout);
 
             return rv;
         }

@@ -1,6 +1,4 @@
 
-using long_t = Tmds.LibC.ssize_t;
-
 namespace Tmds.LibC
 {
     public partial struct size_t
@@ -34,6 +32,7 @@ namespace Tmds.LibC
 
         public static implicit operator syscall_arg(size_t arg) => new syscall_arg(arg);
         public static implicit operator syscall_arg(ssize_t arg) => new syscall_arg(arg);
+        public static implicit operator syscall_arg(long_t arg) => new syscall_arg(arg._value);
 
         public static implicit operator syscall_arg(uint arg) => new syscall_arg(new size_t(arg));
         public static implicit operator syscall_arg(int arg) => new syscall_arg(new ssize_t(arg));
@@ -133,5 +132,18 @@ namespace Tmds.LibC
     {
         public time_t tv_sec;
         public long_t tv_nsec;
+    }
+
+    public struct long_t
+    {
+        internal ssize_t _value;
+
+        private long_t(ssize_t value) => _value = value;
+
+        public static implicit operator long(long_t arg) => (long)arg._value;
+        public static explicit operator long_t(long arg) => new long_t(new ssize_t(arg));
+
+        public static explicit operator int(long_t arg) => (int)arg._value;
+        public static implicit operator long_t(int arg) => new long_t(arg);
     }
 }

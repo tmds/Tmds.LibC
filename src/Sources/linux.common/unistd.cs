@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using static Tmds.LibC.LibraryNames;
-using long_t = Tmds.LibC.ssize_t;
 
 namespace Tmds.LibC
 {
