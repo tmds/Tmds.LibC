@@ -79,17 +79,9 @@ namespace GenerateDoc
 
         private async static Task<bool> IsValidManPage(HttpClient httpClient, string url)
         {
-            try
+            using (var response = await httpClient.GetAsync(url))
             {
-                using (var response = await httpClient.GetAsync(url))
-                {
-                    return response.StatusCode == HttpStatusCode.OK;
-                }
-            }
-            catch (Exception e)
-            {
-                System.Console.WriteLine(e);
-                return false;
+                return response.StatusCode == HttpStatusCode.OK;
             }
         }
     }
