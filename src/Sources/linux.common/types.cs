@@ -1,3 +1,4 @@
+
 namespace Tmds.LibC
 {
     public partial struct size_t
@@ -20,6 +21,26 @@ namespace Tmds.LibC
 
         public static explicit operator int(ssize_t arg) => arg.ToInt32();
         public static implicit operator ssize_t(int arg) => new ssize_t(arg);
+    }
+
+    public struct syscall_arg
+    {
+        private ssize_t _value;
+
+        private unsafe syscall_arg(size_t value) => _value = *(ssize_t*)&value;
+        private syscall_arg(ssize_t value) => _value = value;
+
+        public static implicit operator syscall_arg(size_t arg) => new syscall_arg(arg);
+        public static implicit operator syscall_arg(ssize_t arg) => new syscall_arg(arg);
+        public static implicit operator syscall_arg(long_t arg) => new syscall_arg(arg._value);
+
+        public static implicit operator syscall_arg(uint arg) => new syscall_arg(new size_t(arg));
+        public static implicit operator syscall_arg(int arg) => new syscall_arg(new ssize_t(arg));
+
+        public unsafe static implicit operator syscall_arg(void* arg) => new syscall_arg(new size_t(arg));
+
+        public static implicit operator ssize_t(syscall_arg arg) => arg._value;
+        public static explicit operator int(syscall_arg arg) => (int)arg._value;
     }
 
     public struct sa_family_t
@@ -93,5 +114,36 @@ namespace Tmds.LibC
 
         public static implicit operator long(off_t arg) => arg._value;
         public static implicit operator off_t(long arg) => new off_t(arg);
+    }
+
+    public struct time_t
+    {
+        // 32-bit values overflow in 2038: https://sourceware.org/glibc/wiki/Y2038ProofnessDesign
+        private ssize_t _value;
+
+        internal time_t(long arg) => _value = new ssize_t(arg);
+
+        public static implicit operator long(time_t arg) => (long)arg._value;
+
+        public static implicit operator time_t(long arg) => new time_t(arg);
+    }
+
+    public struct timespec
+    {
+        public time_t tv_sec;
+        public long_t tv_nsec;
+    }
+
+    public struct long_t
+    {
+        internal ssize_t _value;
+
+        private long_t(ssize_t value) => _value = value;
+
+        public static implicit operator long(long_t arg) => (long)arg._value;
+        public static explicit operator long_t(long arg) => new long_t(new ssize_t(arg));
+
+        public static explicit operator int(long_t arg) => (int)arg._value;
+        public static implicit operator long_t(int arg) => new long_t(arg);
     }
 }
