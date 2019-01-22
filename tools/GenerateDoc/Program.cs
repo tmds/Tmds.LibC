@@ -38,6 +38,7 @@ namespace GenerateDoc
 
             // Sort
             methodNames.Sort();
+            methodNames = methodNames.Distinct().ToList();
 
             var sb = new StringBuilder();
             using (HttpClient httpClient = new HttpClient())
