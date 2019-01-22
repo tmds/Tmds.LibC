@@ -1,5 +1,73 @@
 # Tmds.LibC
-Raw bindings to Linux platform APIs
+
+Raw bindings to Linux platform APIs for .NET Core.
+
+## Raw bindings
+
+The APIs provided by this package stay as close as possible to the native declarations.
+Because the native APIs are different per platform (e.g. linux-arm64 vs linux-x64), the package contains separate assemblies for each platform.
+
+.NET Core will use the appropriate assembly based on the [rid](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog).
+
+## Supported platforms
+
+* linux x64 glibc
+* linux arm64 glibc
+
+## Using this package
+
+NuGet.Config
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="tmds" value="https://www.myget.org/F/tmds/api/v3/index.json" />
+  </packageSources>
+</configuration>
+```
+
+console.csproj
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Tmds.LibC" Version="0.1.0-*" />
+  </ItemGroup>
+
+</Project>
+```
+
+Program.cs
+
+```cs
+using System;
+using System.Text;
+using Tmds.LibC;
+using static Tmds.LibC.Definitions;
+
+namespace console
+{
+    class Program
+    {
+        unsafe static void Main(string[] args)
+        {
+            var bytes = Encoding.UTF8.GetBytes("Hello world!");
+            fixed (byte* buffer = bytes)
+            {
+                write(STDOUT_FILENO, buffer, bytes.Length);
+            }
+        }
+    }
+}
+```
 
 ## Functions
 
