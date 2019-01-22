@@ -146,4 +146,19 @@ namespace Tmds.LibC
         public static explicit operator int(long_t arg) => (int)arg._value;
         public static implicit operator long_t(int arg) => new long_t(arg);
     }
+
+    public struct mode_t
+    {
+        private uint _value;
+
+        private mode_t(uint value) => _value = value;
+
+        public static implicit operator mode_t(ushort value) => new mode_t(value);
+
+        public static mode_t operator&(mode_t lhs, mode_t rhs) => new mode_t(lhs._value & rhs._value);
+
+        public static bool operator==(mode_t lhs, mode_t rhs) => lhs._value == rhs._value;
+
+        public static bool operator!=(mode_t lhs, mode_t rhs) => lhs._value != rhs._value;
+    }
 }
