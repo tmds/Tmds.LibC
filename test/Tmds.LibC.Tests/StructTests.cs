@@ -205,7 +205,8 @@ namespace Tmds.LibC.Tests
                     { "sys/time.h", typeof(timespec) },
                     { "sys/types.h", typeof(mode_t) },
                     { "sys/types.h", typeof(syscall_arg) },
-                    { "sys/types.h", typeof(long_t) }
+                    { "sys/types.h", typeof(long_t) },
+                    { "sys/ioctl.h", typeof(winsize) }
                 };
     }
 }

@@ -23,7 +23,8 @@ namespace Tmds.LibC.Tests
                     "sys/epoll.h",
                     "linux/errqueue.h",
                     "sys/syscall.h",
-                    "unistd.h"
+                    "unistd.h",
+                    "sys/ioctl.h"
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)

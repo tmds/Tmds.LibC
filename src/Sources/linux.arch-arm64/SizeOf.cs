@@ -46,5 +46,6 @@ namespace Tmds.LibC
         public static ushort timespec => 16;
         public static ushort long_t => size_t;
         public static ushort syscall_arg => size_t;
+        public static ushort winsize => 8;
     }
 }
