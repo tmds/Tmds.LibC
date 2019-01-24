@@ -11,13 +11,12 @@ namespace Tmds.LibC
         public uint ee_data;
     }
 
-    // TODO: uncomment after adding timespec
-    // public unsafe struct scm_timestamping
-    // {
-    //     public timespec ts0;
-    //     public timespec ts1;
-    //     public timespec ts2;
-    // }
+    public unsafe struct scm_timestamping
+    {
+        public timespec ts0;
+        public timespec ts1;
+        public timespec ts2;
+    }
 
     public unsafe static partial class Definitions
     {

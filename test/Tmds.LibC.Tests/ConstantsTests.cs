@@ -1,0 +1,83 @@
+using System;
+using System.IO;
+using System.Reflection;
+using Xunit;
+
+namespace Tmds.LibC.Tests
+{
+    public class ConstantsTests
+    {
+        [Fact]
+        public unsafe void Constants()
+        {
+            using (var program = new CProgram())
+            {
+                program.Define("_GNU_SOURCE");
+                foreach (string header in new[] {
+                    "errno.h",
+                    "sys/socket.h",
+                    "netinet/in.h",
+                    "fcntl.h",
+                    "dlfcn.h",
+                    "netinet/tcp.h",
+                    "sys/epoll.h",
+                    "linux/errqueue.h",
+                    "sys/syscall.h",
+                    "unistd.h"
+                })
+                {
+                    if (TestEnvironment.Current.SupportsHeader(header) == false)
+                    {
+                        continue;
+                    }
+                    program.Include(header);
+                }
+
+                PropertyInfo[] properties = typeof(Definitions).GetProperties();
+                foreach (var property in properties)
+                {
+                    string name = property.Name;
+
+                    // errno is not a Constant
+                    if (name == "errno")
+                    {
+                        continue;
+                    }
+
+                    MethodInfo getMethod = property.GetGetMethod();
+                    object o = getMethod.Invoke(null, null);
+                    string value;
+                    if (o is System.Reflection.Pointer pointer)
+                    {
+                        IntPtr ptr = new IntPtr(System.Reflection.Pointer.Unbox(o));
+                        value = $"(void*){ptr.ToInt32()}";
+                    }
+                    else
+                    {
+                        if (o is int i && i < 0)
+                        {
+                            value = "0x" + string.Format("{0:x}", i);
+                        }
+                        else
+                        {
+                            value = o.ToString();
+                        }
+                    }
+
+                    program.IfDef(name);
+                    string condition = $"{name} == {value}";
+                    program.StaticAssert(condition, $"{name} has unexpected value");
+                    bool? supported = TestEnvironment.Current.SupportsConstant(name);
+                    if (supported == true)
+                    {
+                        program.AppendLine("#else");
+                        program.AppendLine($"#error Unknown constant: {name}");
+                    }
+                    program.Endif();
+                }
+
+                program.Compile();
+            }
+        }
+    }
+}
