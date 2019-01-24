@@ -117,6 +117,17 @@ namespace Tmds.LibC.Tests
                     unsupportedFunctions: new string[]
                     { });
             }
+            else if (rid == "ubuntu-14.04") // Travis
+            {
+                Current = new TestEnvironment(
+                    unsupportedStructs: new string[]
+                    {
+                        "scm_timestamping"
+                    },
+                    unsupportedConstants: null,
+                    unsupportedHeaders: null,
+                    unsupportedFunctions: null);
+            }
             else
             {
                 Current = new TestEnvironment();
