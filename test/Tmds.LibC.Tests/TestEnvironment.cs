@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 
@@ -77,6 +78,7 @@ namespace Tmds.LibC.Tests
         static TestEnvironment()
         {
             string rid = GetRid();
+            Console.WriteLine($"Test Environment: {rid}");
             if (rid == "fedora-29")
             {
                 Current = new TestEnvironment(
