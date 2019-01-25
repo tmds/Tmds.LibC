@@ -76,14 +76,7 @@ namespace Tmds.LibC
         {
             if (cpu / 8 < (int)cpusetsize)
             {
-                if (SizeOf.size_t == 4)
-                {
-                    ((uint*)set)[cpu / 8 / sizeof(uint)] |= 1U << (cpu % (8 * sizeof(uint)));
-                }
-                else if (SizeOf.size_t == 8)
-                {
-                    ((ulong*)set)[cpu / 8 / sizeof(ulong)] |= 1UL << (cpu % (8 * sizeof(ulong)));
-                }
+                ((size_t*)set)[cpu / 8 / SizeOf.size_t] |= (size_t)1 << (cpu % (8 * SizeOf.size_t));
             }
         }
 
@@ -91,14 +84,7 @@ namespace Tmds.LibC
         {
             if (cpu / 8 < (int)cpusetsize)
             {
-                if (SizeOf.size_t == 4)
-                {
-                    ((uint*)set)[cpu / 8 / sizeof(uint)] &= ~(1U << (cpu % (8 * sizeof(uint))));
-                }
-                else if (SizeOf.size_t == 8)
-                {
-                    ((ulong*)set)[cpu / 8 / sizeof(ulong)] &= ~(1UL << (cpu % (8 * sizeof(ulong))));
-                }
+                ((size_t*)set)[cpu / 8 / SizeOf.size_t] &= ~((size_t)1 << (cpu % (8 * SizeOf.size_t)));
             }
         }
 
@@ -106,60 +92,52 @@ namespace Tmds.LibC
         {
             if (cpu / 8 < (int)cpusetsize)
             {
-                if (SizeOf.size_t == 4)
-                {
-                    uint value = (((uint*)set)[cpu / 8 / sizeof(uint)]) & (1U << (cpu % (8 * sizeof(uint))));
-                    return value != 0;
-                }
-                else if (SizeOf.size_t == 8)
-                {
-                    ulong value = (((ulong*)set)[cpu / 8 / sizeof(ulong)]) & (1UL << (cpu % (8 * sizeof(ulong))));
-                    return value != 0;
-                }
+                size_t value = ((size_t*)set)[cpu / 8 / SizeOf.size_t] & ((size_t)1 << (cpu % (8 * SizeOf.size_t)));
+                return value != 0;
             }
             return false;
         }
 
         public static void CPU_AND_S(size_t setsize, cpu_set_t* destset, cpu_set_t* srcset1, cpu_set_t* srcset2)
         {
-            byte* dst = (byte*)destset;
-            byte* src1 = (byte*)srcset1;
-            byte* src2 = (byte*)srcset2;
-            for (int i = 0; i < (int)setsize; i++)
+            size_t* dst = (size_t*)destset;
+            size_t* src1 = (size_t*)srcset1;
+            size_t* src2 = (size_t*)srcset2;
+            for (size_t i = 0; i < setsize / SizeOf.size_t; i++)
             {
-                dst[i] = (byte)(src1[i] & src2[i]);
+                dst[i] = src1[i] & src2[i];
             }
         }
 
         public static void CPU_OR_S(size_t setsize, cpu_set_t* destset, cpu_set_t* srcset1, cpu_set_t* srcset2)
         {
-            byte* dst = (byte*)destset;
-            byte* src1 = (byte*)srcset1;
-            byte* src2 = (byte*)srcset2;
-            for (int i = 0; i < (int)setsize; i++)
+            size_t* dst = (size_t*)destset;
+            size_t* src1 = (size_t*)srcset1;
+            size_t* src2 = (size_t*)srcset2;
+            for (size_t i = 0; i < setsize / SizeOf.size_t; i++)
             {
-                dst[i] = (byte)(src1[i] | src2[i]);
+                dst[i] = src1[i] | src2[i];
             }
         }
 
         public static void CPU_XOR_S(size_t setsize, cpu_set_t* destset, cpu_set_t* srcset1, cpu_set_t* srcset2)
         {
-            byte* dst = (byte*)destset;
-            byte* src1 = (byte*)srcset1;
-            byte* src2 = (byte*)srcset2;
-            for (int i = 0; i < (int)setsize; i++)
+            size_t* dst = (size_t*)destset;
+            size_t* src1 = (size_t*)srcset1;
+            size_t* src2 = (size_t*)srcset2;
+            for (size_t i = 0; i < setsize / SizeOf.size_t; i++)
             {
-                dst[i] = (byte)(src1[i] ^ src2[i]);
+                dst[i] = src1[i] ^ src2[i];
             }
         }
 
         public static int CPU_COUNT_S(size_t size, cpu_set_t* set)
         {
-            byte* s = (byte*)set;
-            uint count = 0;
-            for (int i = 0; i < (int)size; i++)
+            size_t* s = (size_t*)set;
+            size_t count = 0;
+            for (size_t i = 0; i < size / SizeOf.ssize_t; i++)
             {
-                uint n = s[i];
+                size_t n = s[i];
                 while (n != 0)
                 {
                     count += n & 1;
@@ -171,8 +149,8 @@ namespace Tmds.LibC
 
         public static void CPU_ZERO_S(size_t size, cpu_set_t* set)
         {
-            byte* s = (byte*)set;
-            for (int i = 0; i < (int)size; i++)
+            size_t* s = (size_t*)set;
+            for (size_t i = 0; i < size / SizeOf.size_t; i++)
             {
                 s[i] = 0;
             }
@@ -180,9 +158,9 @@ namespace Tmds.LibC
 
         public static bool CPU_EQUAL_S(size_t size, cpu_set_t* set1, cpu_set_t* set2)
         {
-            byte* s1 = (byte*)set1;
-            byte* s2 = (byte*)set2;
-            for (int i = 0; i < (int)size; i++)
+            size_t* s1 = (size_t*)set1;
+            size_t* s2 = (size_t*)set2;
+            for (int i = 0; i < size / SizeOf.size_t; i++)
             {
                 if (s1[i] != s2[i])
                 {
