@@ -1,4 +1,3 @@
-
 using System;
 using System.Runtime.InteropServices;
 using static Tmds.LibC.LibraryNames;
@@ -9,7 +8,7 @@ namespace Tmds.LibC
     public unsafe struct cpu_set_t
     {
         [FieldOffset(0)]
-        private IntPtr __align;
+        private ssize_t __align;
         [FieldOffset(0)]
         private fixed byte __data[128];
     }
