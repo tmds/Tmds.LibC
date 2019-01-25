@@ -25,7 +25,8 @@ namespace Tmds.LibC.Tests
             "time_t",
             "mode_t",
             "syscall_arg",
-            "long_t"
+            "long_t",
+            "cpu_set_t",
         };
 
         // fields with some weirdness
@@ -206,7 +207,8 @@ namespace Tmds.LibC.Tests
                     { "sys/types.h", typeof(mode_t) },
                     { "sys/types.h", typeof(syscall_arg) },
                     { "sys/types.h", typeof(long_t) },
-                    { "sys/ioctl.h", typeof(winsize) }
+                    { "sys/ioctl.h", typeof(winsize) },
+                    { "sched.h", typeof(cpu_set_t) },
                 };
     }
 }
