@@ -15,6 +15,24 @@ namespace GenerateDoc
     {
         static async Task Main(string[] args)
         {
+            string readme = File.ReadAllText("../../README.md.in");
+
+            readme = readme.Replace("##FUNCTIONS##", await GetFunctionDocs());
+            readme = readme.Replace("##STRUCTS##", GetStructDocs());
+
+            File.WriteAllText("../../README.md", readme);
+        }
+
+        private async static Task<bool> IsValidManPage(HttpClient httpClient, string url)
+        {
+            using (var response = await httpClient.GetAsync(url))
+            {
+                return response.StatusCode == HttpStatusCode.OK;
+            }
+        }
+
+        private async static Task<string> GetFunctionDocs()
+        {
             var methodNames = new List<string>();
             var methods = typeof(Definitions).GetMethods(BindingFlags.Static | BindingFlags.Public);
             foreach (var method in methods)
@@ -35,7 +53,6 @@ namespace GenerateDoc
 
                 methodNames.Add(method.Name);
             }
-
             // Sort
             methodNames.Sort();
             methodNames = methodNames.Distinct().ToList();
@@ -69,20 +86,23 @@ namespace GenerateDoc
                     }
                 }
             }
-
-            string readme = File.ReadAllText("../../README.md.in");
-
-            readme = readme.Replace("##FUNCTIONS##", sb.ToString());
-
-            File.WriteAllText("../../README.md", readme);
+            return sb.ToString();
         }
 
-        private async static Task<bool> IsValidManPage(HttpClient httpClient, string url)
+        private static string GetStructDocs()
         {
-            using (var response = await httpClient.GetAsync(url))
+            // Structs
+            Type[] types = typeof(Definitions).Assembly.GetTypes();
+            // Filter out public structs
+            List<string> structNames = types.Where(t => t.IsValueType && t.IsPublic).Select(t => t.Name).ToList();
+            structNames.Sort();
+
+            var sb = new StringBuilder();
+            foreach (var structName in structNames)
             {
-                return response.StatusCode == HttpStatusCode.OK;
+                sb.AppendLine($"{structName},");
             }
+            return sb.ToString();
         }
     }
 }
