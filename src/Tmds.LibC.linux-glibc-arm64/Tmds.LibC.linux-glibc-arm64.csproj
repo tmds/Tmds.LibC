@@ -19,5 +19,6 @@
     <Compile Include="../Sources/linux.specific/string.lsb.cs" />
     <Compile Include="../Sources/linux.specific/unistd.off64.cs" />
     <Compile Include="../Sources/linux.specific/fcntl.off64.cs" />
+    <Compile Include="../Sources/linux.specific/ioctl.sizet.cs" />
   </ItemGroup>
 </Project>

@@ -110,7 +110,10 @@ namespace Tmds.LibC.Tests
                         "IOCB_CMD_FDSYNC",
                         "IOCB_CMD_NOOP",
                         "IOCB_CMD_PREADV",
-                        "IOCB_CMD_PWRITEV"
+                        "IOCB_CMD_PWRITEV",
+                        "TIOCM_OUT1",
+                        "TIOCM_OUT2",
+                        "TIOCM_LOOP",
                     },
                     unsupportedHeaders: new string[]
                     { },

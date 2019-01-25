@@ -373,7 +373,10 @@ namespace Tmds.LibC.Tests
                         "epoll_create1",
                         "epoll_ctl",
                         "epoll_wait" }
-                    }
+                    },
+                    { "sys/ioctl.h",
+                      new[] { "ioctl" }
+                    },
                 };
     }
 }

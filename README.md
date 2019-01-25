@@ -138,6 +138,7 @@ namespace console
 [io_getevents](http://man7.org/linux/man-pages/man2/io_getevents.2.html),
 [io_setup](http://man7.org/linux/man-pages/man2/io_setup.2.html),
 [io_submit](http://man7.org/linux/man-pages/man2/io_submit.2.html),
+[ioctl](http://man7.org/linux/man-pages/man2/ioctl.2.html),
 [isatty](http://man7.org/linux/man-pages/man3/isatty.3.html),
 [lchown](http://man7.org/linux/man-pages/man2/lchown.2.html),
 [link](http://man7.org/linux/man-pages/man2/link.2.html),
