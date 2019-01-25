@@ -24,7 +24,8 @@ namespace Tmds.LibC.Tests
                     "linux/errqueue.h",
                     "sys/syscall.h",
                     "unistd.h",
-                    "sys/ioctl.h"
+                    "sys/ioctl.h",
+                    "sched.h",
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)

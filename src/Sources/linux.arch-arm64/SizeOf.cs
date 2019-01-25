@@ -47,5 +47,6 @@ namespace Tmds.LibC
         public static ushort long_t => size_t;
         public static ushort syscall_arg => size_t;
         public static ushort winsize => 8;
+        public static ushort cpu_set_t => 128;
     }
 }

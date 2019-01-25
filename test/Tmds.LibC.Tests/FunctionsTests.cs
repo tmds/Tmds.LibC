@@ -135,11 +135,7 @@ namespace Tmds.LibC.Tests
                 case "UInt64": cType = "uint64_t"; break;
                 case "size_t":
                 case "ssize_t":
-                case "pthread_t":
-                case "timer_t":
                 case "mode_t":
-                case "DIR":
-                case "Dl_info":
                 case "sa_family_t":
                 case "pid_t":
                 case "gid_t":
@@ -147,6 +143,7 @@ namespace Tmds.LibC.Tests
                 case "socklen_t":
                 case "off_t":
                 case "time_t":
+                case "cpu_set_t":
                     cType = nameNoPointer; break;
                 case "long_t":
                 case "syscall_arg":
@@ -171,7 +168,25 @@ namespace Tmds.LibC.Tests
             "io_destroy",
             "io_submit",
             "io_getevents",
-            "SO_EE_OFFENDER"
+            "SO_EE_OFFENDER",
+            "CPU_SET_S",
+            "CPU_CLR_S",
+            "CPU_ISSET_S",
+            "CPU_AND_S",
+            "CPU_OR_S",
+            "CPU_XOR_S",
+            "CPU_COUNT_S",
+            "CPU_ZERO_S",
+            "CPU_EQUAL_S",
+            "CPU_SET",
+            "CPU_CLR",
+            "CPU_ISSET",
+            "CPU_AND",
+            "CPU_OR",
+            "CPU_XOR",
+            "CPU_COUNT",
+            "CPU_ZERO",
+            "CPU_EQUAL"
         };
 
         [Fact]
@@ -376,6 +391,20 @@ namespace Tmds.LibC.Tests
                     },
                     { "sys/ioctl.h",
                       new[] { "ioctl" }
+                    },
+                    { new CIncludes("sched.h", true),
+                      new[] { "sched_get_priority_max",
+                              "sched_get_priority_min",
+                              "getscheduler",
+                              "sched_rr_get_interval",
+                              "sched_yield",
+                              "clone",
+                              "unshare",
+                              "setns",
+                              "sched_getcpu",
+                              "sched_getaffinity",
+                              "sched_setaffinity",
+                              "sched_getscheduler", }
                     },
                 };
     }
