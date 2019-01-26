@@ -94,9 +94,6 @@ namespace Tmds.LibC
         public static int CLD_STOPPED => 5;
         public static int CLD_CONTINUED => 6;
 
-
-
-
         public static int SIGEV_SIGNAL => 0;
         public static int SIGEV_NONE => 1;
         public static int SIGEV_THREAD => 2;
@@ -163,6 +160,7 @@ namespace Tmds.LibC
         public static extern int siginterrupt(int sig, int flag);
         [DllImport(libc, SetLastError = true)]
         public static extern int sigrelse(int sig);
+
         public static int TRAP_BRKPT => 1;
         public static int TRAP_TRACE => 2;
         public static int TRAP_BRANCH => 3;

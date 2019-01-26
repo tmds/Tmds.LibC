@@ -11,6 +11,7 @@ namespace Tmds.LibC
         [FieldOffset(0)] public int si_signo;
         [FieldOffset(4)] public int si_code;
         [FieldOffset(8)] public int si_errno;
+
         [FieldOffset(16)] public pid_t si_pid;
         [FieldOffset(20)] public uid_t si_uid;
         [FieldOffset(24)] public int si_status;

@@ -30,7 +30,6 @@ namespace Tmds.LibC.Tests
             "Dl_info"
         };
 
-
         private static bool IsUnion(string name)
         {
             if (name == "sigval")
@@ -61,6 +60,7 @@ namespace Tmds.LibC.Tests
             {
                 return dotnetName;
             }
+
             return IsUnion(dotnetName) ? $"union {dotnetName}" : $"struct {dotnetName}";
         }
     }

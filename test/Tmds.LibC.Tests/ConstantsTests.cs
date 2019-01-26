@@ -41,7 +41,7 @@ namespace Tmds.LibC.Tests
                 {
                     string name = property.Name;
 
-                    // errno is not a Constant
+                    // these aren't constants, the are tested in FunctionsTests
                     if (name == "errno" ||
                         name == "SIGRTMAX" ||
                         name == "SIGRTMIN")
