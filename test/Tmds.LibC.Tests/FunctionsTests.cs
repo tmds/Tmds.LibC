@@ -486,7 +486,7 @@ namespace Tmds.LibC.Tests
                         "mknodat",
                         "futimens",
                         "utimensat",
-                        "lchmod" }
+                        }
                     },
                 };
     }
