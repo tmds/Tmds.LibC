@@ -57,5 +57,11 @@ namespace Tmds.LibC
         public static ushort pthread_t => long_t;
         public static ushort clock_t => long_t;
         public static ushort Dl_info => 32;
+        public static ushort stat => 144;
+        public static ushort dev_t => 8;
+        public static ushort ino_t => 8;
+        public static ushort nlink_t => 8;
+        public static ushort blksize_t => 8;
+        public static ushort blkcnt_t => 8;
     }
 }

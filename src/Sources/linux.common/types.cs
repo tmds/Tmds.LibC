@@ -33,26 +33,26 @@ namespace Tmds.LibC
 
         public bool Equals(size_t v) => this == v;
 
-        public static size_t operator+(size_t v) => new size_t(v.Value);
-        public static size_t operator~(size_t v) => new size_t(~v.Value);
-        public static size_t operator++(size_t v) => new size_t(v.Value + 1);
-        public static size_t operator--(size_t v) => new size_t(v.Value - 1);
-        public static size_t operator+(size_t v1, size_t v2) => new size_t(v1.Value + v2.Value);
-        public static size_t operator-(size_t v1, size_t v2) => new size_t(v1.Value - v2.Value);
-        public static size_t operator*(size_t v1, size_t v2) => new size_t(v1.Value * v1.Value);
-        public static size_t operator/(size_t v1, size_t v2) => new size_t(v1.Value / v2.Value);
-        public static size_t operator%(size_t v1, size_t v2) => new size_t(v1.Value % v2.Value);
-        public static size_t operator&(size_t v1, size_t v2) => new size_t(v1.Value & v2.Value);
-        public static size_t operator|(size_t v1, size_t v2) => new size_t(v1.Value | v2.Value);
-        public static size_t operator^(size_t v1, size_t v2) => new size_t(v1.Value ^ v2.Value);
-        public static size_t operator<<(size_t v, int i) => new size_t(v.Value << i);
-        public static size_t operator>>(size_t v, int i) => new size_t(v.Value >> i);
-        public static bool operator==(size_t v1, size_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(size_t v1, size_t v2) => v1.Value != v2.Value;
-        public static bool operator<(size_t v1, size_t v2) => v1.Value < v2.Value;
-        public static bool operator>(size_t v1, size_t v2) => v1.Value > v2.Value;
-        public static bool operator<=(size_t v1, size_t v2) => v1.Value <= v2.Value;
-        public static bool operator>=(size_t v1, size_t v2) => v1.Value >= v2.Value;
+        public static size_t operator +(size_t v) => new size_t(v.Value);
+        public static size_t operator ~(size_t v) => new size_t(~v.Value);
+        public static size_t operator ++(size_t v) => new size_t(v.Value + 1);
+        public static size_t operator --(size_t v) => new size_t(v.Value - 1);
+        public static size_t operator +(size_t v1, size_t v2) => new size_t(v1.Value + v2.Value);
+        public static size_t operator -(size_t v1, size_t v2) => new size_t(v1.Value - v2.Value);
+        public static size_t operator *(size_t v1, size_t v2) => new size_t(v1.Value * v1.Value);
+        public static size_t operator /(size_t v1, size_t v2) => new size_t(v1.Value / v2.Value);
+        public static size_t operator %(size_t v1, size_t v2) => new size_t(v1.Value % v2.Value);
+        public static size_t operator &(size_t v1, size_t v2) => new size_t(v1.Value & v2.Value);
+        public static size_t operator |(size_t v1, size_t v2) => new size_t(v1.Value | v2.Value);
+        public static size_t operator ^(size_t v1, size_t v2) => new size_t(v1.Value ^ v2.Value);
+        public static size_t operator <<(size_t v, int i) => new size_t(v.Value << i);
+        public static size_t operator >>(size_t v, int i) => new size_t(v.Value >> i);
+        public static bool operator ==(size_t v1, size_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(size_t v1, size_t v2) => v1.Value != v2.Value;
+        public static bool operator <(size_t v1, size_t v2) => v1.Value < v2.Value;
+        public static bool operator >(size_t v1, size_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(size_t v1, size_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(size_t v1, size_t v2) => v1.Value >= v2.Value;
     }
 
     public partial struct ssize_t : IEquatable<ssize_t>
@@ -81,27 +81,27 @@ namespace Tmds.LibC
 
         public bool Equals(ssize_t v) => this == v;
 
-        public static ssize_t operator+(ssize_t v) => new ssize_t(v.Value);
-        public static ssize_t operator-(ssize_t v) => new ssize_t(- v.Value);
-        public static ssize_t operator~(ssize_t v) => new ssize_t(~v.Value);
-        public static ssize_t operator++(ssize_t v) => new ssize_t(v.Value + 1);
-        public static ssize_t operator--(ssize_t v) => new ssize_t(v.Value - 1);
-        public static ssize_t operator+(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value + v2.Value);
-        public static ssize_t operator-(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value - v2.Value);
-        public static ssize_t operator*(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value * v1.Value);
-        public static ssize_t operator/(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value / v2.Value);
-        public static ssize_t operator%(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value % v2.Value);
-        public static ssize_t operator&(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value & v2.Value);
-        public static ssize_t operator|(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value | v2.Value);
-        public static ssize_t operator^(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value ^ v2.Value);
-        public static ssize_t operator<<(ssize_t v, int i) => new ssize_t(v.Value << i);
-        public static ssize_t operator>>(ssize_t v, int i) => new ssize_t(v.Value >> i);
-        public static bool operator==(ssize_t v1, ssize_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(ssize_t v1, ssize_t v2) => v1.Value != v2.Value;
-        public static bool operator<(ssize_t v1, ssize_t v2) => v1.Value < v2.Value;
-        public static bool operator>(ssize_t v1, ssize_t v2) => v1.Value > v2.Value;
-        public static bool operator<=(ssize_t v1, ssize_t v2) => v1.Value <= v2.Value;
-        public static bool operator>=(ssize_t v1, ssize_t v2) => v1.Value >= v2.Value;
+        public static ssize_t operator +(ssize_t v) => new ssize_t(v.Value);
+        public static ssize_t operator -(ssize_t v) => new ssize_t(-v.Value);
+        public static ssize_t operator ~(ssize_t v) => new ssize_t(~v.Value);
+        public static ssize_t operator ++(ssize_t v) => new ssize_t(v.Value + 1);
+        public static ssize_t operator --(ssize_t v) => new ssize_t(v.Value - 1);
+        public static ssize_t operator +(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value + v2.Value);
+        public static ssize_t operator -(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value - v2.Value);
+        public static ssize_t operator *(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value * v1.Value);
+        public static ssize_t operator /(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value / v2.Value);
+        public static ssize_t operator %(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value % v2.Value);
+        public static ssize_t operator &(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value & v2.Value);
+        public static ssize_t operator |(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value | v2.Value);
+        public static ssize_t operator ^(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value ^ v2.Value);
+        public static ssize_t operator <<(ssize_t v, int i) => new ssize_t(v.Value << i);
+        public static ssize_t operator >>(ssize_t v, int i) => new ssize_t(v.Value >> i);
+        public static bool operator ==(ssize_t v1, ssize_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(ssize_t v1, ssize_t v2) => v1.Value != v2.Value;
+        public static bool operator <(ssize_t v1, ssize_t v2) => v1.Value < v2.Value;
+        public static bool operator >(ssize_t v1, ssize_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(ssize_t v1, ssize_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(ssize_t v1, ssize_t v2) => v1.Value >= v2.Value;
     }
 
     public struct syscall_arg
@@ -154,8 +154,8 @@ namespace Tmds.LibC
 
         public bool Equals(sa_family_t v) => this == v;
 
-        public static bool operator==(sa_family_t v1, sa_family_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(sa_family_t v1, sa_family_t v2) => v1.Value != v2.Value;
+        public static bool operator ==(sa_family_t v1, sa_family_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(sa_family_t v1, sa_family_t v2) => v1.Value != v2.Value;
     }
 
     public struct pid_t : IEquatable<pid_t>
@@ -186,9 +186,9 @@ namespace Tmds.LibC
 
         public bool Equals(pid_t v) => this == v;
 
-        public static pid_t operator-(pid_t v) => new pid_t(-v.Value);
-        public static bool operator==(pid_t v1, pid_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(pid_t v1, pid_t v2) => v1.Value != v2.Value;
+        public static pid_t operator -(pid_t v) => new pid_t(-v.Value);
+        public static bool operator ==(pid_t v1, pid_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(pid_t v1, pid_t v2) => v1.Value != v2.Value;
     }
 
     public struct uid_t : IEquatable<uid_t>
@@ -219,8 +219,8 @@ namespace Tmds.LibC
 
         public bool Equals(uid_t v) => this == v;
 
-        public static bool operator==(uid_t v1, uid_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(uid_t v1, uid_t v2) => v1.Value != v2.Value;
+        public static bool operator ==(uid_t v1, uid_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(uid_t v1, uid_t v2) => v1.Value != v2.Value;
     }
 
     public struct gid_t : IEquatable<gid_t>
@@ -251,8 +251,8 @@ namespace Tmds.LibC
 
         public bool Equals(gid_t v) => this == v;
 
-        public static bool operator==(gid_t v1, gid_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(gid_t v1, gid_t v2) => v1.Value != v2.Value;
+        public static bool operator ==(gid_t v1, gid_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(gid_t v1, gid_t v2) => v1.Value != v2.Value;
     }
 
     public struct socklen_t : IEquatable<socklen_t>
@@ -289,26 +289,26 @@ namespace Tmds.LibC
 
         public bool Equals(socklen_t v) => this == v;
 
-        public static socklen_t operator+(socklen_t v) => new socklen_t(v.Value);
-        public static socklen_t operator~(socklen_t v) => new socklen_t(~v.Value);
-        public static socklen_t operator++(socklen_t v) => new socklen_t(v.Value + 1);
-        public static socklen_t operator--(socklen_t v) => new socklen_t(v.Value - 1);
-        public static socklen_t operator+(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value + v2.Value);
-        public static socklen_t operator-(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value - v2.Value);
-        public static socklen_t operator*(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value * v1.Value);
-        public static socklen_t operator/(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value / v2.Value);
-        public static socklen_t operator%(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value % v2.Value);
-        public static socklen_t operator&(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value & v2.Value);
-        public static socklen_t operator|(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value | v2.Value);
-        public static socklen_t operator^(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value ^ v2.Value);
-        public static socklen_t operator<<(socklen_t v, int i) => new socklen_t(v.Value << i);
-        public static socklen_t operator>>(socklen_t v, int i) => new socklen_t(v.Value >> i);
-        public static bool operator==(socklen_t v1, socklen_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(socklen_t v1, socklen_t v2) => v1.Value != v2.Value;
-        public static bool operator<(socklen_t v1, socklen_t v2) => v1.Value < v2.Value;
-        public static bool operator>(socklen_t v1, socklen_t v2) => v1.Value > v2.Value;
-        public static bool operator<=(socklen_t v1, socklen_t v2) => v1.Value <= v2.Value;
-        public static bool operator>=(socklen_t v1, socklen_t v2) => v1.Value >= v2.Value;
+        public static socklen_t operator +(socklen_t v) => new socklen_t(v.Value);
+        public static socklen_t operator ~(socklen_t v) => new socklen_t(~v.Value);
+        public static socklen_t operator ++(socklen_t v) => new socklen_t(v.Value + 1);
+        public static socklen_t operator --(socklen_t v) => new socklen_t(v.Value - 1);
+        public static socklen_t operator +(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value + v2.Value);
+        public static socklen_t operator -(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value - v2.Value);
+        public static socklen_t operator *(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value * v1.Value);
+        public static socklen_t operator /(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value / v2.Value);
+        public static socklen_t operator %(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value % v2.Value);
+        public static socklen_t operator &(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value & v2.Value);
+        public static socklen_t operator |(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value | v2.Value);
+        public static socklen_t operator ^(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value ^ v2.Value);
+        public static socklen_t operator <<(socklen_t v, int i) => new socklen_t(v.Value << i);
+        public static socklen_t operator >>(socklen_t v, int i) => new socklen_t(v.Value >> i);
+        public static bool operator ==(socklen_t v1, socklen_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(socklen_t v1, socklen_t v2) => v1.Value != v2.Value;
+        public static bool operator <(socklen_t v1, socklen_t v2) => v1.Value < v2.Value;
+        public static bool operator >(socklen_t v1, socklen_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(socklen_t v1, socklen_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(socklen_t v1, socklen_t v2) => v1.Value >= v2.Value;
     }
 
     public struct off_t : IEquatable<off_t>
@@ -340,27 +340,27 @@ namespace Tmds.LibC
 
         public bool Equals(off_t v) => this == v;
 
-        public static off_t operator+(off_t v) => new off_t(v.Value);
-        public static off_t operator-(off_t v) => new off_t(-v.Value);
-        public static off_t operator~(off_t v) => new off_t(~v.Value);
-        public static off_t operator++(off_t v) => new off_t(v.Value + 1);
-        public static off_t operator--(off_t v) => new off_t(v.Value - 1);
-        public static off_t operator+(off_t v1, off_t v2) => new off_t(v1.Value + v2.Value);
-        public static off_t operator-(off_t v1, off_t v2) => new off_t(v1.Value - v2.Value);
-        public static off_t operator*(off_t v1, off_t v2) => new off_t(v1.Value * v1.Value);
-        public static off_t operator/(off_t v1, off_t v2) => new off_t(v1.Value / v2.Value);
-        public static off_t operator%(off_t v1, off_t v2) => new off_t(v1.Value % v2.Value);
-        public static off_t operator&(off_t v1, off_t v2) => new off_t(v1.Value & v2.Value);
-        public static off_t operator|(off_t v1, off_t v2) => new off_t(v1.Value | v2.Value);
-        public static off_t operator^(off_t v1, off_t v2) => new off_t(v1.Value ^ v2.Value);
-        public static off_t operator<<(off_t v, int i) => new off_t(v.Value << i);
-        public static off_t operator>>(off_t v, int i) => new off_t(v.Value >> i);
-        public static bool operator==(off_t v1, off_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(off_t v1, off_t v2) => v1.Value != v2.Value;
-        public static bool operator<(off_t v1, off_t v2) => v1.Value < v2.Value;
-        public static bool operator>(off_t v1, off_t v2) => v1.Value > v2.Value;
-        public static bool operator<=(off_t v1, off_t v2) => v1.Value <= v2.Value;
-        public static bool operator>=(off_t v1, off_t v2) => v1.Value >= v2.Value;
+        public static off_t operator +(off_t v) => new off_t(v.Value);
+        public static off_t operator -(off_t v) => new off_t(-v.Value);
+        public static off_t operator ~(off_t v) => new off_t(~v.Value);
+        public static off_t operator ++(off_t v) => new off_t(v.Value + 1);
+        public static off_t operator --(off_t v) => new off_t(v.Value - 1);
+        public static off_t operator +(off_t v1, off_t v2) => new off_t(v1.Value + v2.Value);
+        public static off_t operator -(off_t v1, off_t v2) => new off_t(v1.Value - v2.Value);
+        public static off_t operator *(off_t v1, off_t v2) => new off_t(v1.Value * v1.Value);
+        public static off_t operator /(off_t v1, off_t v2) => new off_t(v1.Value / v2.Value);
+        public static off_t operator %(off_t v1, off_t v2) => new off_t(v1.Value % v2.Value);
+        public static off_t operator &(off_t v1, off_t v2) => new off_t(v1.Value & v2.Value);
+        public static off_t operator |(off_t v1, off_t v2) => new off_t(v1.Value | v2.Value);
+        public static off_t operator ^(off_t v1, off_t v2) => new off_t(v1.Value ^ v2.Value);
+        public static off_t operator <<(off_t v, int i) => new off_t(v.Value << i);
+        public static off_t operator >>(off_t v, int i) => new off_t(v.Value >> i);
+        public static bool operator ==(off_t v1, off_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(off_t v1, off_t v2) => v1.Value != v2.Value;
+        public static bool operator <(off_t v1, off_t v2) => v1.Value < v2.Value;
+        public static bool operator >(off_t v1, off_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(off_t v1, off_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(off_t v1, off_t v2) => v1.Value >= v2.Value;
     }
 
     public struct time_t : IEquatable<time_t>
@@ -371,7 +371,7 @@ namespace Tmds.LibC
 
         internal time_t(long arg) => __value = new ssize_t(arg);
 
-        public static implicit operator long(time_t arg) => (long)arg.Value;
+        public static implicit operator long(time_t arg) => arg.Value;
         public static implicit operator time_t(long arg) => new time_t(arg);
 
         public override string ToString() => Value.ToString();
@@ -392,27 +392,27 @@ namespace Tmds.LibC
 
         public bool Equals(time_t v) => this == v;
 
-        public static time_t operator+(time_t v) => new time_t(v.Value);
-        public static time_t operator-(time_t v) => new time_t(- v.Value);
-        public static time_t operator~(time_t v) => new time_t(~v.Value);
-        public static time_t operator++(time_t v) => new time_t(v.Value + 1);
-        public static time_t operator--(time_t v) => new time_t(v.Value - 1);
-        public static time_t operator+(time_t v1, time_t v2) => new time_t(v1.Value + v2.Value);
-        public static time_t operator-(time_t v1, time_t v2) => new time_t(v1.Value - v2.Value);
-        public static time_t operator*(time_t v1, time_t v2) => new time_t(v1.Value * v1.Value);
-        public static time_t operator/(time_t v1, time_t v2) => new time_t(v1.Value / v2.Value);
-        public static time_t operator%(time_t v1, time_t v2) => new time_t(v1.Value % v2.Value);
-        public static time_t operator&(time_t v1, time_t v2) => new time_t(v1.Value & v2.Value);
-        public static time_t operator|(time_t v1, time_t v2) => new time_t(v1.Value | v2.Value);
-        public static time_t operator^(time_t v1, time_t v2) => new time_t(v1.Value ^ v2.Value);
-        public static time_t operator<<(time_t v, int i) => new time_t(v.Value << i);
-        public static time_t operator>>(time_t v, int i) => new time_t(v.Value >> i);
-        public static bool operator==(time_t v1, time_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(time_t v1, time_t v2) => v1.Value != v2.Value;
-        public static bool operator<(time_t v1, time_t v2) => v1.Value < v2.Value;
-        public static bool operator>(time_t v1, time_t v2) => v1.Value > v2.Value;
-        public static bool operator<=(time_t v1, time_t v2) => v1.Value <= v2.Value;
-        public static bool operator>=(time_t v1, time_t v2) => v1.Value >= v2.Value;
+        public static time_t operator +(time_t v) => new time_t(v.Value);
+        public static time_t operator -(time_t v) => new time_t(-v.Value);
+        public static time_t operator ~(time_t v) => new time_t(~v.Value);
+        public static time_t operator ++(time_t v) => new time_t(v.Value + 1);
+        public static time_t operator --(time_t v) => new time_t(v.Value - 1);
+        public static time_t operator +(time_t v1, time_t v2) => new time_t(v1.Value + v2.Value);
+        public static time_t operator -(time_t v1, time_t v2) => new time_t(v1.Value - v2.Value);
+        public static time_t operator *(time_t v1, time_t v2) => new time_t(v1.Value * v1.Value);
+        public static time_t operator /(time_t v1, time_t v2) => new time_t(v1.Value / v2.Value);
+        public static time_t operator %(time_t v1, time_t v2) => new time_t(v1.Value % v2.Value);
+        public static time_t operator &(time_t v1, time_t v2) => new time_t(v1.Value & v2.Value);
+        public static time_t operator |(time_t v1, time_t v2) => new time_t(v1.Value | v2.Value);
+        public static time_t operator ^(time_t v1, time_t v2) => new time_t(v1.Value ^ v2.Value);
+        public static time_t operator <<(time_t v, int i) => new time_t(v.Value << i);
+        public static time_t operator >>(time_t v, int i) => new time_t(v.Value >> i);
+        public static bool operator ==(time_t v1, time_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(time_t v1, time_t v2) => v1.Value != v2.Value;
+        public static bool operator <(time_t v1, time_t v2) => v1.Value < v2.Value;
+        public static bool operator >(time_t v1, time_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(time_t v1, time_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(time_t v1, time_t v2) => v1.Value >= v2.Value;
     }
 
     public struct timespec : IEquatable<timespec>
@@ -420,8 +420,8 @@ namespace Tmds.LibC
         public time_t tv_sec;
         public long_t tv_nsec;
 
-        public static bool operator==(timespec v1, timespec v2) => v1.tv_sec == v2.tv_sec && v1.tv_nsec == v2.tv_nsec;
-        public static bool operator!=(timespec v1, timespec v2) => !(v1 == v2);
+        public static bool operator ==(timespec v1, timespec v2) => v1.tv_sec == v2.tv_sec && v1.tv_nsec == v2.tv_nsec;
+        public static bool operator !=(timespec v1, timespec v2) => !(v1 == v2);
 
         public override int GetHashCode() => tv_sec.GetHashCode() ^ tv_nsec.GetHashCode();
 
@@ -447,7 +447,7 @@ namespace Tmds.LibC
 
         private long_t(ssize_t value) => __value = value;
 
-        public static implicit operator long(long_t arg) => (long)arg.Value;
+        public static implicit operator long(long_t arg) => arg.Value;
         public static explicit operator int(long_t arg) => (int)arg.Value;
 
         public static explicit operator long_t(long arg) => new long_t(new ssize_t(arg));
@@ -471,27 +471,27 @@ namespace Tmds.LibC
 
         public bool Equals(long_t v) => this == v;
 
-        public static long_t operator+(long_t v) => new long_t(v.Value);
-        public static long_t operator-(long_t v) => new long_t(- v.Value);
-        public static long_t operator~(long_t v) => new long_t(~v.Value);
-        public static long_t operator++(long_t v) => new long_t(v.Value + 1);
-        public static long_t operator--(long_t v) => new long_t(v.Value - 1);
-        public static long_t operator+(long_t v1, long_t v2) => new long_t(v1.Value + v2.Value);
-        public static long_t operator-(long_t v1, long_t v2) => new long_t(v1.Value - v2.Value);
-        public static long_t operator*(long_t v1, long_t v2) => new long_t(v1.Value * v1.Value);
-        public static long_t operator/(long_t v1, long_t v2) => new long_t(v1.Value / v2.Value);
-        public static long_t operator%(long_t v1, long_t v2) => new long_t(v1.Value % v2.Value);
-        public static long_t operator&(long_t v1, long_t v2) => new long_t(v1.Value & v2.Value);
-        public static long_t operator|(long_t v1, long_t v2) => new long_t(v1.Value | v2.Value);
-        public static long_t operator^(long_t v1, long_t v2) => new long_t(v1.Value ^ v2.Value);
-        public static long_t operator<<(long_t v, int i) => new long_t(v.Value << i);
-        public static long_t operator>>(long_t v, int i) => new long_t(v.Value >> i);
-        public static bool operator==(long_t v1, long_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(long_t v1, long_t v2) => v1.Value != v2.Value;
-        public static bool operator<(long_t v1, long_t v2) => v1.Value < v2.Value;
-        public static bool operator>(long_t v1, long_t v2) => v1.Value > v2.Value;
-        public static bool operator<=(long_t v1, long_t v2) => v1.Value <= v2.Value;
-        public static bool operator>=(long_t v1, long_t v2) => v1.Value >= v2.Value;
+        public static long_t operator +(long_t v) => new long_t(v.Value);
+        public static long_t operator -(long_t v) => new long_t(-v.Value);
+        public static long_t operator ~(long_t v) => new long_t(~v.Value);
+        public static long_t operator ++(long_t v) => new long_t(v.Value + 1);
+        public static long_t operator --(long_t v) => new long_t(v.Value - 1);
+        public static long_t operator +(long_t v1, long_t v2) => new long_t(v1.Value + v2.Value);
+        public static long_t operator -(long_t v1, long_t v2) => new long_t(v1.Value - v2.Value);
+        public static long_t operator *(long_t v1, long_t v2) => new long_t(v1.Value * v1.Value);
+        public static long_t operator /(long_t v1, long_t v2) => new long_t(v1.Value / v2.Value);
+        public static long_t operator %(long_t v1, long_t v2) => new long_t(v1.Value % v2.Value);
+        public static long_t operator &(long_t v1, long_t v2) => new long_t(v1.Value & v2.Value);
+        public static long_t operator |(long_t v1, long_t v2) => new long_t(v1.Value | v2.Value);
+        public static long_t operator ^(long_t v1, long_t v2) => new long_t(v1.Value ^ v2.Value);
+        public static long_t operator <<(long_t v, int i) => new long_t(v.Value << i);
+        public static long_t operator >>(long_t v, int i) => new long_t(v.Value >> i);
+        public static bool operator ==(long_t v1, long_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(long_t v1, long_t v2) => v1.Value != v2.Value;
+        public static bool operator <(long_t v1, long_t v2) => v1.Value < v2.Value;
+        public static bool operator >(long_t v1, long_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(long_t v1, long_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(long_t v1, long_t v2) => v1.Value >= v2.Value;
     }
 
     public struct mode_t : IEquatable<mode_t>
@@ -521,11 +521,11 @@ namespace Tmds.LibC
 
         public bool Equals(mode_t v) => this == v;
 
-        public static mode_t operator~(mode_t v) => new mode_t(~v.Value);
-        public static mode_t operator&(mode_t v1, mode_t v2) => new mode_t(v1.Value & v2.Value);
-        public static mode_t operator|(mode_t v1, mode_t v2) => new mode_t(v1.Value | v2.Value);
-        public static bool operator==(mode_t v1, mode_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(mode_t v1, mode_t v2) => v1.Value != v2.Value;
+        public static mode_t operator ~(mode_t v) => new mode_t(~v.Value);
+        public static mode_t operator &(mode_t v1, mode_t v2) => new mode_t(v1.Value & v2.Value);
+        public static mode_t operator |(mode_t v1, mode_t v2) => new mode_t(v1.Value | v2.Value);
+        public static bool operator ==(mode_t v1, mode_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(mode_t v1, mode_t v2) => v1.Value != v2.Value;
     }
 
     public struct clock_t : IEquatable<clock_t>
@@ -536,7 +536,7 @@ namespace Tmds.LibC
 
         internal clock_t(long arg) => __value = new ssize_t(arg);
 
-        public static implicit operator long(clock_t arg) => (long)arg.Value;
+        public static implicit operator long(clock_t arg) => arg.Value;
         public static implicit operator clock_t(long arg) => new clock_t(arg);
 
         public override string ToString() => Value.ToString();
@@ -557,27 +557,27 @@ namespace Tmds.LibC
 
         public bool Equals(clock_t v) => this == v;
 
-        public static clock_t operator+(clock_t v) => new clock_t(v.Value);
-        public static clock_t operator-(clock_t v) => new clock_t(- v.Value);
-        public static clock_t operator~(clock_t v) => new clock_t(~v.Value);
-        public static clock_t operator++(clock_t v) => new clock_t(v.Value + 1);
-        public static clock_t operator--(clock_t v) => new clock_t(v.Value - 1);
-        public static clock_t operator+(clock_t v1, clock_t v2) => new clock_t(v1.Value + v2.Value);
-        public static clock_t operator-(clock_t v1, clock_t v2) => new clock_t(v1.Value - v2.Value);
-        public static clock_t operator*(clock_t v1, clock_t v2) => new clock_t(v1.Value * v1.Value);
-        public static clock_t operator/(clock_t v1, clock_t v2) => new clock_t(v1.Value / v2.Value);
-        public static clock_t operator%(clock_t v1, clock_t v2) => new clock_t(v1.Value % v2.Value);
-        public static clock_t operator&(clock_t v1, clock_t v2) => new clock_t(v1.Value & v2.Value);
-        public static clock_t operator|(clock_t v1, clock_t v2) => new clock_t(v1.Value | v2.Value);
-        public static clock_t operator^(clock_t v1, clock_t v2) => new clock_t(v1.Value ^ v2.Value);
-        public static clock_t operator<<(clock_t v, int i) => new clock_t(v.Value << i);
-        public static clock_t operator>>(clock_t v, int i) => new clock_t(v.Value >> i);
-        public static bool operator==(clock_t v1, clock_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(clock_t v1, clock_t v2) => v1.Value != v2.Value;
-        public static bool operator<(clock_t v1, clock_t v2) => v1.Value < v2.Value;
-        public static bool operator>(clock_t v1, clock_t v2) => v1.Value > v2.Value;
-        public static bool operator<=(clock_t v1, clock_t v2) => v1.Value <= v2.Value;
-        public static bool operator>=(clock_t v1, clock_t v2) => v1.Value >= v2.Value;
+        public static clock_t operator +(clock_t v) => new clock_t(v.Value);
+        public static clock_t operator -(clock_t v) => new clock_t(-v.Value);
+        public static clock_t operator ~(clock_t v) => new clock_t(~v.Value);
+        public static clock_t operator ++(clock_t v) => new clock_t(v.Value + 1);
+        public static clock_t operator --(clock_t v) => new clock_t(v.Value - 1);
+        public static clock_t operator +(clock_t v1, clock_t v2) => new clock_t(v1.Value + v2.Value);
+        public static clock_t operator -(clock_t v1, clock_t v2) => new clock_t(v1.Value - v2.Value);
+        public static clock_t operator *(clock_t v1, clock_t v2) => new clock_t(v1.Value * v1.Value);
+        public static clock_t operator /(clock_t v1, clock_t v2) => new clock_t(v1.Value / v2.Value);
+        public static clock_t operator %(clock_t v1, clock_t v2) => new clock_t(v1.Value % v2.Value);
+        public static clock_t operator &(clock_t v1, clock_t v2) => new clock_t(v1.Value & v2.Value);
+        public static clock_t operator |(clock_t v1, clock_t v2) => new clock_t(v1.Value | v2.Value);
+        public static clock_t operator ^(clock_t v1, clock_t v2) => new clock_t(v1.Value ^ v2.Value);
+        public static clock_t operator <<(clock_t v, int i) => new clock_t(v.Value << i);
+        public static clock_t operator >>(clock_t v, int i) => new clock_t(v.Value >> i);
+        public static bool operator ==(clock_t v1, clock_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(clock_t v1, clock_t v2) => v1.Value != v2.Value;
+        public static bool operator <(clock_t v1, clock_t v2) => v1.Value < v2.Value;
+        public static bool operator >(clock_t v1, clock_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(clock_t v1, clock_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(clock_t v1, clock_t v2) => v1.Value >= v2.Value;
     }
 
     public unsafe struct pthread_t : IEquatable<pthread_t>
@@ -605,7 +605,213 @@ namespace Tmds.LibC
 
         public bool Equals(pthread_t v) => this == v;
 
-        public static bool operator==(pthread_t v1, pthread_t v2) => v1.Value == v2.Value;
-        public static bool operator!=(pthread_t v1, pthread_t v2) => v1.Value != v2.Value;
+        public static bool operator ==(pthread_t v1, pthread_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(pthread_t v1, pthread_t v2) => v1.Value != v2.Value;
+    }
+
+    public struct dev_t
+    {
+        private ulong __value;
+        public ulong Value => __value;
+
+        private dev_t(ulong value) => __value = value;
+
+        public static implicit operator ulong(dev_t arg) => arg.Value;
+        public static implicit operator dev_t(ulong arg) => new dev_t(arg);
+
+        public override string ToString() => Value.ToString();
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is dev_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(dev_t v) => this == v;
+
+        public static bool operator ==(dev_t v1, dev_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(dev_t v1, dev_t v2) => v1.Value != v2.Value;
+    }
+
+    public struct ino_t
+    {
+        private ulong __value;
+        public ulong Value => __value;
+
+        private ino_t(ulong value) => __value = value;
+
+        public static implicit operator ulong(ino_t arg) => arg.Value;
+        public static implicit operator ino_t(ulong arg) => new ino_t(arg);
+
+        public override string ToString() => Value.ToString();
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is ino_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(ino_t v) => this == v;
+
+        public static bool operator ==(ino_t v1, ino_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(ino_t v1, ino_t v2) => v1.Value != v2.Value;
+    }
+
+    public struct blkcnt_t
+    {
+        private long __value;
+        public long Value => __value;
+
+        private blkcnt_t(long value) => __value = value;
+
+        public static implicit operator long(blkcnt_t arg) => arg.Value;
+        public static implicit operator blkcnt_t(long arg) => new blkcnt_t(arg);
+
+        public override string ToString() => Value.ToString();
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is blkcnt_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(blkcnt_t v) => this == v;
+
+        public static blkcnt_t operator +(blkcnt_t v) => new blkcnt_t(v.Value);
+        public static blkcnt_t operator -(blkcnt_t v) => new blkcnt_t(-v.Value);
+        public static blkcnt_t operator ~(blkcnt_t v) => new blkcnt_t(~v.Value);
+        public static blkcnt_t operator ++(blkcnt_t v) => new blkcnt_t(v.Value + 1);
+        public static blkcnt_t operator --(blkcnt_t v) => new blkcnt_t(v.Value - 1);
+        public static blkcnt_t operator +(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value + v2.Value);
+        public static blkcnt_t operator -(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value - v2.Value);
+        public static blkcnt_t operator *(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value * v1.Value);
+        public static blkcnt_t operator /(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value / v2.Value);
+        public static blkcnt_t operator %(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value % v2.Value);
+        public static blkcnt_t operator &(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value & v2.Value);
+        public static blkcnt_t operator |(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value | v2.Value);
+        public static blkcnt_t operator ^(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value ^ v2.Value);
+        public static blkcnt_t operator <<(blkcnt_t v, int i) => new blkcnt_t(v.Value << i);
+        public static blkcnt_t operator >>(blkcnt_t v, int i) => new blkcnt_t(v.Value >> i);
+        public static bool operator ==(blkcnt_t v1, blkcnt_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(blkcnt_t v1, blkcnt_t v2) => v1.Value != v2.Value;
+        public static bool operator <(blkcnt_t v1, blkcnt_t v2) => v1.Value < v2.Value;
+        public static bool operator >(blkcnt_t v1, blkcnt_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(blkcnt_t v1, blkcnt_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(blkcnt_t v1, blkcnt_t v2) => v1.Value >= v2.Value;
+    }
+
+    public partial struct nlink_t
+    {
+        public static implicit operator ulong(nlink_t arg) => arg.Value;
+        public static implicit operator nlink_t(ulong arg) => new nlink_t(arg);
+
+        public override string ToString() => Value.ToString();
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is nlink_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(nlink_t v) => this == v;
+
+        public static nlink_t operator +(nlink_t v) => new nlink_t(v.Value);
+        public static nlink_t operator ~(nlink_t v) => new nlink_t(~v.Value);
+        public static nlink_t operator ++(nlink_t v) => new nlink_t(v.Value + 1);
+        public static nlink_t operator --(nlink_t v) => new nlink_t(v.Value - 1);
+        public static nlink_t operator +(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value + v2.Value);
+        public static nlink_t operator -(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value - v2.Value);
+        public static nlink_t operator *(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value * v1.Value);
+        public static nlink_t operator /(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value / v2.Value);
+        public static nlink_t operator %(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value % v2.Value);
+        public static nlink_t operator &(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value & v2.Value);
+        public static nlink_t operator |(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value | v2.Value);
+        public static nlink_t operator ^(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value ^ v2.Value);
+        public static nlink_t operator <<(nlink_t v, int i) => new nlink_t(v.Value << i);
+        public static nlink_t operator >>(nlink_t v, int i) => new nlink_t(v.Value >> i);
+        public static bool operator ==(nlink_t v1, nlink_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(nlink_t v1, nlink_t v2) => v1.Value != v2.Value;
+        public static bool operator <(nlink_t v1, nlink_t v2) => v1.Value < v2.Value;
+        public static bool operator >(nlink_t v1, nlink_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(nlink_t v1, nlink_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(nlink_t v1, nlink_t v2) => v1.Value >= v2.Value;
+    }
+
+    public partial struct blksize_t
+    {
+        public static implicit operator long(blksize_t arg) => arg.Value;
+        public static implicit operator blksize_t(long arg) => new blksize_t(arg);
+
+        public override string ToString() => Value.ToString();
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is blksize_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(blksize_t v) => this == v;
+
+        public static blksize_t operator +(blksize_t v) => new blksize_t(v.Value);
+        public static blksize_t operator -(blksize_t v) => new blksize_t(-v.Value);
+        public static blksize_t operator ~(blksize_t v) => new blksize_t(~v.Value);
+        public static blksize_t operator ++(blksize_t v) => new blksize_t(v.Value + 1);
+        public static blksize_t operator --(blksize_t v) => new blksize_t(v.Value - 1);
+        public static blksize_t operator +(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value + v2.Value);
+        public static blksize_t operator -(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value - v2.Value);
+        public static blksize_t operator *(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value * v1.Value);
+        public static blksize_t operator /(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value / v2.Value);
+        public static blksize_t operator %(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value % v2.Value);
+        public static blksize_t operator &(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value & v2.Value);
+        public static blksize_t operator |(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value | v2.Value);
+        public static blksize_t operator ^(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value ^ v2.Value);
+        public static blksize_t operator <<(blksize_t v, int i) => new blksize_t(v.Value << i);
+        public static blksize_t operator >>(blksize_t v, int i) => new blksize_t(v.Value >> i);
+        public static bool operator ==(blksize_t v1, blksize_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(blksize_t v1, blksize_t v2) => v1.Value != v2.Value;
+        public static bool operator <(blksize_t v1, blksize_t v2) => v1.Value < v2.Value;
+        public static bool operator >(blksize_t v1, blksize_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(blksize_t v1, blksize_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(blksize_t v1, blksize_t v2) => v1.Value >= v2.Value;
     }
 }

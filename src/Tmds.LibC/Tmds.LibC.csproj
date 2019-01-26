@@ -22,6 +22,7 @@
     <Compile Include="../Sources/linux.specific/ioctl.sizet.cs" />
     <Compile Include="../Sources/linux.specific/signal.64.cs" />
     <Compile Include="../Sources/linux.specific/signal.lsb.cs" />
+    <Compile Include="../Sources/linux.specific/stat.lsb.cs" />
   </ItemGroup>
 
   <ItemGroup>

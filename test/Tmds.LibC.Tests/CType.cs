@@ -27,7 +27,12 @@ namespace Tmds.LibC.Tests
             "pthread_t",
             "clock_t",
             "sigevent_t",
-            "Dl_info"
+            "Dl_info",
+            "dev_t",
+            "ino_t",
+            "nlink_t",
+            "blksize_t",
+            "blkcnt_t"
         };
 
         private static bool IsUnion(string name)

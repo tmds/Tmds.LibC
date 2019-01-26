@@ -200,6 +200,12 @@ namespace Tmds.LibC.Tests
                     { "signal.h", typeof(pthread_t) },
                     { "sys/types.h", typeof(clock_t) },
                     { "dlfcn.h", typeof(Dl_info)},
+                    { "sys/stat.h", typeof(dev_t)},
+                    { "sys/stat.h", typeof(ino_t)},
+                    { "sys/stat.h", typeof(nlink_t)},
+                    { "sys/stat.h", typeof(blksize_t)},
+                    { "sys/stat.h", typeof(blkcnt_t)},
+                    { "sys/stat.h", typeof(stat)}
                 };
     }
 }

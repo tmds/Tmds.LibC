@@ -160,7 +160,14 @@ namespace Tmds.LibC.Tests
             "CPU_XOR",
             "CPU_COUNT",
             "CPU_ZERO",
-            "CPU_EQUAL"
+            "CPU_EQUAL",
+            "S_ISDIR",
+            "S_ISCHR",
+            "S_ISBLK",
+            "S_ISREG",
+            "S_ISFIFO",
+            "S_ISLNK",
+            "S_ISSOCK",
         };
 
         [Fact]
@@ -460,6 +467,26 @@ namespace Tmds.LibC.Tests
                         "dlsym",
                         "dladdr",
                         "dlinfo" }
+                    },
+                    { "sys/stat.h",
+                      new[] {
+                        "stat",
+                        "fstat",
+                        "lstat",
+                        "fstatat",
+                        "chmod",
+                        "fchmod",
+                        "fchmodat",
+                        "umask",
+                        "mkdir",
+                        "mkfifo",
+                        "mkdirat",
+                        "mkfifoat",
+                        "mknod",
+                        "mknodat",
+                        "futimens",
+                        "utimensat",
+                        }
                     },
                 };
     }
