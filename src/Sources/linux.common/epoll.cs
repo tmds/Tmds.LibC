@@ -49,7 +49,7 @@ namespace Tmds.LibC
         public static extern int epoll_ctl(int epfd, int op, int fd, epoll_event* ev);
         [DllImport(libc, SetLastError = true)]
         public static extern  int epoll_wait(int epfd, epoll_event* events, int maxevents, int timeout);
-        // TODO : add when sigset_t
-        // [DllImport(libc, SetLastError = true)] public static extern  int epoll_pwait(int epfd, epoll_event * events, int maxevents, int timeout, sigset_t * sigmask);
+        [DllImport(libc, SetLastError = true)]
+        public static extern  int epoll_pwait(int epfd, epoll_event * events, int maxevents, int timeout, sigset_t * sigmask);
     }
 }

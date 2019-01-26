@@ -26,6 +26,7 @@ namespace Tmds.LibC.Tests
                     "unistd.h",
                     "sys/ioctl.h",
                     "sched.h",
+                    "signal.h"
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)
@@ -41,7 +42,9 @@ namespace Tmds.LibC.Tests
                     string name = property.Name;
 
                     // errno is not a Constant
-                    if (name == "errno")
+                    if (name == "errno" ||
+                        name == "SIGRTMAX" ||
+                        name == "SIGRTMIN")
                     {
                         continue;
                     }

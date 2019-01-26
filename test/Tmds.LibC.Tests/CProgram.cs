@@ -118,7 +118,7 @@ namespace Tmds.LibC.Tests
 
             using (Process process = Process.Start(new ProcessStartInfo  {
                 FileName = "gcc",
-                Arguments = $"{_codeFilename} -Werror {offset64} -o {_elfFile}",
+                Arguments = $"{_codeFilename} -Werror {offset64} -o {_elfFile} -lpthread -ldl",
                 RedirectStandardError = true }))
             {
                 StringBuilder errorOut = new StringBuilder();

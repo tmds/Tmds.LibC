@@ -11,24 +11,6 @@ namespace Tmds.LibC.Tests
 {
     public class StructTests
     {
-        // no need to prepend these with the 'struct' keyword
-        private static string[] s_typedefs = new [] {
-            "epoll_data_t",
-            "size_t",
-            "ssize_t",
-            "sa_family_t",
-            "pid_t",
-            "uid_t",
-            "gid_t",
-            "socklen_t",
-            "off_t",
-            "time_t",
-            "mode_t",
-            "syscall_arg",
-            "long_t",
-            "cpu_set_t",
-        };
-
         // fields with some weirdness
         private static string[] s_skipSizeCheckForFields = new[] {
             // linux uses size_t instead of int
@@ -48,7 +30,7 @@ namespace Tmds.LibC.Tests
                 return;
             }
 
-            string structName = s_typedefs.Contains(name) ? name : $"struct {name}";
+            string structName = CType.GetName(name);
 
             using (var program = new CProgram())
             {
@@ -209,6 +191,15 @@ namespace Tmds.LibC.Tests
                     { "sys/types.h", typeof(long_t) },
                     { "sys/ioctl.h", typeof(winsize) },
                     { "sched.h", typeof(cpu_set_t) },
+                    { "signal.h", typeof(sigval) },
+                    { "signal.h", typeof(siginfo_t) },
+                    { "signal.h", typeof(sigaction) },
+                    { "signal.h", typeof(sigevent_t) },
+                    { "signal.h", typeof(stack_t) },
+                    { "signal.h", typeof(sigset_t) },
+                    { "signal.h", typeof(pthread_t) },
+                    { "sys/types.h", typeof(clock_t) },
+                    { "dlfcn.h", typeof(Dl_info)},
                 };
     }
 }

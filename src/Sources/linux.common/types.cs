@@ -527,4 +527,85 @@ namespace Tmds.LibC
         public static bool operator==(mode_t v1, mode_t v2) => v1.Value == v2.Value;
         public static bool operator!=(mode_t v1, mode_t v2) => v1.Value != v2.Value;
     }
+
+    public struct clock_t : IEquatable<clock_t>
+    {
+        // 32-bit systems: values could overflow
+        private ssize_t __value;
+        internal ssize_t Value => __value;
+
+        internal clock_t(long arg) => __value = new ssize_t(arg);
+
+        public static implicit operator long(clock_t arg) => (long)arg.Value;
+        public static implicit operator clock_t(long arg) => new clock_t(arg);
+
+        public override string ToString() => Value.ToString();
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is clock_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(clock_t v) => this == v;
+
+        public static clock_t operator+(clock_t v) => new clock_t(v.Value);
+        public static clock_t operator-(clock_t v) => new clock_t(- v.Value);
+        public static clock_t operator~(clock_t v) => new clock_t(~v.Value);
+        public static clock_t operator++(clock_t v) => new clock_t(v.Value + 1);
+        public static clock_t operator--(clock_t v) => new clock_t(v.Value - 1);
+        public static clock_t operator+(clock_t v1, clock_t v2) => new clock_t(v1.Value + v2.Value);
+        public static clock_t operator-(clock_t v1, clock_t v2) => new clock_t(v1.Value - v2.Value);
+        public static clock_t operator*(clock_t v1, clock_t v2) => new clock_t(v1.Value * v1.Value);
+        public static clock_t operator/(clock_t v1, clock_t v2) => new clock_t(v1.Value / v2.Value);
+        public static clock_t operator%(clock_t v1, clock_t v2) => new clock_t(v1.Value % v2.Value);
+        public static clock_t operator&(clock_t v1, clock_t v2) => new clock_t(v1.Value & v2.Value);
+        public static clock_t operator|(clock_t v1, clock_t v2) => new clock_t(v1.Value | v2.Value);
+        public static clock_t operator^(clock_t v1, clock_t v2) => new clock_t(v1.Value ^ v2.Value);
+        public static clock_t operator<<(clock_t v, int i) => new clock_t(v.Value << i);
+        public static clock_t operator>>(clock_t v, int i) => new clock_t(v.Value >> i);
+        public static bool operator==(clock_t v1, clock_t v2) => v1.Value == v2.Value;
+        public static bool operator!=(clock_t v1, clock_t v2) => v1.Value != v2.Value;
+        public static bool operator<(clock_t v1, clock_t v2) => v1.Value < v2.Value;
+        public static bool operator>(clock_t v1, clock_t v2) => v1.Value > v2.Value;
+        public static bool operator<=(clock_t v1, clock_t v2) => v1.Value <= v2.Value;
+        public static bool operator>=(clock_t v1, clock_t v2) => v1.Value >= v2.Value;
+    }
+
+    public unsafe struct pthread_t : IEquatable<pthread_t>
+    {
+        private void* __value;
+        internal void* Value => __value;
+
+        internal pthread_t(void* arg) => __value = arg;
+
+        public override string ToString() => ((ulong)__value).ToString();
+
+        public override int GetHashCode() => ((ulong)__value).GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is pthread_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(pthread_t v) => this == v;
+
+        public static bool operator==(pthread_t v1, pthread_t v2) => v1.Value == v2.Value;
+        public static bool operator!=(pthread_t v1, pthread_t v2) => v1.Value != v2.Value;
+    }
 }

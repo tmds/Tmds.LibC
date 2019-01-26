@@ -114,6 +114,10 @@ namespace Tmds.LibC.Tests
                         "TIOCM_OUT1",
                         "TIOCM_OUT2",
                         "TIOCM_LOOP",
+                        "TRAP_BRANCH",
+                        "TRAP_HWBKPT",
+                        "SS_AUTODISARM",
+                        "SS_FLAG_BITS"
                     },
                     unsupportedHeaders: new string[]
                     { },
