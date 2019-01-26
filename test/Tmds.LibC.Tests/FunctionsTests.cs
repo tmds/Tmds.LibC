@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using Xunit;
 
 namespace Tmds.LibC.Tests
@@ -37,10 +38,12 @@ namespace Tmds.LibC.Tests
 
                     MethodInfo[] methods;
                     DllImportAttribute dllImportAttribute;
-                    if (functionName == "errno")
+                    if (functionName == "errno" ||
+                        functionName == "SIGRTMIN" ||
+                        functionName == "SIGRTMAX")
                     {
                         // call method
-                        program.AppendLine($"int rv{idx++} = errno;");
+                        program.AppendLine($"int rv{idx++} = {functionName};");
                     }
                     else
                     {
@@ -121,36 +124,7 @@ namespace Tmds.LibC.Tests
         {
             string parameterTypeName = parameterType.Name;
             string nameNoPointer = parameterTypeName.TrimEnd('*');
-            string cType;
-            switch (nameNoPointer)
-            {
-                case "Void": cType = "void"; break;
-                case "SByte": cType = "int8_t"; break;
-                case "Byte": cType = "uint8_t"; break;
-                case "Int16": cType = "int16_t"; break;
-                case "UInt16": cType = "uint16_t"; break;
-                case "Int32": cType = "int32_t"; break;
-                case "UInt32": cType = "uint32_t"; break;
-                case "Int64": cType = "int64_t"; break;
-                case "UInt64": cType = "uint64_t"; break;
-                case "size_t":
-                case "ssize_t":
-                case "mode_t":
-                case "sa_family_t":
-                case "pid_t":
-                case "gid_t":
-                case "uid_t":
-                case "socklen_t":
-                case "off_t":
-                case "time_t":
-                case "cpu_set_t":
-                    cType = nameNoPointer; break;
-                case "long_t":
-                case "syscall_arg":
-                    cType = "long"; break;
-                default:
-                    cType = $"struct {nameNoPointer}"; break;
-            }
+            string cType = CType.GetName(nameNoPointer);
             return cType + new string('*', parameterTypeName.Length - nameNoPointer.Length);
         }
 
@@ -206,6 +180,41 @@ namespace Tmds.LibC.Tests
 
             Assert.True(!methods.Any(),
                 $"Unchecked functions: {string.Join(", ", methods.Select(m => m.Name).Distinct())}");
+        }
+
+        private unsafe Dictionary<string, IntPtr> s_dlopened = new Dictionary<string, IntPtr>();
+
+        [Fact]
+        public unsafe void LibraryNames()
+        {
+            var methods = typeof(Definitions).GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+            foreach (var method in methods)
+            {
+                DllImportAttribute dllImportAttribute = method.GetCustomAttribute<DllImportAttribute>();
+                if (dllImportAttribute != null)
+                {
+                    string functionName = dllImportAttribute.EntryPoint;
+                    string libName = dllImportAttribute.Value;
+                    IntPtr libHandle = IntPtr.Zero;
+                    lock (s_dlopened)
+                    {
+                        if (!s_dlopened.TryGetValue(libName, out libHandle))
+                        {
+                            fixed (byte* filename = Encoding.UTF8.GetBytes(libName))
+                            {
+                                libHandle = new IntPtr(Definitions.dlopen(filename, Definitions.RTLD_LAZY));
+                            }
+                            Assert.True(IntPtr.Zero != libHandle, $"Library not found: {libName}");
+                            s_dlopened.Add(libName, libHandle);
+                        }
+                    }
+                    fixed(byte* symbol = Encoding.UTF8.GetBytes(functionName))
+                    {
+                        IntPtr symbolHandle = new IntPtr(Definitions.dlsym(libHandle.ToPointer(), symbol));
+                        Assert.True(IntPtr.Zero != symbolHandle, $"Function symbol not found in {libName}: {functionName}");
+                    }
+                }
+            }
         }
 
         public static TheoryData<CIncludes, string[]> Data =>
@@ -387,24 +396,70 @@ namespace Tmds.LibC.Tests
                         "epoll_create",
                         "epoll_create1",
                         "epoll_ctl",
-                        "epoll_wait" }
+                        "epoll_wait",
+                        "epoll_pwait" }
                     },
                     { "sys/ioctl.h",
-                      new[] { "ioctl" }
+                      new[] {
+                        "ioctl" }
                     },
                     { new CIncludes("sched.h", true),
-                      new[] { "sched_get_priority_max",
-                              "sched_get_priority_min",
-                              "getscheduler",
-                              "sched_rr_get_interval",
-                              "sched_yield",
-                              "clone",
-                              "unshare",
-                              "setns",
-                              "sched_getcpu",
-                              "sched_getaffinity",
-                              "sched_setaffinity",
-                              "sched_getscheduler", }
+                      new[] {
+                        "sched_get_priority_max",
+                        "sched_get_priority_min",
+                        "getscheduler",
+                        "sched_rr_get_interval",
+                        "sched_yield",
+                        "clone",
+                        "unshare",
+                        "setns",
+                        "sched_getcpu",
+                        "sched_getaffinity",
+                        "sched_setaffinity",
+                        "sched_getscheduler", }
+                    },
+                    { new CIncludes("signal.h", gnuSource: true),
+                      new[] {
+                        "SIGRTMIN",
+                        "SIGRTMAX",
+                        "sigpause",
+                        "sigrelse",
+                        "sigisemptyset",
+                        "sigorset",
+                        "sigandset",
+                        "raise",
+                        "kill",
+                        "sigemptyset",
+                        "sigfillset",
+                        "sigaddset",
+                        "sigdelset",
+                        "sigismember",
+                        "sigprocmask",
+                        "sigsuspend",
+                        "sigaction",
+                        "sigpending",
+                        "sigwait",
+                        "sigwaitinfo",
+                        "sigtimedwait",
+                        "sigqueue",
+                        "pthread_sigmask",
+                        "pthread_kill",
+                        "psiginfo",
+                        "psignal",
+                        "killpg",
+                        "sigaltstack",
+                        "sighold",
+                        "sigignore",
+                        "siginterrupt", }
+                    },
+                    { new CIncludes("dlfcn.h", true),
+                      new[] {
+                        "dlclose",
+                        "dlerror",
+                        "dlopen",
+                        "dlsym",
+                        "dladdr",
+                        "dlinfo" }
                     },
                 };
     }

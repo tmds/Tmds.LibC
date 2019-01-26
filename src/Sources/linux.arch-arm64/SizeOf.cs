@@ -48,5 +48,14 @@ namespace Tmds.LibC
         public static ushort syscall_arg => size_t;
         public static ushort winsize => 8;
         public static ushort cpu_set_t => 128;
+        public static ushort sigset_t => 128;
+        public static ushort sigval => 8;
+        public static ushort stack_t => 24;
+        public static ushort sigaction => 152;
+        public static ushort siginfo_t => 128;
+        public static ushort sigevent_t => 64;
+        public static ushort pthread_t => long_t;
+        public static ushort clock_t => long_t;
+        public static ushort Dl_info => 32;
     }
 }
