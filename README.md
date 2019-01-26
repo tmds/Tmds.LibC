@@ -156,7 +156,6 @@ namespace console
 [isatty](http://man7.org/linux/man-pages/man3/isatty.3.html),
 [kill](http://man7.org/linux/man-pages/man2/kill.2.html),
 [killpg](http://man7.org/linux/man-pages/man3/killpg.3.html),
-lchmod,
 [lchown](http://man7.org/linux/man-pages/man2/lchown.2.html),
 [link](http://man7.org/linux/man-pages/man2/link.2.html),
 [linkat](http://man7.org/linux/man-pages/man2/linkat.2.html),
