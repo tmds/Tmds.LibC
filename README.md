@@ -50,8 +50,8 @@ Program.cs
 ```cs
 using System;
 using System.Text;
-using Tmds.LibC;
-using static Tmds.LibC.Definitions;
+using Tmds.Linux;
+using static Tmds.Linux.LibC;
 
 namespace console
 {
@@ -70,6 +70,8 @@ namespace console
 ```
 
 ## Functions
+
+The following functions are defined in the static class `Tmds.Linux.LibC`:
 
 [_exit](http://man7.org/linux/man-pages/man2/_exit.2.html),
 [accept](http://man7.org/linux/man-pages/man2/accept.2.html),
@@ -280,6 +282,8 @@ namespace console
 
 
 ## Structs
+
+The following structs are defined in the `Tmds.Linux` namespace:
 
 aio_context_t,
 aio_ring,

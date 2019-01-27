@@ -1,8 +1,8 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct epoll_data_t
@@ -17,7 +17,7 @@ namespace Tmds.LibC
         public ulong u64;
     }
 
-    public static unsafe partial class Definitions
+    public static unsafe partial class LibC
     {
         public static int EPOLL_CLOEXEC => O_CLOEXEC;
 

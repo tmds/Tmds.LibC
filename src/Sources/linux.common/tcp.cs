@@ -1,6 +1,6 @@
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
-    public static partial class Definitions
+    public static partial class LibC
     {
         public static int TCP_NODELAY => 1;
         public static int TCP_MAXSEG => 2;

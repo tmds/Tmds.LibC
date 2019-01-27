@@ -1,9 +1,9 @@
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
-    public static unsafe partial class Definitions
+    public static unsafe partial class LibC
     {
         public static int strerror_r(int errnum, byte* buf, size_t buflen)
             => _strerror_r(errnum, buf, buflen);

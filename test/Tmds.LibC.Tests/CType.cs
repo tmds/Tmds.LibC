@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace Tmds.LibC.Tests
+namespace Tmds.Linux.Tests
 {
     public static class CType
     {

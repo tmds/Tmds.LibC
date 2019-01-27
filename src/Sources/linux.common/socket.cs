@@ -1,9 +1,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     public unsafe struct msghdr
     {
@@ -64,7 +64,7 @@ namespace Tmds.LibC
         public sa_family_t ss_family { get => __ss_family; set => __ss_family = value; }
     }
 
-    public static unsafe partial class Definitions
+    public static unsafe partial class LibC
     {
         public static int SHUT_RD => 0;
         public static int SHUT_WR => 1;

@@ -1,4 +1,4 @@
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     public struct io_event
     {
@@ -50,7 +50,7 @@ namespace Tmds.LibC
         public unsafe aio_ring* ring;
     }
 
-    public unsafe static partial class Definitions
+    public unsafe static partial class LibC
     {
         public static ushort IOCB_CMD_PREAD => 0;
         public static ushort IOCB_CMD_PWRITE => 1;

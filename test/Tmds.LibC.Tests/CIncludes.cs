@@ -1,4 +1,4 @@
-namespace Tmds.LibC.Tests
+namespace Tmds.Linux.Tests
 {
     public class CIncludes
     {

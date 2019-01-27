@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using Xunit;
 
-namespace Tmds.LibC.Tests
+namespace Tmds.Linux.Tests
 {
     public class ConstantsTests
     {
@@ -36,7 +36,7 @@ namespace Tmds.LibC.Tests
                     program.Include(header);
                 }
 
-                PropertyInfo[] properties = typeof(Definitions).GetProperties();
+                PropertyInfo[] properties = typeof(LibC).GetProperties();
                 foreach (var property in properties)
                 {
                     string name = property.Name;

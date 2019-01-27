@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Xunit;
 
-namespace Tmds.LibC.Tests
+namespace Tmds.Linux.Tests
 {
     static class ElfReader
     {

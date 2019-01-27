@@ -50,8 +50,8 @@ Program.cs
 ```cs
 using System;
 using System.Text;
-using Tmds.LibC;
-using static Tmds.LibC.Definitions;
+using Tmds.Linux;
+using static Tmds.Linux.LibC;
 
 namespace console
 {
@@ -71,8 +71,12 @@ namespace console
 
 ## Functions
 
+The following functions are defined in the static class `Tmds.Linux.LibC`:
+
 ##FUNCTIONS##
 
 ## Structs
+
+The following structs are defined in the `Tmds.Linux` namespace:
 
 ##STRUCTS##

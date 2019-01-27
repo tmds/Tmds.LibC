@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace Tmds.LibC.Tests
+namespace Tmds.Linux.Tests
 {
     class TestEnvironment
     {

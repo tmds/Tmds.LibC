@@ -1,9 +1,9 @@
 
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     [StructLayout(LayoutKind.Explicit, Pack = 4)]
     public struct epoll_event

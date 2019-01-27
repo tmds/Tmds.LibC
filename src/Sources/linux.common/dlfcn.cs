@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     public unsafe struct Dl_info
     {
@@ -11,7 +11,7 @@ namespace Tmds.LibC
         public void* dli_saddr { get; set; }
     }
 
-    public static unsafe partial class Definitions
+    public static unsafe partial class LibC
     {
         public static int RTLD_LAZY => 1;
         public static int RTLD_NOW => 2;

@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct sigset_t
@@ -40,7 +40,7 @@ namespace Tmds.LibC
         public void* sa_restorer { get; set; }
     }
 
-    public static unsafe partial class Definitions
+    public static unsafe partial class LibC
     {
         public static int SIG_BLOCK => 0;
         public static int SIG_UNBLOCK => 1;
