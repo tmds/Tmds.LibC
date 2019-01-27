@@ -350,3 +350,113 @@ timespec,
 ucred,
 uid_t,
 winsize,
+
+
+## Examples
+
+This section shows some examples. The examples use a `PlatformException` class which is implemented as follows:
+
+```c#
+class PlatformException : Exception
+{
+    public PlatformException(int errno) :
+        base(GetErrorMessage(errno))
+    {
+        HResult = errno;
+    }
+
+    public PlatformException() :
+        this(LibC.errno)
+    {}
+
+    public unsafe static string GetErrorMessage(int errno)
+    {
+        int bufferLength = 1024;
+        byte* buffer = stackalloc byte[bufferLength];
+
+        int rv = strerror_r(errno, buffer, bufferLength);
+
+        return rv == 0 ? Marshal.PtrToStringAnsi((IntPtr)buffer) : $"errno {errno}";
+    }
+}
+```
+
+### Example 1: Socket extension method to set raw socket options
+
+```c#
+static class SocketExtensions
+{
+    public static unsafe void SetRawSocketOption(this Socket socket, int level, int optname, int optval)
+    {
+        SafeHandle handle = socket.SafeHandle;
+        bool refAdded = false;
+        try
+        {
+            handle.DangerousAddRef(ref refAdded);
+            int rv = setsockopt(handle.DangerousGetHandle().ToInt32(), level, optname, &optval, sizeof(int));
+            if (rv != 0)
+            {
+                throw new PlatformException();
+            }
+        }
+        finally
+        {
+            if (refAdded)
+                handle.DangerousRelease();
+        }
+    }
+}
+```
+
+This extension method can be used with the constants provided by `Tmds.LibC`, for example:
+```c#
+socket.SetRawSocketOption(SOL_SOCKET, SO_REUSEADDR, 1);
+```
+
+### Example 2: Process extension method to request termination
+
+Unix processes can be requested to terminate using the `SIGTERM` signal. The following code adds an extension
+method to the `Process` class to send that signal.
+
+```c#
+static class ProcessExtensions
+{
+    public static void Terminate(this Process process)
+    {
+        if (process.HasExited)
+        {
+            return;
+        }
+        int rv = kill(process.Handle.ToInt32(), SIGTERM);
+        if (rv == -1 &&
+            errno != ESRCH /* process does not exist, assume it exited */)
+        {
+            throw new PlatformException();
+        }
+    }
+}
+```
+
+### Example 3: Creating a temporary directory that is only accessible by the user
+
+```c#
+static class FileUtils
+{
+    public unsafe static string CreatePrivateTempDirectory()
+    {
+        string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+        fixed (byte* pathname = Encoding.UTF8.GetBytes(path))
+        {
+            int rv = mkdir(pathname, S_IRWXU);
+            if (rv == -1)
+            {
+                throw new PlatformException();
+            }
+            else
+            {
+                return path;
+            }
+        }
+    }
+}
+```
