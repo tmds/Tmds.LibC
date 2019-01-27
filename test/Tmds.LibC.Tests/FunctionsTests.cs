@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Xunit;
 
-namespace Tmds.LibC.Tests
+namespace Tmds.Linux.Tests
 {
     public class FunctionsTest
     {
@@ -47,7 +47,7 @@ namespace Tmds.LibC.Tests
                     }
                     else
                     {
-                        methods = typeof(Definitions).GetMethods(BindingFlags.Static | BindingFlags.Public)
+                        methods = typeof(LibC).GetMethods(BindingFlags.Static | BindingFlags.Public)
                                     .Where(mi => mi.Name == functionName)
                                     .ToArray();
                         foreach (var method in methods)
@@ -65,7 +65,7 @@ namespace Tmds.LibC.Tests
                     }
 
                     // If the function calls a private function it is named "_{function}"
-                    methods = typeof(Definitions).GetMethods(BindingFlags.Static | BindingFlags.NonPublic)
+                    methods = typeof(LibC).GetMethods(BindingFlags.Static | BindingFlags.NonPublic)
                                     .Where(mi => mi.Name == $"_{functionName}")
                                     .ToArray();
                     foreach (var method in methods)
@@ -173,7 +173,7 @@ namespace Tmds.LibC.Tests
         [Fact]
         public void UncheckedFunctions() // Verifies s_uncheckedFunctions is up-to-date
         {
-            IEnumerable<MethodInfo> methods = typeof(Definitions).GetMethods(BindingFlags.Static | BindingFlags.Public);
+            IEnumerable<MethodInfo> methods = typeof(LibC).GetMethods(BindingFlags.Static | BindingFlags.Public);
 
             // Skip property getters
             methods = methods.Where(m => !m.DeclaringType.GetProperties()
@@ -194,7 +194,7 @@ namespace Tmds.LibC.Tests
         [Fact]
         public unsafe void LibraryNames()
         {
-            var methods = typeof(Definitions).GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+            var methods = typeof(LibC).GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
             foreach (var method in methods)
             {
                 DllImportAttribute dllImportAttribute = method.GetCustomAttribute<DllImportAttribute>();
@@ -209,7 +209,7 @@ namespace Tmds.LibC.Tests
                         {
                             fixed (byte* filename = Encoding.UTF8.GetBytes(libName))
                             {
-                                libHandle = new IntPtr(Definitions.dlopen(filename, Definitions.RTLD_LAZY));
+                                libHandle = new IntPtr(LibC.dlopen(filename, LibC.RTLD_LAZY));
                             }
                             Assert.True(IntPtr.Zero != libHandle, $"Library not found: {libName}");
                             s_dlopened.Add(libName, libHandle);
@@ -217,7 +217,7 @@ namespace Tmds.LibC.Tests
                     }
                     fixed(byte* symbol = Encoding.UTF8.GetBytes(functionName))
                     {
-                        IntPtr symbolHandle = new IntPtr(Definitions.dlsym(libHandle.ToPointer(), symbol));
+                        IntPtr symbolHandle = new IntPtr(LibC.dlsym(libHandle.ToPointer(), symbol));
                         Assert.True(IntPtr.Zero != symbolHandle, $"Function symbol not found in {libName}: {functionName}");
                     }
                 }

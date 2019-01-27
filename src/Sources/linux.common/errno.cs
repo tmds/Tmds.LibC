@@ -1,8 +1,8 @@
 using System.Runtime.InteropServices;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
-    public static partial class Definitions
+    public static partial class LibC
     {
         public static unsafe int errno
             // use the value captured by DllImport

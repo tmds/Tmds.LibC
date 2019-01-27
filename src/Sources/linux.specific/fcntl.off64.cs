@@ -1,9 +1,9 @@
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
-    public unsafe static partial class Definitions
+    public unsafe static partial class LibC
     {
         [DllImport(libc, SetLastError = true)]
         public static extern int fcntl(int fd, int cmd);

@@ -1,4 +1,4 @@
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     public struct sock_extended_err
     {
@@ -18,7 +18,7 @@ namespace Tmds.LibC
         public timespec ts2;
     }
 
-    public unsafe static partial class Definitions
+    public unsafe static partial class LibC
     {
         public static byte SO_EE_ORIGIN_NONE => 0;
         public static byte SO_EE_ORIGIN_LOCAL => 1;

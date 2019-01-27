@@ -1,6 +1,6 @@
 using System;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     public unsafe struct iovec
     {

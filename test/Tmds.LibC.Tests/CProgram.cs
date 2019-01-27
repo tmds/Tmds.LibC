@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using Xunit;
-using Tmds.LibC;
+using Tmds.Linux;
 
-namespace Tmds.LibC.Tests
+namespace Tmds.Linux.Tests
 {
     class CProgram : IDisposable
     {

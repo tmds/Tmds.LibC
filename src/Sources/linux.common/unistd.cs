@@ -1,9 +1,9 @@
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
-    public static unsafe partial class Definitions
+    public static unsafe partial class LibC
     {
         public static int STDIN_FILENO => 0;
         public static int STDOUT_FILENO => 1;

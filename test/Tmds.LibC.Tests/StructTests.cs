@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Tmds.LibC.Tests
+namespace Tmds.Linux.Tests
 {
     public class StructTests
     {
@@ -115,7 +115,7 @@ namespace Tmds.LibC.Tests
         [Fact]
         public void UncheckedStructs() // Verifies s_uncheckedTypes is up-to-date
         {
-            IEnumerable<Type> types = typeof(Definitions).Assembly.GetTypes();
+            IEnumerable<Type> types = typeof(LibC).Assembly.GetTypes();
 
             // Filter out public structs
             types = types.Where(t => t.IsValueType && t.IsPublic);
@@ -137,7 +137,7 @@ namespace Tmds.LibC.Tests
 
             foreach (var property in properties)
             {
-                var type = typeof(Definitions).Assembly.GetTypes().SingleOrDefault(t => t.Name == property.Name);
+                var type = typeof(LibC).Assembly.GetTypes().SingleOrDefault(t => t.Name == property.Name);
                 Assert.True(type != null, $"SizeOf.{property.Name} has no matching struct");
             }
         }

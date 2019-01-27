@@ -1,6 +1,6 @@
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
-    public static partial class Definitions
+    public static partial class LibC
     {
         public static int SYS_accept4 => 288;
         public static int SYS_accept => 43;

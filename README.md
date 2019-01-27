@@ -50,8 +50,8 @@ Program.cs
 ```cs
 using System;
 using System.Text;
-using Tmds.LibC;
-using static Tmds.LibC.Definitions;
+using Tmds.Linux;
+using static Tmds.Linux.LibC;
 
 namespace console
 {

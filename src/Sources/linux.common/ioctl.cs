@@ -1,4 +1,4 @@
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     public struct winsize
     {
@@ -8,7 +8,7 @@ namespace Tmds.LibC
         public ushort ws_ypixel;
     }
 
-    public static unsafe partial class Definitions
+    public static unsafe partial class LibC
     {
         public static int TCGETS => 0x5401;
         public static int TCSETS => 0x5402;

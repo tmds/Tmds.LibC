@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct siginfo_t

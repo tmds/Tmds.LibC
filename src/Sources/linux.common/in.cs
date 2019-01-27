@@ -4,7 +4,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct in_addr
@@ -116,7 +116,7 @@ namespace Tmds.LibC
         public uint ip6m_mtu;
     }
 
-    public static unsafe partial class Definitions
+    public static unsafe partial class LibC
     {
         public static int INET_ADDRSTRLEN => 16;
         public static int INET6_ADDRSTRLEN => 46;

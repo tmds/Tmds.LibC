@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Tmds.LibC;
+using Tmds.Linux;
 
 namespace GenerateDoc
 {
@@ -34,7 +34,7 @@ namespace GenerateDoc
         private async static Task<string> GetFunctionDocs()
         {
             var methodNames = new List<string>();
-            var methods = typeof(Definitions).GetMethods(BindingFlags.Static | BindingFlags.Public);
+            var methods = typeof(LibC).GetMethods(BindingFlags.Static | BindingFlags.Public);
             foreach (var method in methods)
             {
                 // Skip property getters
@@ -92,7 +92,7 @@ namespace GenerateDoc
         private static string GetStructDocs()
         {
             // Structs
-            Type[] types = typeof(Definitions).Assembly.GetTypes();
+            Type[] types = typeof(LibC).Assembly.GetTypes();
             // Filter out public structs
             List<string> structNames = types.Where(t => t.IsValueType && t.IsPublic).Select(t => t.Name).ToList();
             structNames.Sort();

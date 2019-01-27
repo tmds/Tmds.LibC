@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct cpu_set_t
@@ -13,7 +13,7 @@ namespace Tmds.LibC
         private fixed byte __data[128];
     }
 
-    public static unsafe partial class Definitions
+    public static unsafe partial class LibC
     {
         [DllImport(libc, SetLastError = true)]
         public static extern int sched_get_priority_max(int policy);

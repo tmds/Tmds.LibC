@@ -1,4 +1,4 @@
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     static class LibraryNames
     {

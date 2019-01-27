@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
-using static Tmds.LibC.LibraryNames;
+using static Tmds.Linux.LibraryNames;
 
-namespace Tmds.LibC
+namespace Tmds.Linux
 {
     public struct flock
     {
@@ -27,7 +27,7 @@ namespace Tmds.LibC
         public pid_t pid;
     }
 
-    public unsafe static partial class Definitions
+    public unsafe static partial class LibC
     {
         public static int O_ACCMODE => 3;
         public static int O_RDONLY => 0;
