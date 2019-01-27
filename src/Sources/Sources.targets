@@ -1,0 +1,55 @@
+<Project>
+
+  <PropertyGroup>
+    <SourcesDir>$(MSBuildProjectDirectory)/../Sources</SourcesDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Bitness Condition=" '$(Architecture)'=='x64' "  >64</Bitness>
+    <Bitness Condition=" '$(Architecture)'=='arm64' ">64</Bitness>
+    <Endianness>le</Endianness>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="$(SourcesDir)/linux.common/*.cs" />
+    <Compile Include="$(SourcesDir)/linux.specific/*.arch-$(Architecture).cs" />
+    <Compile Include="$(SourcesDir)/linux.specific/*.endian-$(Endianness).cs" />
+    <Compile Include="$(SourcesDir)/linux.specific/*.bits-$(Bitness).cs" />
+    <Compile Include="$(SourcesDir)/linux.specific/LibraryNames.$(CLibrary).cs" />
+  </ItemGroup>
+
+  <Choose>
+    <When Condition=" '$(Architecture)'=='x64' "> 
+      <ItemGroup>
+        <Compile Include="../Sources/linux.specific/signal.64.cs" />
+        <Compile Include="../Sources/linux.specific/epoll.packed.cs" />
+      </ItemGroup>
+    </When>
+    <When Condition=" '$(Architecture)'=='arm64' "> 
+      <ItemGroup>
+        <Compile Include="../Sources/linux.specific/signal.64.cs" />
+        <Compile Include="../Sources/linux.specific/epoll.aligned.cs" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+    </Otherwise>
+  </Choose>
+
+  <Choose>
+    <When Condition=" '$(CLibrary)'=='glibc' "> 
+      <ItemGroup>
+        <!-- Linux standard base -->
+        <Compile Include="../Sources/linux.specific/signal.lsb.cs" />
+        <Compile Include="../Sources/linux.specific/stat.lsb.cs" />
+        <Compile Include="../Sources/linux.specific/string.lsb.cs" />
+        <!-- FILE_OFFSET_BITS=64 -->
+        <Compile Include="../Sources/linux.specific/unistd.off$(Bitness).cs" />
+        <Compile Include="../Sources/linux.specific/fcntl.off$(Bitness).cs" />
+        <!-- glibc uses size_t as request argument type -->
+        <Compile Include="../Sources/linux.specific/ioctl.sizet.cs" />
+      </ItemGroup>
+    </When>  
+    <Otherwise>
+    </Otherwise>
+  </Choose>
+</Project>

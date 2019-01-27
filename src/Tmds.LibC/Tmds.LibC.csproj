@@ -1,41 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
     <BuildOutputTargetFolder>ref</BuildOutputTargetFolder>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <VersionPrefix>0.1.0</VersionPrefix>
-    <LangVersion>latest</LangVersion>
+
+    <!-- use glibc x64 for ref compilation -->
+    <CLibrary>glibc</CLibrary>
+    <Architecture>x64</Architecture>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="../Sources/linux.common/*.cs" />
-    <!-- architecture -->
-    <Compile Include="../Sources/linux.arch-x86_64/*.cs" />
-    <Compile Include="../Sources/linux.specific/*.arch-64.cs" />
-    <Compile Include="../Sources/linux.specific/Endian.little.cs" />
-    <!-- libc specific -->
-    <Compile Include="../Sources/linux.specific/LibraryNames.glibc.cs" />
-    <Compile Include="../Sources/linux.specific/string.lsb.cs" />
-    <Compile Include="../Sources/linux.specific/unistd.off64.cs" />
-    <Compile Include="../Sources/linux.specific/fcntl.off64.cs" />
-    <Compile Include="../Sources/linux.specific/ioctl.sizet.cs" />
-    <Compile Include="../Sources/linux.specific/signal.64.cs" />
-    <Compile Include="../Sources/linux.specific/signal.lsb.cs" />
-    <Compile Include="../Sources/linux.specific/stat.lsb.cs" />
-  </ItemGroup>
+  <Import Project="../Sources/Sources.targets" />
 
   <ItemGroup>
-    <None Include="..\Tmds.LibC.linux-glibc-x86_64\bin\$(Configuration)\netstandard2.0\Tmds.LibC.dll" Pack = "true">
+    <None Include="..\Tmds.LibC.linux-glibc-x64\bin\$(Configuration)\$(TargetFramework)\Tmds.LibC.dll" Pack = "true">
       <PackagePath>runtimes/linux-x64/lib/netstandard2.0</PackagePath>
     </None>
-    <None Include="..\Tmds.LibC.linux-glibc-arm64\bin\$(Configuration)\netstandard2.0\Tmds.LibC.dll" Pack = "true">
+    <None Include="..\Tmds.LibC.linux-glibc-arm64\bin\$(Configuration)\$(TargetFramework)\Tmds.LibC.dll" Pack = "true">
       <PackagePath>runtimes/linux-arm64/lib/netstandard2.0</PackagePath>
     </None>
   </ItemGroup>
 
   <Target Name="BuildPlatform" BeforeTargets="Restore">
-    <Exec Command="dotnet build -c $(Configuration) ../Tmds.LibC.linux-glibc-x86_64" />
+    <Exec Command="dotnet build -c $(Configuration) ../Tmds.LibC.linux-glibc-x64" />
     <Exec Command="dotnet build -c $(Configuration) ../Tmds.LibC.linux-glibc-arm64" />
   </Target>
+
 </Project>
