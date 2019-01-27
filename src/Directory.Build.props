@@ -1,0 +1,15 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>Tmds.LibC</AssemblyName>
+
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <Authors>Tom Deseyn</Authors>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/tmds/Tmds.LibC</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Tom Deseyn</Copyright>
+  </PropertyGroup>
+</Project>

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <CLibrary>glibc</CLibrary>
-    <Architecture>arm64</Architecture>
+    <Architecture>x64</Architecture>
   </PropertyGroup>
 
   <Import Project="../Sources/Sources.targets" />
