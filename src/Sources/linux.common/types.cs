@@ -12,7 +12,7 @@ namespace Tmds.Linux
         // .NET uses 'int' mostly to for lengths.
         public static implicit operator size_t(int arg) => new size_t((uint)arg);
         // disambiguate between uint and int overloads
-        public static implicit operator size_t(ushort arg) => new size_t(arg);
+        public static implicit operator size_t(ushort arg) => new size_t((uint)arg);
         public static explicit operator size_t(ulong arg) => new size_t(arg);
 
         public override string ToString() => Value.ToString();
@@ -59,6 +59,7 @@ namespace Tmds.Linux
     {
         public static implicit operator long(ssize_t arg) => arg.ToInt64();
         public static explicit operator int(ssize_t arg) => arg.ToInt32();
+        public static explicit operator size_t(ssize_t arg) => new size_t(arg);
 
         public static implicit operator ssize_t(int arg) => new ssize_t(arg);
         public static explicit operator ssize_t(long arg) => new ssize_t(arg);

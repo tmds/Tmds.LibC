@@ -8,6 +8,7 @@ namespace Tmds.Linux
         internal size_t(ulong arg) { __value = arg; }
         internal size_t(uint arg) { __value = arg; }
         unsafe internal size_t(void* arg) { __value = (ulong)arg; }
+        internal size_t(ssize_t arg) { __value = (ulong)arg.Value; }
 
         internal uint ToUInt32() => (uint)Value;
         internal ulong ToUInt64() => Value;
