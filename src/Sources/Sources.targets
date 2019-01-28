@@ -7,6 +7,7 @@
   <PropertyGroup>
     <Bitness Condition=" '$(Architecture)'=='x64' "  >64</Bitness>
     <Bitness Condition=" '$(Architecture)'=='arm64' ">64</Bitness>
+    <Bitness Condition=" '$(Architecture)'=='arm32' ">32</Bitness>
     <Endianness>le</Endianness>
   </PropertyGroup>
 
@@ -21,13 +22,19 @@
   <Choose>
     <When Condition=" '$(Architecture)'=='x64' "> 
       <ItemGroup>
-        <Compile Include="../Sources/linux.specific/signal.64.cs" />
+        <Compile Include="../Sources/linux.specific/signal.$(Bitness).cs" />
         <Compile Include="../Sources/linux.specific/epoll.packed.cs" />
       </ItemGroup>
     </When>
     <When Condition=" '$(Architecture)'=='arm64' "> 
       <ItemGroup>
-        <Compile Include="../Sources/linux.specific/signal.64.cs" />
+        <Compile Include="../Sources/linux.specific/signal.$(Bitness).cs" />
+        <Compile Include="../Sources/linux.specific/epoll.aligned.cs" />
+      </ItemGroup>
+    </When>
+    <When Condition=" '$(Architecture)'=='arm32' ">
+      <ItemGroup>
+        <Compile Include="../Sources/linux.specific/signal.$(Bitness).cs" />
         <Compile Include="../Sources/linux.specific/epoll.aligned.cs" />
       </ItemGroup>
     </When>
@@ -40,7 +47,7 @@
       <ItemGroup>
         <!-- Linux standard base -->
         <Compile Include="../Sources/linux.specific/signal.lsb.cs" />
-        <Compile Include="../Sources/linux.specific/stat.lsb.cs" />
+        <Compile Include="../Sources/linux.specific/stat.lsb.off$(Bitness).cs" />
         <Compile Include="../Sources/linux.specific/string.lsb.cs" />
         <!-- FILE_OFFSET_BITS=64 -->
         <Compile Include="../Sources/linux.specific/unistd.off$(Bitness).cs" />

@@ -82,7 +82,6 @@ namespace Tmds.Linux
 
         public static int TIOCMIWAIT => 0x545C;
         public static int TIOCGICOUNT => 0x545D;
-        public static int FIOQSIZE => 0x5460;
 
         public static int TIOCPKT_DATA => 0;
         public static int TIOCPKT_FLUSHREAD => 1;

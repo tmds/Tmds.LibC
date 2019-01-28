@@ -20,6 +20,7 @@ namespace Tmds.Linux
         internal long Value => __value;
 
         internal ssize_t(long arg) { __value = arg; }
+        internal ssize_t(int arg) { __value = arg; }
 
         internal int ToInt32() => (int)Value;
         internal long ToInt64() => Value;
