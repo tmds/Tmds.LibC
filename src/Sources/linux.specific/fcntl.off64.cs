@@ -6,13 +6,6 @@ namespace Tmds.Linux
     public unsafe static partial class LibC
     {
         [DllImport(libc, SetLastError = true)]
-        public static extern int fcntl(int fd, int cmd);
-        [DllImport(libc, SetLastError = true)]
-        public static extern int fcntl(int fd, int cmd, int arg);
-        [DllImport(libc, SetLastError = true)]
-        public static extern int fcntl(int fd, int cmd, void* arg);
-
-        [DllImport(libc, SetLastError = true)]
         public static extern int creat(byte* pathname, mode_t mode);
         [DllImport(libc, SetLastError = true)]
         public static extern int open(byte* pathname, int flags, mode_t mode = default(mode_t));

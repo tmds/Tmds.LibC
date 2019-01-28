@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <CLibrary>glibc</CLibrary>
+    <Architecture>arm32</Architecture>
+  </PropertyGroup>
+
+  <Import Project="../Sources/Sources.targets" />
+
+</Project>

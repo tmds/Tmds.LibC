@@ -17,11 +17,15 @@
     <None Include="..\Tmds.LibC.linux-glibc-arm64\bin\$(Configuration)\$(TargetFramework)\Tmds.LibC.dll" Pack = "true">
       <PackagePath>runtimes/linux-arm64/lib/netstandard2.0</PackagePath>
     </None>
+    <None Include="..\Tmds.LibC.linux-glibc-arm32\bin\$(Configuration)\$(TargetFramework)\Tmds.LibC.dll" Pack = "true">
+      <PackagePath>runtimes/linux-arm32/lib/netstandard2.0</PackagePath>
+    </None>
   </ItemGroup>
 
   <Target Name="BuildPlatform" BeforeTargets="Restore">
     <Exec Command="dotnet build -c $(Configuration) ../Tmds.LibC.linux-glibc-x64" />
     <Exec Command="dotnet build -c $(Configuration) ../Tmds.LibC.linux-glibc-arm64" />
+    <Exec Command="dotnet build -c $(Configuration) ../Tmds.LibC.linux-glibc-arm32" />
   </Target>
 
 </Project>

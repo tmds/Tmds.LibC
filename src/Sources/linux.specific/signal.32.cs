@@ -5,7 +5,7 @@ namespace Tmds.Linux
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct siginfo_t
     {
-        [FieldOffset(0)] private fixed byte __size[136];
+        [FieldOffset(0)] private fixed byte __size[128];
         // TODO errno and code swap on mips
         [FieldOffset(0)] public int si_signo;
         [FieldOffset(4)] public int si_code;
