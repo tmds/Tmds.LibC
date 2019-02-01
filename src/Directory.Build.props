@@ -5,6 +5,8 @@
     <LangVersion>latest</LangVersion>
     <AssemblyName>Tmds.LibC</AssemblyName>
 
+    <Description>Raw bindings to Linux platform APIs for .NET Core.</Description>
+    <PackageTags>libc;linux</PackageTags>
     <VersionPrefix>0.1.0</VersionPrefix>
     <Authors>Tom Deseyn</Authors>
     <RepositoryType>git</RepositoryType>
