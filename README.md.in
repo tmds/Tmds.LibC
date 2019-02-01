@@ -13,6 +13,7 @@ Because the native APIs are different per platform (e.g. linux-arm64 vs linux-x6
 
 * linux x64 glibc
 * linux arm64 glibc
+* linux arm32 glibc
 
 ## Using this package
 
