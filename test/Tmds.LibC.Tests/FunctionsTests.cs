@@ -465,6 +465,7 @@ namespace Tmds.Linux.Tests
                         "dlerror",
                         "dlopen",
                         "dlsym",
+                        "dlvsym",
                         "dladdr",
                         "dlinfo" }
                     },
