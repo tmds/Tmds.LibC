@@ -66,6 +66,6 @@ namespace Tmds.Linux
         public static ushort ulong_t => size_t;
         public static ushort fsblkcnt_t => 8;
         public static ushort fsfilcnt_t => 8;
-        public static ushort statvfs => 8;
+        public static ushort statvfs => 96;
     }
 }

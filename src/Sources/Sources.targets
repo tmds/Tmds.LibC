@@ -52,6 +52,7 @@
         <!-- FILE_OFFSET_BITS=64 -->
         <Compile Include="../Sources/linux.specific/unistd.off$(Bitness).cs" />
         <Compile Include="../Sources/linux.specific/fcntl.off$(Bitness).cs" />
+        <Compile Include="../Sources/linux.specific/statvfs.off$(Bitness).cs" />
         <!-- glibc uses size_t as request argument type -->
         <Compile Include="../Sources/linux.specific/ioctl.sizet.cs" />
       </ItemGroup>

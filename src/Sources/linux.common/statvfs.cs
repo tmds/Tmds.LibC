@@ -18,10 +18,5 @@ namespace Tmds.Linux
         public static int ST_NOATIME     => 1024;
         public static int ST_NODIRATIME  => 2048;
         public static int ST_RELATIME    => 4096;
-
-        [DllImport(libc, SetLastError = true)]
-        public static extern int statvfs(byte* path, statvfs* buf);
-        [DllImport(libc, SetLastError = true)]
-        public static extern int fstatvfs(int fd, statvfs* buf);
     }
 }
