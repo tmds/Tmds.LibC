@@ -28,9 +28,11 @@ namespace Tmds.Linux
         [DllImport(libdl)]
         public static extern byte* dlerror();
         [DllImport(libdl)]
-        public static extern byte* dlopen(byte* filename, int flags);
+        public static extern void* dlopen(byte* filename, int flags);
         [DllImport(libdl)]
-        public static extern byte* dlsym(void* handle, byte* symbol);
+        public static extern void* dlsym(void* handle, byte* symbol);
+        [DllImport(libdl)]
+        public static extern void* dlvsym(void* handle, byte* symbol, byte* version);
         [DllImport(libdl)]
         public static extern int dladdr(void* addr, Dl_info* info);
         [DllImport(libdl)]
