@@ -63,5 +63,9 @@ namespace Tmds.Linux
         public static ushort nlink_t => 4;
         public static ushort blksize_t => 4;
         public static ushort blkcnt_t => 8;
+        public static ushort ulong_t => size_t;
+        public static ushort fsblkcnt_t => 8;
+        public static ushort fsfilcnt_t => 8;
+        public static ushort statvfs => 8;
     }
 }

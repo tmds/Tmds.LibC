@@ -32,7 +32,10 @@ namespace Tmds.Linux.Tests
             "ino_t",
             "nlink_t",
             "blksize_t",
-            "blkcnt_t"
+            "blkcnt_t",
+            "fsfilcnt_t",
+            "ulong_t",
+            "fsblkcnt_t"
         };
 
         private static bool IsUnion(string name)
@@ -58,6 +61,7 @@ namespace Tmds.Linux.Tests
                 case "Int64": return "int64_t";
                 case "UInt64": return "uint64_t";
                 case "long_t": return "long";
+                case "ulong_t": return "unsigned long";
                 case "syscall_arg": return "long";
             }
 
