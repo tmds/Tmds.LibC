@@ -489,6 +489,12 @@ namespace Tmds.Linux.Tests
                         "utimensat",
                         }
                     },
+                    { "sys/statvfs.h",
+                      new[] {
+                        "statvfs",
+                        "fstatvfs",
+                        }
+                    },
                 };
     }
 }

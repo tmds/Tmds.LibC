@@ -47,6 +47,7 @@ namespace Tmds.Linux.Tests
                 // define syscall_arg and long_t
                 program.AppendLine("typedef long syscall_arg;");
                 program.AppendLine("typedef long long_t;");
+                program.AppendLine("typedef unsigned long ulong_t;");
 
                 foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic))
                 {
@@ -205,7 +206,11 @@ namespace Tmds.Linux.Tests
                     { "sys/stat.h", typeof(nlink_t)},
                     { "sys/stat.h", typeof(blksize_t)},
                     { "sys/stat.h", typeof(blkcnt_t)},
-                    { "sys/stat.h", typeof(stat)}
+                    { "sys/stat.h", typeof(stat)},
+                    { "sys/statvfs.h", typeof(statvfs)},
+                    { "sys/types.h", typeof(fsblkcnt_t) },
+                    { "sys/types.h", typeof(fsfilcnt_t) },
+                    { "sys/types.h", typeof(ulong_t) },
                 };
     }
 }

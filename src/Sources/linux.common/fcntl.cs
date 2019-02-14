@@ -124,12 +124,5 @@ namespace Tmds.Linux
         public static extern ssize_t splice(int fd, off_t* off_in, int fd_out, off_t* off_out, size_t len, uint flags);
         [DllImport(libc, SetLastError = true)]
         public static extern ssize_t tee(int src, int desg, size_t len, uint flags);
-
-        [DllImport(libc, SetLastError = true)]
-        public static extern int fcntl(int fd, int cmd);
-        [DllImport(libc, SetLastError = true)]
-        public static extern int fcntl(int fd, int cmd, int arg);
-        [DllImport(libc, SetLastError = true)]
-        public static extern int fcntl(int fd, int cmd, void* arg);
     }
 }

@@ -613,7 +613,7 @@ namespace Tmds.Linux
     public struct dev_t
     {
         private ulong __value;
-        public ulong Value => __value;
+        internal ulong Value => __value;
 
         private dev_t(ulong value) => __value = value;
 
@@ -645,7 +645,7 @@ namespace Tmds.Linux
     public struct ino_t
     {
         private ulong __value;
-        public ulong Value => __value;
+        internal ulong Value => __value;
 
         private ino_t(ulong value) => __value = value;
 
@@ -677,7 +677,7 @@ namespace Tmds.Linux
     public struct blkcnt_t
     {
         private long __value;
-        public long Value => __value;
+        internal long Value => __value;
 
         private blkcnt_t(long value) => __value = value;
 
@@ -814,5 +814,158 @@ namespace Tmds.Linux
         public static bool operator >(blksize_t v1, blksize_t v2) => v1.Value > v2.Value;
         public static bool operator <=(blksize_t v1, blksize_t v2) => v1.Value <= v2.Value;
         public static bool operator >=(blksize_t v1, blksize_t v2) => v1.Value >= v2.Value;
+    }
+
+    public struct ulong_t : IEquatable<ulong_t>
+    {
+        internal size_t __value;
+        internal size_t Value => __value;
+
+        private ulong_t(size_t value) => __value = value;
+
+        public static implicit operator ulong(ulong_t arg) => arg.Value;
+        public static explicit operator uint(ulong_t arg) => (uint)arg.Value;
+
+        public static explicit operator ulong_t(ulong arg) => new ulong_t(new size_t(arg));
+        public static implicit operator ulong_t(uint arg) => new ulong_t(arg);
+
+        public override string ToString() => Value.ToString();
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is ulong_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(ulong_t v) => this == v;
+
+        public static ulong_t operator +(ulong_t v) => new ulong_t(v.Value);
+        public static ulong_t operator ~(ulong_t v) => new ulong_t(~v.Value);
+        public static ulong_t operator ++(ulong_t v) => new ulong_t(v.Value + 1);
+        public static ulong_t operator --(ulong_t v) => new ulong_t(v.Value - 1);
+        public static ulong_t operator +(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value + v2.Value);
+        public static ulong_t operator -(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value - v2.Value);
+        public static ulong_t operator *(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value * v1.Value);
+        public static ulong_t operator /(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value / v2.Value);
+        public static ulong_t operator %(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value % v2.Value);
+        public static ulong_t operator &(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value & v2.Value);
+        public static ulong_t operator |(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value | v2.Value);
+        public static ulong_t operator ^(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value ^ v2.Value);
+        public static ulong_t operator <<(ulong_t v, int i) => new ulong_t(v.Value << i);
+        public static ulong_t operator >>(ulong_t v, int i) => new ulong_t(v.Value >> i);
+        public static bool operator ==(ulong_t v1, ulong_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(ulong_t v1, ulong_t v2) => v1.Value != v2.Value;
+        public static bool operator <(ulong_t v1, ulong_t v2) => v1.Value < v2.Value;
+        public static bool operator >(ulong_t v1, ulong_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(ulong_t v1, ulong_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(ulong_t v1, ulong_t v2) => v1.Value >= v2.Value;
+    }
+
+    public struct fsblkcnt_t
+    {
+        private ulong __value;
+        internal ulong Value => __value;
+
+        private fsblkcnt_t(ulong value) => __value = value;
+
+        public static implicit operator ulong(fsblkcnt_t arg) => arg.Value;
+        public static implicit operator fsblkcnt_t(ulong arg) => new fsblkcnt_t(arg);
+
+        public override string ToString() => Value.ToString();
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is fsblkcnt_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(fsblkcnt_t v) => this == v;
+
+        public static fsblkcnt_t operator +(fsblkcnt_t v) => new fsblkcnt_t(v.Value);
+        public static fsblkcnt_t operator ~(fsblkcnt_t v) => new fsblkcnt_t(~v.Value);
+        public static fsblkcnt_t operator ++(fsblkcnt_t v) => new fsblkcnt_t(v.Value + 1);
+        public static fsblkcnt_t operator --(fsblkcnt_t v) => new fsblkcnt_t(v.Value - 1);
+        public static fsblkcnt_t operator +(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value + v2.Value);
+        public static fsblkcnt_t operator -(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value - v2.Value);
+        public static fsblkcnt_t operator *(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value * v1.Value);
+        public static fsblkcnt_t operator /(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value / v2.Value);
+        public static fsblkcnt_t operator %(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value % v2.Value);
+        public static fsblkcnt_t operator &(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value & v2.Value);
+        public static fsblkcnt_t operator |(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value | v2.Value);
+        public static fsblkcnt_t operator ^(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value ^ v2.Value);
+        public static fsblkcnt_t operator <<(fsblkcnt_t v, int i) => new fsblkcnt_t(v.Value << i);
+        public static fsblkcnt_t operator >>(fsblkcnt_t v, int i) => new fsblkcnt_t(v.Value >> i);
+        public static bool operator ==(fsblkcnt_t v1, fsblkcnt_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(fsblkcnt_t v1, fsblkcnt_t v2) => v1.Value != v2.Value;
+        public static bool operator <(fsblkcnt_t v1, fsblkcnt_t v2) => v1.Value < v2.Value;
+        public static bool operator >(fsblkcnt_t v1, fsblkcnt_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(fsblkcnt_t v1, fsblkcnt_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(fsblkcnt_t v1, fsblkcnt_t v2) => v1.Value >= v2.Value;
+    }
+
+    public struct fsfilcnt_t
+    {
+        private ulong __value;
+        internal ulong Value => __value;
+
+        private fsfilcnt_t(ulong value) => __value = value;
+
+        public static implicit operator ulong(fsfilcnt_t arg) => arg.Value;
+        public static implicit operator fsfilcnt_t(ulong arg) => new fsfilcnt_t(arg);
+
+        public override string ToString() => Value.ToString();
+
+        public override int GetHashCode() => Value.GetHashCode();
+
+        public override bool Equals(object obj)
+        {
+            if (obj != null && obj is fsfilcnt_t v)
+            {
+                return this == v;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Equals(fsfilcnt_t v) => this == v;
+
+        public static fsfilcnt_t operator +(fsfilcnt_t v) => new fsfilcnt_t(v.Value);
+        public static fsfilcnt_t operator ~(fsfilcnt_t v) => new fsfilcnt_t(~v.Value);
+        public static fsfilcnt_t operator ++(fsfilcnt_t v) => new fsfilcnt_t(v.Value + 1);
+        public static fsfilcnt_t operator --(fsfilcnt_t v) => new fsfilcnt_t(v.Value - 1);
+        public static fsfilcnt_t operator +(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value + v2.Value);
+        public static fsfilcnt_t operator -(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value - v2.Value);
+        public static fsfilcnt_t operator *(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value * v1.Value);
+        public static fsfilcnt_t operator /(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value / v2.Value);
+        public static fsfilcnt_t operator %(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value % v2.Value);
+        public static fsfilcnt_t operator &(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value & v2.Value);
+        public static fsfilcnt_t operator |(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value | v2.Value);
+        public static fsfilcnt_t operator ^(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value ^ v2.Value);
+        public static fsfilcnt_t operator <<(fsfilcnt_t v, int i) => new fsfilcnt_t(v.Value << i);
+        public static fsfilcnt_t operator >>(fsfilcnt_t v, int i) => new fsfilcnt_t(v.Value >> i);
+        public static bool operator ==(fsfilcnt_t v1, fsfilcnt_t v2) => v1.Value == v2.Value;
+        public static bool operator !=(fsfilcnt_t v1, fsfilcnt_t v2) => v1.Value != v2.Value;
+        public static bool operator <(fsfilcnt_t v1, fsfilcnt_t v2) => v1.Value < v2.Value;
+        public static bool operator >(fsfilcnt_t v1, fsfilcnt_t v2) => v1.Value > v2.Value;
+        public static bool operator <=(fsfilcnt_t v1, fsfilcnt_t v2) => v1.Value <= v2.Value;
+        public static bool operator >=(fsfilcnt_t v1, fsfilcnt_t v2) => v1.Value >= v2.Value;
     }
 }

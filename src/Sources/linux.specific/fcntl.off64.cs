@@ -17,5 +17,11 @@ namespace Tmds.Linux
         public static extern int posix_fallocate(int fd, off_t offset, off_t length);
         [DllImport(libc, SetLastError = true)]
         public static extern int fallocate(int fd, int mode, off_t offset, off_t length);
+        [DllImport(libc, SetLastError = true)]
+        public static extern int fcntl(int fd, int cmd);
+        [DllImport(libc, SetLastError = true)]
+        public static extern int fcntl(int fd, int cmd, int arg);
+        [DllImport(libc, SetLastError = true)]
+        public static extern int fcntl(int fd, int cmd, void* arg);
     }
 }
