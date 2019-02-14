@@ -613,7 +613,7 @@ namespace Tmds.Linux
     public struct dev_t
     {
         private ulong __value;
-        public ulong Value => __value;
+        internal ulong Value => __value;
 
         private dev_t(ulong value) => __value = value;
 
@@ -645,7 +645,7 @@ namespace Tmds.Linux
     public struct ino_t
     {
         private ulong __value;
-        public ulong Value => __value;
+        internal ulong Value => __value;
 
         private ino_t(ulong value) => __value = value;
 
@@ -677,7 +677,7 @@ namespace Tmds.Linux
     public struct blkcnt_t
     {
         private long __value;
-        public long Value => __value;
+        internal long Value => __value;
 
         private blkcnt_t(long value) => __value = value;
 
@@ -872,7 +872,7 @@ namespace Tmds.Linux
     public struct fsblkcnt_t
     {
         private ulong __value;
-        public ulong Value => __value;
+        internal ulong Value => __value;
 
         private fsblkcnt_t(ulong value) => __value = value;
 
@@ -922,7 +922,7 @@ namespace Tmds.Linux
     public struct fsfilcnt_t
     {
         private ulong __value;
-        public ulong Value => __value;
+        internal ulong Value => __value;
 
         private fsfilcnt_t(ulong value) => __value = value;
 
