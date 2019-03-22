@@ -495,6 +495,20 @@ namespace Tmds.Linux.Tests
                         "fstatvfs",
                         }
                     },
+                    { new CIncludes("termios.h", true),
+                      new[] {
+                        "cfgetospeed",
+                        "cfgetispeed",
+                        "cfsetospeed",
+                        "cfsetispeed",
+                        "tcgetattr",
+                        "tcsetattr",
+                        "tcsendbreak",
+                        "tcdrain",
+                        "tcflush",
+                        "tcflow",
+                        "tcgetsid" }
+                    },
                 };
     }
 }

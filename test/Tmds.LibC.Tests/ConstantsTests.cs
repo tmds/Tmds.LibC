@@ -27,7 +27,8 @@ namespace Tmds.Linux.Tests
                     "sys/ioctl.h",
                     "sched.h",
                     "signal.h",
-                    "sys/statvfs.h"
+                    "sys/statvfs.h",
+                    "termios.h"
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)
