@@ -1,3 +1,5 @@
+[![Travis](https://api.travis-ci.org/tmds/Tmds.LibC.svg?branch=master)](https://travis-ci.org/tmds/Tmds.LibC)
+[![NuGet](https://img.shields.io/nuget/v/Tmds.LibC.svg)](https://www.nuget.org/packages/Tmds.LibC)
 # Tmds.LibC
 
 Raw bindings to Linux platform APIs for .NET Core.
@@ -17,34 +19,12 @@ Because the native APIs are different per platform (e.g. linux-arm64 vs linux-x6
 
 ## Using this package
 
-NuGet.Config
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <add key="tmds" value="https://www.myget.org/F/tmds/api/v3/index.json" />
-  </packageSources>
-</configuration>
+Add the package using the `dotnet` cli:
+```
+$ dotnet add package Tmds.LibC
 ```
 
-console.csproj
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Tmds.LibC" Version="0.1.0-*" />
-  </ItemGroup>
-
-</Project>
-```
+Alternatively, you can use a daily build from the https://www.myget.org/F/tmds/api/v3/index.json NuGet feed.
 
 Program.cs
 
