@@ -389,7 +389,7 @@ class PlatformException : Exception
         this(LibC.errno)
     {}
 
-    public unsafe static string GetErrorMessage(int errno)
+    private unsafe static string GetErrorMessage(int errno)
     {
         int bufferLength = 1024;
         byte* buffer = stackalloc byte[bufferLength];
@@ -398,6 +398,8 @@ class PlatformException : Exception
 
         return rv == 0 ? Marshal.PtrToStringAnsi((IntPtr)buffer) : $"errno {errno}";
     }
+
+    public static void Throw() => throw new PlatformException();
 }
 ```
 
@@ -416,7 +418,7 @@ static class SocketExtensions
             int rv = setsockopt(handle.DangerousGetHandle().ToInt32(), level, optname, &optval, sizeof(int));
             if (rv != 0)
             {
-                throw new PlatformException();
+                PlatformException.Throw();
             }
         }
         finally
@@ -451,7 +453,7 @@ static class ProcessExtensions
         if (rv == -1 &&
             errno != ESRCH /* process does not exist, assume it exited */)
         {
-            throw new PlatformException();
+            PlatformException.Throw();
         }
     }
 }
@@ -470,7 +472,7 @@ static class FileUtils
             int rv = mkdir(pathname, S_IRWXU);
             if (rv == -1)
             {
-                throw new PlatformException();
+                PlatformException.Throw();
             }
             else
             {
