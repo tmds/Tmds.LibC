@@ -447,18 +447,21 @@ static class FileUtils
     public unsafe static string CreatePrivateTempDirectory()
     {
         string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-        fixed (byte* pathname = Encoding.UTF8.GetBytes(path))
+
+        int byteLength = Encoding.UTF8.GetByteCount(path) + 1;
+        Span<byte> bytes = byteLength <= 128 ? stackalloc byte[byteLength] : new byte[byteLength];
+        Encoding.UTF8.GetBytes(path, bytes);
+
+        fixed (byte* pathname = bytes)
         {
             int rv = mkdir(pathname, S_IRWXU);
             if (rv == -1)
             {
                 PlatformException.Throw();
             }
-            else
-            {
-                return path;
-            }
         }
+
+        return path;
     }
 }
 ```
