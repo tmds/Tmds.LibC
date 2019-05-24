@@ -509,6 +509,12 @@ namespace Tmds.Linux.Tests
                         "tcflow",
                         "tcgetsid" }
                     },
+                    { new CIncludes("sys/mount.h", true),
+                        new[] {
+                            "mount",
+                            "umount",
+                            "umount2" }
+                    },
                 };
     }
 }

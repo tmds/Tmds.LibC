@@ -28,7 +28,8 @@ namespace Tmds.Linux.Tests
                     "sched.h",
                     "signal.h",
                     "sys/statvfs.h",
-                    "termios.h"
+                    "termios.h",
+                    "sys/mount.h"
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)
@@ -44,7 +45,8 @@ namespace Tmds.Linux.Tests
                     string name = property.Name;
 
                     // these aren't constants, the are tested in FunctionsTests
-                    if (name == "errno" ||
+                    if (name == "MS_NOUSER" || // glibc defines it as 1 << 31, while it should be 1U << 31.
+                        name == "errno" ||
                         name == "SIGRTMAX" ||
                         name == "SIGRTMIN")
                     {
