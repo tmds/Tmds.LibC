@@ -504,6 +504,8 @@ namespace Tmds.Linux
 
         public static implicit operator mode_t(ushort value) => new mode_t(value);
 
+        public static explicit operator ushort(mode_t value) => (ushort)(value);
+
         public override string ToString() => Value.ToString();
 
         public override int GetHashCode() => Value.GetHashCode();
