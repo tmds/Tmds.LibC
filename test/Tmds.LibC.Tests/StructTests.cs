@@ -111,6 +111,11 @@ namespace Tmds.Linux.Tests
             "iocb",
             "aio_ring",
             "aio_context_t",
+            "io_uring_sqe",
+            "io_uring_cqe",
+            "io_sqring_offsets",
+            "io_cqring_offsets",
+            "io_uring_params"
         };
 
         [Fact]
