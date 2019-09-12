@@ -518,6 +518,11 @@ namespace Tmds.Linux.Tests
                             "umount",
                             "umount2" }
                     },
+                    { new CIncludes(new[] { "poll.h", "signal.h" /* sigset_t */ }, true),
+                        new[] {
+                            "poll",
+                            "ppoll" }
+                    },
                 };
     }
 }

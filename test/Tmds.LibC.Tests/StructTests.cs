@@ -217,6 +217,7 @@ namespace Tmds.Linux.Tests
                     { "sys/types.h", typeof(fsfilcnt_t) },
                     { "sys/types.h", typeof(ulong_t) },
                     { "termios.h", typeof(termios) },
+                    { "poll.h", typeof(pollfd) },
                 };
     }
 }
