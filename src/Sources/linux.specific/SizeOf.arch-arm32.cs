@@ -68,5 +68,6 @@ namespace Tmds.Linux
         public static ushort fsfilcnt_t => 8;
         public static ushort statvfs => 96;
         public static ushort termios => 60;
+        public static ushort pollfd => 8;
     }
 }
