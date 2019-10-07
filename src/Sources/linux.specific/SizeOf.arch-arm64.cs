@@ -69,5 +69,7 @@ namespace Tmds.Linux
         public static ushort statvfs => 112;
         public static ushort termios => 60;
         public static ushort pollfd => 8;
+        public static ushort sockaddr_ll => 20;
+        public static ushort packet_mreq => 16;
     }
 }

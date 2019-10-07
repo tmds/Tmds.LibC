@@ -218,6 +218,8 @@ namespace Tmds.Linux.Tests
                     { "sys/types.h", typeof(ulong_t) },
                     { "termios.h", typeof(termios) },
                     { "poll.h", typeof(pollfd) },
+                    { "linux/if_packet.h", typeof(sockaddr_ll) },
+                    { "linux/if_packet.h", typeof(packet_mreq) },
                 };
     }
 }
