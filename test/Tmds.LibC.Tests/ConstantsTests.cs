@@ -29,7 +29,9 @@ namespace Tmds.Linux.Tests
                     "signal.h",
                     "sys/statvfs.h",
                     "termios.h",
-                    "sys/mount.h"
+                    "sys/mount.h",
+                    "poll.h",
+                    "linux/if_packet.h"
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)

@@ -79,7 +79,7 @@ namespace Tmds.Linux.Tests
         {
             string rid = GetRid();
             Console.WriteLine($"Test Environment: {rid}");
-            if (rid == "fedora-29")
+            if (rid == "fedora-30")
             {
                 Current = new TestEnvironment(
                     unsupportedStructs: new string[]
@@ -117,7 +117,37 @@ namespace Tmds.Linux.Tests
                         "TRAP_BRANCH",
                         "TRAP_HWBKPT",
                         "SS_AUTODISARM",
-                        "SS_FLAG_BITS"
+                        "SS_FLAG_BITS",
+                        "IOSQE_FIXED_FILE",
+                        "IOSQE_IO_DRAIN",
+                        "IOSQE_IO_LINK",
+                        "IORING_SETUP_IOPOLL",
+                        "IORING_SETUP_SQPOLL",
+                        "IORING_SETUP_SQ_AFF",
+                        "IORING_OP_NOP",
+                        "IORING_OP_READV",
+                        "IORING_OP_WRITEV",
+                        "IORING_OP_FSYNC",
+                        "IORING_OP_READ_FIXED",
+                        "IORING_OP_WRITE_FIXED",
+                        "IORING_OP_POLL_ADD",
+                        "IORING_OP_POLL_REMOVE",
+                        "IORING_OP_SYNC_FILE_RANGE",
+                        "IORING_OP_SENDMSG",
+                        "IORING_OP_RECVMSG",
+                        "IORING_FSYNC_DATASYNC",
+                        "IORING_OFF_SQ_RING",
+                        "IORING_OFF_CQ_RING",
+                        "IORING_OFF_SQES",
+                        "IORING_SQ_NEED_WAKEUP",
+                        "IORING_ENTER_GETEVENTS",
+                        "IORING_ENTER_SQ_WAKEUP",
+                        "IORING_REGISTER_BUFFERS",
+                        "IORING_UNREGISTER_BUFFERS",
+                        "IORING_REGISTER_FILES",
+                        "IORING_UNREGISTER_FILES",
+                        "IORING_REGISTER_EVENTFD",
+                        "IORING_UNREGISTER_EVENTFD",
                     },
                     unsupportedHeaders: new string[]
                     { },
