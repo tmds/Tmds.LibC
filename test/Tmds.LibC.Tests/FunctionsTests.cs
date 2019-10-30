@@ -523,6 +523,11 @@ namespace Tmds.Linux.Tests
                             "poll",
                             "ppoll" }
                     },
+                    { new CIncludes("sys/mman.h", true),
+                        new[] {
+                            "mmap",
+                            "munmap" }
+                    }
                 };
     }
 }
