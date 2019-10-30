@@ -29,6 +29,8 @@ namespace Tmds.Linux
         public uint sync_range_flags;
         [FieldOffset(28)]
         public uint msg_flags;
+        [FieldOffset(28)]
+        public uint timeout_flags;
         [FieldOffset(32)]
         public ulong user_data;
         [FieldOffset(40)]
@@ -75,7 +77,8 @@ namespace Tmds.Linux
         public uint flags;
         public uint sq_thread_cpu;
         public uint sq_thread_idle;
-        public fixed uint resv[5];
+        public uint features;
+        public fixed uint resv[4];
         public io_sqring_offsets sq_off;
         public io_cqring_offsets cq_off;
     };
@@ -101,6 +104,7 @@ namespace Tmds.Linux
         public static byte IORING_OP_SYNC_FILE_RANGE => 8;
         public static byte IORING_OP_SENDMSG => 9;
         public static byte IORING_OP_RECVMSG => 10;
+        public static byte IORING_OP_TIMEOUT => 11;
 
         public static uint IORING_FSYNC_DATASYNC => 1;
 
@@ -112,6 +116,8 @@ namespace Tmds.Linux
 
         public static uint IORING_ENTER_GETEVENTS => 0;
         public static uint IORING_ENTER_SQ_WAKEUP => 1;
+
+        public static uint IORING_FEAT_SINGLE_MMAP => 1;
 
         public static uint IORING_REGISTER_BUFFERS => 0;
         public static uint IORING_UNREGISTER_BUFFERS => 1;
