@@ -170,7 +170,8 @@ namespace Tmds.Linux.Tests
             "S_ISSOCK",
             "io_uring_register",
             "io_uring_setup",
-            "io_uring_enter"
+            "io_uring_enter",
+            "mlock2"
         };
 
         [Fact]
