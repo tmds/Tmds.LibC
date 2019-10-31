@@ -526,7 +526,14 @@ namespace Tmds.Linux.Tests
                     { new CIncludes("sys/mman.h", true),
                         new[] {
                             "mmap",
-                            "munmap" }
+                            "munmap",
+                            "mprotect",
+                            "msync",
+                            "mlock",
+                            "mlock2",
+                            "munlock",
+                            "mlockall",
+                            "munlockall" }
                     }
                 };
     }

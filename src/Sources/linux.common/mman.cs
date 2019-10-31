@@ -5,6 +5,8 @@ namespace Tmds.Linux
 {
     public static unsafe partial class LibC
     {
+        public static void* MAP_FAILED => ((void*)-1);
+
         public static int PROT_READ => 0x1;
         public static int PROT_WRITE => 0x2;
         public static int PROT_EXEC => 0x4;
@@ -64,5 +66,26 @@ namespace Tmds.Linux
 
         [DllImport(libc, SetLastError = true)]
         public static extern int munmap(void* addr, size_t length);
+
+        [DllImport(libc, SetLastError = true)]
+        public static extern int mprotect(void* addr, size_t len, int prot);
+
+        [DllImport(libc, SetLastError = true)]
+        public static extern int msync(void* addr, size_t len, int flags);
+
+        [DllImport(libc, SetLastError = true)]
+        public static extern int mlock(void* addr, size_t len);
+
+        [DllImport(libc, SetLastError = true)]
+        public static extern int mlock2(void* addr, size_t len, int flags);
+
+        [DllImport(libc, SetLastError = true)]
+        public static extern int munlock(void* addr, size_t len);
+
+        [DllImport(libc, SetLastError = true)]
+        public static extern int mlockall(int flags);
+
+        [DllImport(libc, SetLastError = true)]
+        public static extern int munlockall();
     }
 }
