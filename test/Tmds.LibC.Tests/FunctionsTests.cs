@@ -531,7 +531,6 @@ namespace Tmds.Linux.Tests
                             "mprotect",
                             "msync",
                             "mlock",
-                            "mlock2",
                             "munlock",
                             "mlockall",
                             "munlockall" }
