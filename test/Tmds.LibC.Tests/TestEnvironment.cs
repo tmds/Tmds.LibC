@@ -163,7 +163,10 @@ namespace Tmds.Linux.Tests
                     },
                     unsupportedConstants: null,
                     unsupportedHeaders: null,
-                    unsupportedFunctions: null);
+                    unsupportedFunctions: new string[]
+                    {
+                        "mlock2" // is available since Linux 4.4; glibc support was added in 2.27
+                    });
             }
             else
             {
