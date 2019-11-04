@@ -39,7 +39,7 @@ namespace Tmds.Linux
         public static size_t operator --(size_t v) => new size_t(v.Value - 1);
         public static size_t operator +(size_t v1, size_t v2) => new size_t(v1.Value + v2.Value);
         public static size_t operator -(size_t v1, size_t v2) => new size_t(v1.Value - v2.Value);
-        public static size_t operator *(size_t v1, size_t v2) => new size_t(v1.Value * v1.Value);
+        public static size_t operator *(size_t v1, size_t v2) => new size_t(v1.Value * v2.Value);
         public static size_t operator /(size_t v1, size_t v2) => new size_t(v1.Value / v2.Value);
         public static size_t operator %(size_t v1, size_t v2) => new size_t(v1.Value % v2.Value);
         public static size_t operator &(size_t v1, size_t v2) => new size_t(v1.Value & v2.Value);
@@ -89,7 +89,7 @@ namespace Tmds.Linux
         public static ssize_t operator --(ssize_t v) => new ssize_t(v.Value - 1);
         public static ssize_t operator +(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value + v2.Value);
         public static ssize_t operator -(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value - v2.Value);
-        public static ssize_t operator *(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value * v1.Value);
+        public static ssize_t operator *(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value * v2.Value);
         public static ssize_t operator /(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value / v2.Value);
         public static ssize_t operator %(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value % v2.Value);
         public static ssize_t operator &(ssize_t v1, ssize_t v2) => new ssize_t(v1.Value & v2.Value);
@@ -296,7 +296,7 @@ namespace Tmds.Linux
         public static socklen_t operator --(socklen_t v) => new socklen_t(v.Value - 1);
         public static socklen_t operator +(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value + v2.Value);
         public static socklen_t operator -(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value - v2.Value);
-        public static socklen_t operator *(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value * v1.Value);
+        public static socklen_t operator *(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value * v2.Value);
         public static socklen_t operator /(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value / v2.Value);
         public static socklen_t operator %(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value % v2.Value);
         public static socklen_t operator &(socklen_t v1, socklen_t v2) => new socklen_t(v1.Value & v2.Value);
@@ -348,7 +348,7 @@ namespace Tmds.Linux
         public static off_t operator --(off_t v) => new off_t(v.Value - 1);
         public static off_t operator +(off_t v1, off_t v2) => new off_t(v1.Value + v2.Value);
         public static off_t operator -(off_t v1, off_t v2) => new off_t(v1.Value - v2.Value);
-        public static off_t operator *(off_t v1, off_t v2) => new off_t(v1.Value * v1.Value);
+        public static off_t operator *(off_t v1, off_t v2) => new off_t(v1.Value * v2.Value);
         public static off_t operator /(off_t v1, off_t v2) => new off_t(v1.Value / v2.Value);
         public static off_t operator %(off_t v1, off_t v2) => new off_t(v1.Value % v2.Value);
         public static off_t operator &(off_t v1, off_t v2) => new off_t(v1.Value & v2.Value);
@@ -400,7 +400,7 @@ namespace Tmds.Linux
         public static time_t operator --(time_t v) => new time_t(v.Value - 1);
         public static time_t operator +(time_t v1, time_t v2) => new time_t(v1.Value + v2.Value);
         public static time_t operator -(time_t v1, time_t v2) => new time_t(v1.Value - v2.Value);
-        public static time_t operator *(time_t v1, time_t v2) => new time_t(v1.Value * v1.Value);
+        public static time_t operator *(time_t v1, time_t v2) => new time_t(v1.Value * v2.Value);
         public static time_t operator /(time_t v1, time_t v2) => new time_t(v1.Value / v2.Value);
         public static time_t operator %(time_t v1, time_t v2) => new time_t(v1.Value % v2.Value);
         public static time_t operator &(time_t v1, time_t v2) => new time_t(v1.Value & v2.Value);
@@ -479,7 +479,7 @@ namespace Tmds.Linux
         public static long_t operator --(long_t v) => new long_t(v.Value - 1);
         public static long_t operator +(long_t v1, long_t v2) => new long_t(v1.Value + v2.Value);
         public static long_t operator -(long_t v1, long_t v2) => new long_t(v1.Value - v2.Value);
-        public static long_t operator *(long_t v1, long_t v2) => new long_t(v1.Value * v1.Value);
+        public static long_t operator *(long_t v1, long_t v2) => new long_t(v1.Value * v2.Value);
         public static long_t operator /(long_t v1, long_t v2) => new long_t(v1.Value / v2.Value);
         public static long_t operator %(long_t v1, long_t v2) => new long_t(v1.Value % v2.Value);
         public static long_t operator &(long_t v1, long_t v2) => new long_t(v1.Value & v2.Value);
@@ -567,7 +567,7 @@ namespace Tmds.Linux
         public static clock_t operator --(clock_t v) => new clock_t(v.Value - 1);
         public static clock_t operator +(clock_t v1, clock_t v2) => new clock_t(v1.Value + v2.Value);
         public static clock_t operator -(clock_t v1, clock_t v2) => new clock_t(v1.Value - v2.Value);
-        public static clock_t operator *(clock_t v1, clock_t v2) => new clock_t(v1.Value * v1.Value);
+        public static clock_t operator *(clock_t v1, clock_t v2) => new clock_t(v1.Value * v2.Value);
         public static clock_t operator /(clock_t v1, clock_t v2) => new clock_t(v1.Value / v2.Value);
         public static clock_t operator %(clock_t v1, clock_t v2) => new clock_t(v1.Value % v2.Value);
         public static clock_t operator &(clock_t v1, clock_t v2) => new clock_t(v1.Value & v2.Value);
@@ -711,7 +711,7 @@ namespace Tmds.Linux
         public static blkcnt_t operator --(blkcnt_t v) => new blkcnt_t(v.Value - 1);
         public static blkcnt_t operator +(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value + v2.Value);
         public static blkcnt_t operator -(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value - v2.Value);
-        public static blkcnt_t operator *(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value * v1.Value);
+        public static blkcnt_t operator *(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value * v2.Value);
         public static blkcnt_t operator /(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value / v2.Value);
         public static blkcnt_t operator %(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value % v2.Value);
         public static blkcnt_t operator &(blkcnt_t v1, blkcnt_t v2) => new blkcnt_t(v1.Value & v2.Value);
@@ -756,7 +756,7 @@ namespace Tmds.Linux
         public static nlink_t operator --(nlink_t v) => new nlink_t(v.Value - 1);
         public static nlink_t operator +(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value + v2.Value);
         public static nlink_t operator -(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value - v2.Value);
-        public static nlink_t operator *(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value * v1.Value);
+        public static nlink_t operator *(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value * v2.Value);
         public static nlink_t operator /(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value / v2.Value);
         public static nlink_t operator %(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value % v2.Value);
         public static nlink_t operator &(nlink_t v1, nlink_t v2) => new nlink_t(v1.Value & v2.Value);
@@ -802,7 +802,7 @@ namespace Tmds.Linux
         public static blksize_t operator --(blksize_t v) => new blksize_t(v.Value - 1);
         public static blksize_t operator +(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value + v2.Value);
         public static blksize_t operator -(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value - v2.Value);
-        public static blksize_t operator *(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value * v1.Value);
+        public static blksize_t operator *(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value * v2.Value);
         public static blksize_t operator /(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value / v2.Value);
         public static blksize_t operator %(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value % v2.Value);
         public static blksize_t operator &(blksize_t v1, blksize_t v2) => new blksize_t(v1.Value & v2.Value);
@@ -855,7 +855,7 @@ namespace Tmds.Linux
         public static ulong_t operator --(ulong_t v) => new ulong_t(v.Value - 1);
         public static ulong_t operator +(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value + v2.Value);
         public static ulong_t operator -(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value - v2.Value);
-        public static ulong_t operator *(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value * v1.Value);
+        public static ulong_t operator *(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value * v2.Value);
         public static ulong_t operator /(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value / v2.Value);
         public static ulong_t operator %(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value % v2.Value);
         public static ulong_t operator &(ulong_t v1, ulong_t v2) => new ulong_t(v1.Value & v2.Value);
@@ -905,7 +905,7 @@ namespace Tmds.Linux
         public static fsblkcnt_t operator --(fsblkcnt_t v) => new fsblkcnt_t(v.Value - 1);
         public static fsblkcnt_t operator +(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value + v2.Value);
         public static fsblkcnt_t operator -(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value - v2.Value);
-        public static fsblkcnt_t operator *(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value * v1.Value);
+        public static fsblkcnt_t operator *(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value * v2.Value);
         public static fsblkcnt_t operator /(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value / v2.Value);
         public static fsblkcnt_t operator %(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value % v2.Value);
         public static fsblkcnt_t operator &(fsblkcnt_t v1, fsblkcnt_t v2) => new fsblkcnt_t(v1.Value & v2.Value);
@@ -955,7 +955,7 @@ namespace Tmds.Linux
         public static fsfilcnt_t operator --(fsfilcnt_t v) => new fsfilcnt_t(v.Value - 1);
         public static fsfilcnt_t operator +(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value + v2.Value);
         public static fsfilcnt_t operator -(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value - v2.Value);
-        public static fsfilcnt_t operator *(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value * v1.Value);
+        public static fsfilcnt_t operator *(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value * v2.Value);
         public static fsfilcnt_t operator /(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value / v2.Value);
         public static fsfilcnt_t operator %(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value % v2.Value);
         public static fsfilcnt_t operator &(fsfilcnt_t v1, fsfilcnt_t v2) => new fsfilcnt_t(v1.Value & v2.Value);
