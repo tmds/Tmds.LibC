@@ -154,13 +154,10 @@ namespace Tmds.Linux.Tests
                     unsupportedFunctions: new string[]
                     { });
             }
-            else if (rid == "ubuntu-14.04") // Travis
+            else if (rid == "ubuntu-16.04") // Travis
             {
                 Current = new TestEnvironment(
-                    unsupportedStructs: new string[]
-                    {
-                        "scm_timestamping"
-                    },
+                    unsupportedStructs: null,
                     unsupportedConstants: null,
                     unsupportedHeaders: null,
                     unsupportedFunctions: new string[]
