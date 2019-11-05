@@ -162,7 +162,8 @@ namespace Tmds.Linux.Tests
                     unsupportedHeaders: null,
                     unsupportedFunctions: new string[]
                     {
-                        "mlock2"
+                        "mlock2",
+                        "memfd_create"
                     });
             }
             else

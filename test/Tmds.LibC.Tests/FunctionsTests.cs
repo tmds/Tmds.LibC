@@ -202,6 +202,13 @@ namespace Tmds.Linux.Tests
             foreach (var method in methods)
             {
                 DllImportAttribute dllImportAttribute = method.GetCustomAttribute<DllImportAttribute>();
+                string methodName = method.Name;
+                bool? supported = TestEnvironment.Current.SupportsFunction(methodName);
+                if (supported == false)
+                {
+                    continue;
+                }
+
                 if (dllImportAttribute != null)
                 {
                     string functionName = dllImportAttribute.EntryPoint;
