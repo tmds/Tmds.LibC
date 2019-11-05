@@ -533,7 +533,12 @@ namespace Tmds.Linux.Tests
                             "mlock",
                             "munlock",
                             "mlockall",
-                            "munlockall" }
+                            "munlockall",
+                            "mremap",
+                            "remap_file_pages",
+                            "memfd_create",
+                            "madvise",
+                            "mincore" }
                     }
                 };
     }

@@ -131,8 +131,10 @@ namespace Tmds.Linux
         public static int FIOGETOWN => 0x8903;
         public static int SIOCGPGRP => 0x8904;
         public static int SIOCATMARK => 0x8905;
-        public static int SIOCGSTAMP => 0x8906;
-        public static int SIOCGSTAMPNS => 0x8907;
+
+        // https://github.com/torvalds/linux/commit/0768e17073dc527ccd18ed5f96ce85f9985e9115
+        // public static int SIOCGSTAMP => 0x8906;
+        // public static int SIOCGSTAMPNS => 0x8907;
 
         public static int SIOCADDRT => 0x890B;
         public static int SIOCDELRT => 0x890C;

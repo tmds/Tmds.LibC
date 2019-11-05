@@ -32,7 +32,8 @@ namespace Tmds.Linux.Tests
                     "sys/mount.h",
                     "poll.h",
                     "linux/if_packet.h",
-                    "sys/mman.h"
+                    "sys/mman.h",
+                    "linux/mman.h"
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)

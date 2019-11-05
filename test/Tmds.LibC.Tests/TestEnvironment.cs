@@ -79,7 +79,7 @@ namespace Tmds.Linux.Tests
         {
             string rid = GetRid();
             Console.WriteLine($"Test Environment: {rid}");
-            if (rid == "fedora-30")
+            if (rid == "fedora-31")
             {
                 Current = new TestEnvironment(
                     unsupportedStructs: new string[]
