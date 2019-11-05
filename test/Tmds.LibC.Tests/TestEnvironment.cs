@@ -163,7 +163,10 @@ namespace Tmds.Linux.Tests
                     },
                     unsupportedConstants: null,
                     unsupportedHeaders: null,
-                    unsupportedFunctions: null);
+                    unsupportedFunctions: new string[]
+                    {
+                        "mlock2"
+                    });
             }
             else
             {
