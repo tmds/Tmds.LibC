@@ -170,7 +170,8 @@ namespace Tmds.Linux.Tests
             "S_ISSOCK",
             "io_uring_register",
             "io_uring_setup",
-            "io_uring_enter"
+            "io_uring_enter",
+            "mlock2"
         };
 
         [Fact]
@@ -201,6 +202,13 @@ namespace Tmds.Linux.Tests
             foreach (var method in methods)
             {
                 DllImportAttribute dllImportAttribute = method.GetCustomAttribute<DllImportAttribute>();
+                string methodName = method.Name;
+                bool? supported = TestEnvironment.Current.SupportsFunction(methodName);
+                if (supported == false)
+                {
+                    continue;
+                }
+
                 if (dllImportAttribute != null)
                 {
                     string functionName = dllImportAttribute.EntryPoint;
@@ -523,6 +531,22 @@ namespace Tmds.Linux.Tests
                             "poll",
                             "ppoll" }
                     },
+                    { new CIncludes("sys/mman.h", true),
+                        new[] {
+                            "mmap",
+                            "munmap",
+                            "mprotect",
+                            "msync",
+                            "mlock",
+                            "munlock",
+                            "mlockall",
+                            "munlockall",
+                            "mremap",
+                            "remap_file_pages",
+                            "memfd_create",
+                            "madvise",
+                            "mincore" }
+                    }
                 };
     }
 }

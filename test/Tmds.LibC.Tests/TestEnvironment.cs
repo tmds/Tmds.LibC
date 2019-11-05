@@ -79,7 +79,7 @@ namespace Tmds.Linux.Tests
         {
             string rid = GetRid();
             Console.WriteLine($"Test Environment: {rid}");
-            if (rid == "fedora-30")
+            if (rid == "fedora-31")
             {
                 Current = new TestEnvironment(
                     unsupportedStructs: new string[]
@@ -154,16 +154,17 @@ namespace Tmds.Linux.Tests
                     unsupportedFunctions: new string[]
                     { });
             }
-            else if (rid == "ubuntu-14.04") // Travis
+            else if (rid == "ubuntu-16.04") // Travis
             {
                 Current = new TestEnvironment(
-                    unsupportedStructs: new string[]
-                    {
-                        "scm_timestamping"
-                    },
+                    unsupportedStructs: null,
                     unsupportedConstants: null,
                     unsupportedHeaders: null,
-                    unsupportedFunctions: null);
+                    unsupportedFunctions: new string[]
+                    {
+                        "mlock2",
+                        "memfd_create"
+                    });
             }
             else
             {

@@ -31,7 +31,9 @@ namespace Tmds.Linux.Tests
                     "termios.h",
                     "sys/mount.h",
                     "poll.h",
-                    "linux/if_packet.h"
+                    "linux/if_packet.h",
+                    "sys/mman.h",
+                    "linux/mman.h"
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)
