@@ -15,6 +15,8 @@ namespace Tmds.Linux
         public int fd;
         [FieldOffset(8)]
         public ulong off;
+        [FieldOffset(8)] 
+        public ulong addr2;
         [FieldOffset(16)]
         public ulong addr;
         [FieldOffset(24)]
@@ -31,6 +33,10 @@ namespace Tmds.Linux
         public uint msg_flags;
         [FieldOffset(28)]
         public uint timeout_flags;
+        [FieldOffset(28)]
+        public uint accept_flags;
+        [FieldOffset(28)]
+        public uint cancel_flags;
         [FieldOffset(32)]
         public ulong user_data;
         [FieldOffset(40)]
@@ -83,15 +89,23 @@ namespace Tmds.Linux
         public io_cqring_offsets cq_off;
     };
 
+    public unsafe struct io_uring_files_update
+    {
+        public uint offset;
+        public int* fds;
+    };
+
     public unsafe static partial class LibC
     {
-        public static byte IOSQE_FIXED_FILE => 0;
-        public static byte IOSQE_IO_DRAIN => 1;
-        public static byte IOSQE_IO_LINK => 2;
+        public static byte IOSQE_FIXED_FILE => (1 << 0);
+        public static byte IOSQE_IO_DRAIN => (1 << 1);
+        public static byte IOSQE_IO_LINK => (1 << 2);
+        public static byte IOSQE_IO_HARDLINK => (1 << 3);
 
-        public static uint IORING_SETUP_IOPOLL => 0;
-        public static uint IORING_SETUP_SQPOLL => 1;
-        public static uint IORING_SETUP_SQ_AFF => 2;
+        public static uint IORING_SETUP_IOPOLL => (1 << 0);
+        public static uint IORING_SETUP_SQPOLL => (1 << 1);
+        public static uint IORING_SETUP_SQ_AFF => (1 << 2);
+        public static uint IORING_SETUP_CQSIZE => (1 << 2);
 
         public static byte IORING_OP_NOP => 0;
         public static byte IORING_OP_READV => 1;
@@ -105,19 +119,27 @@ namespace Tmds.Linux
         public static byte IORING_OP_SENDMSG => 9;
         public static byte IORING_OP_RECVMSG => 10;
         public static byte IORING_OP_TIMEOUT => 11;
+        public static byte IORING_OP_TIMEOUT_REMOVE => 12;
+        public static byte IORING_OP_ACCEPT => 13;
+        public static byte IORING_OP_ASYNC_CANCEL => 14;
+        public static byte IORING_OP_LINK_TIMEOUT => 15;
+        public static byte IORING_OP_CONNECT => 16;
 
-        public static uint IORING_FSYNC_DATASYNC => 1;
+        public static uint IORING_FSYNC_DATASYNC => (1 << 0);
+        public static uint IORING_TIMEOUT_ABS => (1 << 0);
 
         public static ulong IORING_OFF_SQ_RING => 0;
         public static ulong IORING_OFF_CQ_RING => 0x8000000UL;
         public static ulong IORING_OFF_SQES => 0x10000000UL;
 
-        public static uint IORING_SQ_NEED_WAKEUP => 1;
+        public static uint IORING_SQ_NEED_WAKEUP => (1 << 0);
 
-        public static uint IORING_ENTER_GETEVENTS => 0;
-        public static uint IORING_ENTER_SQ_WAKEUP => 1;
+        public static uint IORING_ENTER_GETEVENTS => (1 << 0);
+        public static uint IORING_ENTER_SQ_WAKEUP => (1 << 1);
 
-        public static uint IORING_FEAT_SINGLE_MMAP => 1;
+        public static uint IORING_FEAT_SINGLE_MMAP => (1 << 0);
+        public static uint IORING_FEAT_NODROP => (1 << 1);
+        public static uint IORING_FEAT_SUBMIT_STABLE => (1 << 2);
 
         public static uint IORING_REGISTER_BUFFERS => 0;
         public static uint IORING_UNREGISTER_BUFFERS => 1;
@@ -125,6 +147,7 @@ namespace Tmds.Linux
         public static uint IORING_UNREGISTER_FILES => 3;
         public static uint IORING_REGISTER_EVENTFD => 4;
         public static uint IORING_UNREGISTER_EVENTFD => 5;
+        public static uint IORING_REGISTER_FILES_UPDATE => 6;
 
         public static int io_uring_register(int fd, uint opcode, void* arg, uint nr_args)
         {
