@@ -94,6 +94,7 @@ The following functions are defined in the static class `Tmds.Linux.LibC`:
 [epoll_pwait](http://man7.org/linux/man-pages/man2/epoll_pwait.2.html),
 [epoll_wait](http://man7.org/linux/man-pages/man2/epoll_wait.2.html),
 [euidaccess](http://man7.org/linux/man-pages/man3/euidaccess.3.html),
+[eventfd](http://man7.org/linux/man-pages/man2/eventfd.2.html),
 [execve](http://man7.org/linux/man-pages/man2/execve.2.html),
 [faccessat](http://man7.org/linux/man-pages/man2/faccessat.2.html),
 [fallocate](http://man7.org/linux/man-pages/man2/fallocate.2.html),
