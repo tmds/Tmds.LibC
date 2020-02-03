@@ -5,8 +5,8 @@ namespace Tmds.Linux
 {
     public static partial class LibC
     {
-        public static int EFD_CLOEXEC => 0x80000;
-        public static int EFD_NONBLOCK => 0x800;
+        public static int EFD_CLOEXEC => O_CLOEXEC;
+        public static int EFD_NONBLOCK => O_NONBLOCK;
         public static int EFD_SEMAPHORE => 1;
 
         [DllImport(libc, SetLastError = true)]
