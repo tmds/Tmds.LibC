@@ -546,6 +546,10 @@ namespace Tmds.Linux.Tests
                             "memfd_create",
                             "madvise",
                             "mincore" }
+                    },
+                    { new CIncludes("sys/eventfd.h", true),
+                        new[] {
+                            "eventfd" }
                     }
                 };
     }
