@@ -502,9 +502,9 @@ namespace Tmds.Linux
 
         private mode_t(uint value) => __value = value;
 
-        public static implicit operator mode_t(ushort value) => new mode_t(value);
+        public static implicit operator mode_t(ushort arg) => new mode_t(arg);
 
-        public static explicit operator ushort(mode_t value) => (ushort)(value);
+        public static explicit operator ushort(mode_t arg) => (ushort)arg.Value;
 
         public override string ToString() => Value.ToString();
 
