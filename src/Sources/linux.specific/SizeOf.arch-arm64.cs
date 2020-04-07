@@ -71,5 +71,13 @@ namespace Tmds.Linux
         public static ushort pollfd => 8;
         public static ushort sockaddr_ll => 20;
         public static ushort packet_mreq => 16;
+        public static ushort io_uring_sqe => 64;
+        public static ushort io_uring_cqe => 16;
+        public static ushort io_sqring_offsets => 40;
+        public static ushort io_cqring_offsets => 40;
+        public static ushort io_uring_params => 120;
+        public static ushort io_uring_files_update => 16;
+        public static ushort io_uring_probe_op => 8;
+        public static ushort io_uring_probe => 16;
     }
 }

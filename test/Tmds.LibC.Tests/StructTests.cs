@@ -116,7 +116,9 @@ namespace Tmds.Linux.Tests
             "io_sqring_offsets",
             "io_cqring_offsets",
             "io_uring_params",
-            "io_uring_files_update"
+            "io_uring_files_update",
+            "io_uring_probe_op",
+            "io_uring_probe"
         };
 
         [Fact]
