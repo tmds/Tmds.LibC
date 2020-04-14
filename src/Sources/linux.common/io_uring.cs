@@ -15,7 +15,7 @@ namespace Tmds.Linux
         public int fd;
         [FieldOffset(8)]
         public ulong off;
-        [FieldOffset(8)] 
+        [FieldOffset(8)]
         public ulong addr2;
         [FieldOffset(16)]
         public ulong addr;
@@ -41,6 +41,8 @@ namespace Tmds.Linux
         public ulong user_data;
         [FieldOffset(40)]
         public ushort buf_index;
+        [FieldOffset(40)]
+        public ushort personality;
         [FieldOffset(40)]
         public fixed ulong __pad2[3];
     };
@@ -84,15 +86,36 @@ namespace Tmds.Linux
         public uint sq_thread_cpu;
         public uint sq_thread_idle;
         public uint features;
-        public fixed uint resv[4];
+        public uint wq_fd;
+        public fixed uint resv[3];
         public io_sqring_offsets sq_off;
         public io_cqring_offsets cq_off;
     };
 
-    public unsafe struct io_uring_files_update
+    public struct io_uring_files_update
     {
         public uint offset;
-        public int* fds;
+        public uint resv;
+        public ulong fds;
+    };
+
+    public struct io_uring_probe_op
+    {
+        public byte op;
+        public byte resv;
+        public ushort flags;
+        public uint resv2;
+    };
+
+    public unsafe struct io_uring_probe
+    {
+        public byte last_op;
+        public byte ops_len;
+        public ushort resv;
+        public fixed uint resv2[3];
+
+        public static io_uring_probe_op* ops(io_uring_probe* probe)
+            => (io_uring_probe_op*)(probe + 1);
     };
 
     public unsafe static partial class LibC
@@ -101,11 +124,14 @@ namespace Tmds.Linux
         public static byte IOSQE_IO_DRAIN => (1 << 1);
         public static byte IOSQE_IO_LINK => (1 << 2);
         public static byte IOSQE_IO_HARDLINK => (1 << 3);
+        public static byte IOSQE_IO_ASYNC => (1 << 4);
 
         public static uint IORING_SETUP_IOPOLL => (1 << 0);
         public static uint IORING_SETUP_SQPOLL => (1 << 1);
         public static uint IORING_SETUP_SQ_AFF => (1 << 2);
-        public static uint IORING_SETUP_CQSIZE => (1 << 2);
+        public static uint IORING_SETUP_CQSIZE => (1 << 3);
+        public static uint IORING_SETUP_CLAMP => (1 << 4);
+        public static uint IORING_SETUP_ATTACH_WQ => (1 << 5);
 
         public static byte IORING_OP_NOP => 0;
         public static byte IORING_OP_READV => 1;
@@ -124,6 +150,19 @@ namespace Tmds.Linux
         public static byte IORING_OP_ASYNC_CANCEL => 14;
         public static byte IORING_OP_LINK_TIMEOUT => 15;
         public static byte IORING_OP_CONNECT => 16;
+        public static byte IORING_OP_FALLOCATE => 17;
+        public static byte IORING_OP_OPENAT => 18;
+        public static byte IORING_OP_CLOSE => 19;
+        public static byte IORING_OP_FILES_UPDATE => 20;
+        public static byte IORING_OP_STATX => 21;
+        public static byte IORING_OP_READ => 22;
+        public static byte IORING_OP_WRITE => 23;
+        public static byte IORING_OP_FADVISE => 24;
+        public static byte IORING_OP_MADVISE => 25;
+        public static byte IORING_OP_SEND => 26;
+        public static byte IORING_OP_RECV => 27;
+        public static byte IORING_OP_OPENAT2 => 28;
+        public static byte IORING_OP_EPOLL_CTL => 29;
 
         public static uint IORING_FSYNC_DATASYNC => (1 << 0);
         public static uint IORING_TIMEOUT_ABS => (1 << 0);
@@ -140,6 +179,8 @@ namespace Tmds.Linux
         public static uint IORING_FEAT_SINGLE_MMAP => (1 << 0);
         public static uint IORING_FEAT_NODROP => (1 << 1);
         public static uint IORING_FEAT_SUBMIT_STABLE => (1 << 2);
+        public static uint IORING_FEAT_RW_CUR_POS => (1 << 3);
+        public static uint IORING_FEAT_CUR_PERSONALITY => (1 << 4);
 
         public static uint IORING_REGISTER_BUFFERS => 0;
         public static uint IORING_UNREGISTER_BUFFERS => 1;
@@ -148,6 +189,12 @@ namespace Tmds.Linux
         public static uint IORING_REGISTER_EVENTFD => 4;
         public static uint IORING_UNREGISTER_EVENTFD => 5;
         public static uint IORING_REGISTER_FILES_UPDATE => 6;
+        public static uint IORING_REGISTER_EVENTFD_ASYNC => 7;
+        public static uint IORING_REGISTER_PROBE => 8;
+        public static uint IORING_REGISTER_PERSONALITY => 9;
+        public static uint IORING_UNREGISTER_PERSONALITY => 10;
+
+        public static ushort IO_URING_OP_SUPPORTED => (1 << 0);
 
         public static int io_uring_register(int fd, uint opcode, void* arg, uint nr_args)
         {
