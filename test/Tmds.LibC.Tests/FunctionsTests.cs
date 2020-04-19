@@ -480,12 +480,13 @@ namespace Tmds.Linux.Tests
                         "dladdr",
                         "dlinfo" }
                     },
-                    { "sys/stat.h",
+                    { new CIncludes("sys/stat.h", true),
                       new[] {
                         "stat",
                         "fstat",
                         "lstat",
                         "fstatat",
+                        "statx",
                         "chmod",
                         "fchmod",
                         "fchmodat",
