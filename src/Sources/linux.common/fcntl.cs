@@ -27,6 +27,12 @@ namespace Tmds.Linux
         public pid_t pid;
     }
 
+    public struct open_how {
+        public ulong flags;
+        public ulong mode;
+        public ulong resolve;
+    }
+
     public unsafe static partial class LibC
     {
         public static int O_ACCMODE => 3;
@@ -110,6 +116,12 @@ namespace Tmds.Linux
         public static int SPLICE_F_MORE => 4;
         public static int SPLICE_F_GIFT => 8;
 
+        public static ulong RESOLVE_NO_XDEV => 0x01;
+        public static ulong RESOLVE_NO_MAGICLINKS => 0x02;
+        public static ulong RESOLVE_NO_SYMLINKS => 0x04;
+        public static ulong RESOLVE_BENEATH => 0x08;
+        public static ulong RESOLVE_IN_ROOT => 0x10;
+
         [DllImport(libc, SetLastError = true)]
         public static extern int name_to_handle_at(int dirfd, byte* pathname, file_handle* handle, int* mount_id, int flags);
         [DllImport(libc, SetLastError = true)]
@@ -124,5 +136,12 @@ namespace Tmds.Linux
         public static extern ssize_t splice(int fd, off_t* off_in, int fd_out, off_t* off_out, size_t len, uint flags);
         [DllImport(libc, SetLastError = true)]
         public static extern ssize_t tee(int src, int desg, size_t len, uint flags);
+
+        public static int openat2(int dirfd, byte* pathname, open_how* how, size_t size)
+        {
+            return (int)syscall(__NR_openat2, dirfd, pathname, how, size);
+        }
+
+        private static int  __NR_openat2 => 437;
     }
 }
