@@ -157,13 +157,18 @@ namespace Tmds.Linux.Tests
             else if (rid == "ubuntu-16.04") // Travis
             {
                 Current = new TestEnvironment(
-                    unsupportedStructs: null,
+                    unsupportedStructs: new string[] 
+                    {
+                        "statx_timestamp",
+                        "statx"
+                    },
                     unsupportedConstants: null,
                     unsupportedHeaders: null,
                     unsupportedFunctions: new string[]
                     {
                         "mlock2",
-                        "memfd_create"
+                        "memfd_create",
+                        "statx"
                     });
             }
             else

@@ -79,5 +79,7 @@ namespace Tmds.Linux
         public static ushort io_uring_files_update => 16;
         public static ushort io_uring_probe_op => 8;
         public static ushort io_uring_probe => 16;
+        public static ushort statx_timestamp => 16;
+        public static ushort statx => 256;
     }
 }

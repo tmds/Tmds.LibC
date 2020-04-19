@@ -223,6 +223,8 @@ namespace Tmds.Linux.Tests
                     { "poll.h", typeof(pollfd) },
                     { "linux/if_packet.h", typeof(sockaddr_ll) },
                     { "linux/if_packet.h", typeof(packet_mreq) },
+                    { "sys/stat.h", typeof(statx)},
+                    { "sys/stat.h", typeof(statx_timestamp)}
                 };
     }
 }
