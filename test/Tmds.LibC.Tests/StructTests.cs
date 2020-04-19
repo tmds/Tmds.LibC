@@ -118,7 +118,8 @@ namespace Tmds.Linux.Tests
             "io_uring_params",
             "io_uring_files_update",
             "io_uring_probe_op",
-            "io_uring_probe"
+            "io_uring_probe",
+            "open_how"
         };
 
         [Fact]
