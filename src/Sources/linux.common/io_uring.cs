@@ -124,7 +124,7 @@ namespace Tmds.Linux
         public static byte IOSQE_IO_DRAIN => (1 << 1);
         public static byte IOSQE_IO_LINK => (1 << 2);
         public static byte IOSQE_IO_HARDLINK => (1 << 3);
-        public static byte IOSQE_IO_ASYNC => (1 << 4);
+        public static byte IOSQE_ASYNC => (1 << 4);
 
         public static uint IORING_SETUP_IOPOLL => (1 << 0);
         public static uint IORING_SETUP_SQPOLL => (1 << 1);
