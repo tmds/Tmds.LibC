@@ -154,17 +154,14 @@ namespace Tmds.Linux.Tests
                     unsupportedFunctions: new string[]
                     { });
             }
-            else if (rid == "ubuntu-16.04") // Travis
+            else if (rid == "ubuntu-18.04") // Travis
             {
                 Current = new TestEnvironment(
                     unsupportedStructs: null,
                     unsupportedConstants: null,
                     unsupportedHeaders: null,
-                    unsupportedFunctions: new string[]
-                    {
-                        "mlock2",
-                        "memfd_create"
-                    });
+                    unsupportedFunctions: null
+                );
             }
             else
             {
