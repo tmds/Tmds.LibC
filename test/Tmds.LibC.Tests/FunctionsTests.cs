@@ -171,7 +171,8 @@ namespace Tmds.Linux.Tests
             "io_uring_register",
             "io_uring_setup",
             "io_uring_enter",
-            "mlock2"
+            "mlock2",
+            "openat2"
         };
 
         [Fact]
@@ -480,12 +481,13 @@ namespace Tmds.Linux.Tests
                         "dladdr",
                         "dlinfo" }
                     },
-                    { "sys/stat.h",
+                    { new CIncludes("sys/stat.h", true),
                       new[] {
                         "stat",
                         "fstat",
                         "lstat",
                         "fstatat",
+                        "statx",
                         "chmod",
                         "fchmod",
                         "fchmodat",
