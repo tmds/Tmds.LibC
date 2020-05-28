@@ -19,6 +19,8 @@ namespace Tmds.Linux
         public ulong addr2;
         [FieldOffset(16)]
         public ulong addr;
+        [FieldOffset(16)]
+        public ulong splice_off_in;
         [FieldOffset(24)]
         public uint len;
         [FieldOffset(28)]
@@ -37,12 +39,24 @@ namespace Tmds.Linux
         public uint accept_flags;
         [FieldOffset(28)]
         public uint cancel_flags;
+        [FieldOffset(28)]
+        public uint open_flags;
+        [FieldOffset(28)]
+        public uint statx_flags;
+        [FieldOffset(28)]
+        public uint fadvise_advice;
+        [FieldOffset(28)]
+        public uint splice_flags;
         [FieldOffset(32)]
         public ulong user_data;
         [FieldOffset(40)]
         public ushort buf_index;
         [FieldOffset(40)]
+        public ushort buf_group;
+        [FieldOffset(42)]
         public ushort personality;
+        [FieldOffset(44)]
+        public int splice_fd_in;
         [FieldOffset(40)]
         public fixed ulong __pad2[3];
     };
@@ -125,6 +139,7 @@ namespace Tmds.Linux
         public static byte IOSQE_IO_LINK => (1 << 2);
         public static byte IOSQE_IO_HARDLINK => (1 << 3);
         public static byte IOSQE_ASYNC => (1 << 4);
+        public static byte IOSQE_BUFFER_SELECT => (1 << 5);
 
         public static uint IORING_SETUP_IOPOLL => (1 << 0);
         public static uint IORING_SETUP_SQPOLL => (1 << 1);
@@ -163,9 +178,16 @@ namespace Tmds.Linux
         public static byte IORING_OP_RECV => 27;
         public static byte IORING_OP_OPENAT2 => 28;
         public static byte IORING_OP_EPOLL_CTL => 29;
+        public static byte IORING_OP_SPLICE => 30;
+        public static byte IORING_OP_PROVIDE_BUFFERS => 31;
+        public static byte IORING_OP_REMOVE_BUFFERS => 32;
 
         public static uint IORING_FSYNC_DATASYNC => (1 << 0);
         public static uint IORING_TIMEOUT_ABS => (1 << 0);
+        public static uint SPLICE_F_FD_IN_FIXED => 0x80000000U;
+
+        public static uint IORING_CQE_F_BUFFER => (1 << 0);
+        public static int IORING_CQE_BUFFER_SHIFT => 16;
 
         public static ulong IORING_OFF_SQ_RING => 0;
         public static ulong IORING_OFF_CQ_RING => 0x8000000UL;
@@ -181,6 +203,7 @@ namespace Tmds.Linux
         public static uint IORING_FEAT_SUBMIT_STABLE => (1 << 2);
         public static uint IORING_FEAT_RW_CUR_POS => (1 << 3);
         public static uint IORING_FEAT_CUR_PERSONALITY => (1 << 4);
+        public static uint IORING_FEAT_FAST_POLL => (1 << 5);
 
         public static uint IORING_REGISTER_BUFFERS => 0;
         public static uint IORING_UNREGISTER_BUFFERS => 1;
