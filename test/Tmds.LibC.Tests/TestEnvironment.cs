@@ -207,7 +207,10 @@ namespace Tmds.Linux.Tests
                         "statx"
                     },
                     unsupportedConstants: null,
-                    unsupportedHeaders: null,
+                    unsupportedHeaders: new string[]
+                    {
+                        "linux/openat2.h"
+                    },
                     unsupportedFunctions: new string[]
                     {
                         "mlock2",
