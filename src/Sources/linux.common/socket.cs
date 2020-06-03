@@ -237,7 +237,7 @@ namespace Tmds.Linux
         public static int SOL_KCM => 281;
         public static int SOL_TLS => 282;
 
-        public static int SOMAXCONN => 128;
+        public static int SOMAXCONN => 4096;
 
         public static int MSG_OOB => 1;
         public static int MSG_PEEK => 2;

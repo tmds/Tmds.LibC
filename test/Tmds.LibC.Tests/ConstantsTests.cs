@@ -17,7 +17,7 @@ namespace Tmds.Linux.Tests
                     "errno.h",
                     "sys/socket.h",
                     "netinet/in.h",
-                    "fcntl.h",
+                     "fcntl.h",
                     "dlfcn.h",
                     "netinet/tcp.h",
                     "sys/epoll.h",
@@ -34,7 +34,9 @@ namespace Tmds.Linux.Tests
                     "linux/if_packet.h",
                     "sys/mman.h",
                     "linux/mman.h",
-                    "sys/eventfd.h"
+                    "sys/eventfd.h",
+                    "linux/stat.h",
+                    "linux/openat2.h"
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)

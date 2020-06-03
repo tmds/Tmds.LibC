@@ -79,7 +79,7 @@ namespace Tmds.Linux.Tests
         {
             string rid = GetRid();
             Console.WriteLine($"Test Environment: {rid}");
-            if (rid == "fedora-31")
+            if (rid == "fedora-32")
             {
                 Current = new TestEnvironment(
                     unsupportedStructs: new string[]
@@ -148,6 +148,50 @@ namespace Tmds.Linux.Tests
                         "IORING_UNREGISTER_FILES",
                         "IORING_REGISTER_EVENTFD",
                         "IORING_UNREGISTER_EVENTFD",
+                        "IOSQE_IO_HARDLINK",
+                        "IOSQE_ASYNC",
+                        "IOSQE_BUFFER_SELECT",
+                        "IORING_SETUP_CQSIZE",
+                        "IORING_SETUP_CLAMP",
+                        "IORING_SETUP_ATTACH_WQ",
+                        "IORING_OP_TIMEOUT",
+                        "IORING_OP_TIMEOUT_REMOVE",
+                        "IORING_OP_ACCEPT",
+                        "IORING_OP_ASYNC_CANCEL",
+                        "IORING_OP_LINK_TIMEOUT",
+                        "IORING_OP_CONNECT",
+                        "IORING_OP_FALLOCATE",
+                        "IORING_OP_OPENAT",
+                        "IORING_OP_CLOSE",
+                        "IORING_OP_FILES_UPDATE",
+                        "IORING_OP_STATX",
+                        "IORING_OP_READ",
+                        "IORING_OP_WRITE",
+                        "IORING_OP_FADVISE",
+                        "IORING_OP_MADVISE",
+                        "IORING_OP_SEND",
+                        "IORING_OP_RECV",
+                        "IORING_OP_OPENAT2",
+                        "IORING_OP_EPOLL_CTL",
+                        "IORING_OP_SPLICE",
+                        "IORING_OP_PROVIDE_BUFFERS",
+                        "IORING_OP_REMOVE_BUFFERS",
+                        "IORING_TIMEOUT_ABS",
+                        "SPLICE_F_FD_IN_FIXED",
+                        "IORING_CQE_F_BUFFER",
+                        "IORING_CQE_BUFFER_SHIFT",
+                        "IORING_FEAT_SINGLE_MMAP",
+                        "IORING_FEAT_NODROP",
+                        "IORING_FEAT_SUBMIT_STABLE",
+                        "IORING_FEAT_RW_CUR_POS",
+                        "IORING_FEAT_CUR_PERSONALITY",
+                        "IORING_FEAT_FAST_POLL",
+                        "IORING_REGISTER_FILES_UPDATE",
+                        "IORING_REGISTER_EVENTFD_ASYNC",
+                        "IORING_REGISTER_PROBE",
+                        "IORING_REGISTER_PERSONALITY",
+                        "IORING_UNREGISTER_PERSONALITY",
+                        "IO_URING_OP_SUPPORTED",
                     },
                     unsupportedHeaders: new string[]
                     { },
@@ -157,7 +201,7 @@ namespace Tmds.Linux.Tests
             else if (rid == "ubuntu-16.04") // Travis
             {
                 Current = new TestEnvironment(
-                    unsupportedStructs: new string[] 
+                    unsupportedStructs: new string[]
                     {
                         "statx_timestamp",
                         "statx"
