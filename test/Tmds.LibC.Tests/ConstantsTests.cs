@@ -34,7 +34,9 @@ namespace Tmds.Linux.Tests
                     "linux/if_packet.h",
                     "sys/mman.h",
                     "linux/mman.h",
-                    "sys/eventfd.h"
+                    "sys/eventfd.h",
+                    "linux/stat.h",
+                    "linux/openat2.h"
                 })
                 {
                     if (TestEnvironment.Current.SupportsHeader(header) == false)
@@ -53,7 +55,8 @@ namespace Tmds.Linux.Tests
                     if (name == "MS_NOUSER" || // glibc defines it as 1 << 31, while it should be 1U << 31.
                         name == "errno" ||
                         name == "SIGRTMAX" ||
-                        name == "SIGRTMIN")
+                        name == "SIGRTMIN" ||
+                        (name == "SOMAXCONN" && TestEnvironment.Current.Rid == TestEnvironment.TravisRid)) // SOMAXCONN was increased in recent kernels
                     {
                         continue;
                     }
