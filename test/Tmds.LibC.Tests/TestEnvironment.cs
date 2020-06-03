@@ -206,7 +206,10 @@ namespace Tmds.Linux.Tests
                         "statx_timestamp",
                         "statx"
                     },
-                    unsupportedConstants: null,
+                    unsupportedConstants: new string[]
+                    {
+                        "SOMAXCONN" // SOMAXCONN was increased
+                    },
                     unsupportedHeaders: new string[]
                     {
                         "linux/openat2.h"
