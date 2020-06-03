@@ -6,17 +6,24 @@ namespace Tmds.Linux.Tests
 {
     class TestEnvironment
     {
+        public const string TravisRid = "ubuntu-16.04";
+        public const string TmdsRid = "fedora-32";
+
         private string[] _unsupportedStructs;
         private string[] _unsupportedConstants;
         private string[] _unsupportedFunctions;
         private string[] _unsupportedHeaders;
 
+        public string Rid { get; set; }
+
         private TestEnvironment(
+            string rid,
             string[] unsupportedStructs = null,
             string[] unsupportedConstants = null,
             string[] unsupportedFunctions = null,
             string[] unsupportedHeaders = null)
         {
+            Rid = rid;
             _unsupportedConstants = unsupportedConstants;
             _unsupportedStructs = unsupportedStructs;
             _unsupportedFunctions = unsupportedFunctions;
@@ -79,9 +86,10 @@ namespace Tmds.Linux.Tests
         {
             string rid = GetRid();
             Console.WriteLine($"Test Environment: {rid}");
-            if (rid == "fedora-32")
+            if (rid == TmdsRid)
             {
                 Current = new TestEnvironment(
+                    rid,
                     unsupportedStructs: new string[]
                     { },
                     unsupportedConstants: new string[]
@@ -198,18 +206,16 @@ namespace Tmds.Linux.Tests
                     unsupportedFunctions: new string[]
                     { });
             }
-            else if (rid == "ubuntu-16.04") // Travis
+            else if (rid == TravisRid) // Travis
             {
                 Current = new TestEnvironment(
+                    rid,
                     unsupportedStructs: new string[]
                     {
                         "statx_timestamp",
                         "statx"
                     },
-                    unsupportedConstants: new string[]
-                    {
-                        "SOMAXCONN" // SOMAXCONN was increased
-                    },
+                    unsupportedConstants: null,
                     unsupportedHeaders: new string[]
                     {
                         "linux/openat2.h"
@@ -223,7 +229,7 @@ namespace Tmds.Linux.Tests
             }
             else
             {
-                Current = new TestEnvironment();
+                Current = new TestEnvironment(rid);
             }
         }
 
