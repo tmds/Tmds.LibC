@@ -30,6 +30,8 @@ namespace Tmds.Linux
         [FieldOffset(28)]
         public ushort poll_events;
         [FieldOffset(28)]
+        public uint poll32_events;
+        [FieldOffset(28)]
         public uint sync_range_flags;
         [FieldOffset(28)]
         public uint msg_flags;
@@ -81,7 +83,7 @@ namespace Tmds.Linux
         public ulong resv2;
     };
 
-    public unsafe struct io_cqring_offsets
+    public struct io_cqring_offsets
     {
         public uint head;
         public uint tail;
@@ -89,7 +91,9 @@ namespace Tmds.Linux
         public uint ring_entries;
         public uint overflow;
         public uint cqes;
-        public fixed ulong resv[2];
+        public uint flags;
+        public uint resv1;
+        public ulong resv2;
     };
 
     public unsafe struct io_uring_params
@@ -181,6 +185,7 @@ namespace Tmds.Linux
         public static byte IORING_OP_SPLICE => 30;
         public static byte IORING_OP_PROVIDE_BUFFERS => 31;
         public static byte IORING_OP_REMOVE_BUFFERS => 32;
+        public static byte IORING_OP_TEE => 33;
 
         public static uint IORING_FSYNC_DATASYNC => (1 << 0);
         public static uint IORING_TIMEOUT_ABS => (1 << 0);
@@ -194,6 +199,9 @@ namespace Tmds.Linux
         public static ulong IORING_OFF_SQES => 0x10000000UL;
 
         public static uint IORING_SQ_NEED_WAKEUP => (1 << 0);
+        public static uint IORING_SQ_CQ_OVERFLOW => (1 << 1);
+
+        public static uint IORING_CQ_EVENTFD_DISABLED => (1 << 0);
 
         public static uint IORING_ENTER_GETEVENTS => (1 << 0);
         public static uint IORING_ENTER_SQ_WAKEUP => (1 << 1);
@@ -204,6 +212,7 @@ namespace Tmds.Linux
         public static uint IORING_FEAT_RW_CUR_POS => (1 << 3);
         public static uint IORING_FEAT_CUR_PERSONALITY => (1 << 4);
         public static uint IORING_FEAT_FAST_POLL => (1 << 5);
+        public static uint IORING_FEAT_POLL_32BITS => (1 << 6);
 
         public static uint IORING_REGISTER_BUFFERS => 0;
         public static uint IORING_UNREGISTER_BUFFERS => 1;
