@@ -6,7 +6,7 @@ namespace Tmds.Linux.Tests
 {
     class TestEnvironment
     {
-        public const string TravisRid = "ubuntu-16.04";
+        public const string GitHubRid = "ubuntu-20.04";
         public const string TmdsRid = "fedora-32";
 
         private string[] _unsupportedStructs;
@@ -206,7 +206,7 @@ namespace Tmds.Linux.Tests
                     unsupportedFunctions: new string[]
                     { });
             }
-            else if (rid == TravisRid) // Travis
+            else if (rid == GitHubRid) // Travis
             {
                 Current = new TestEnvironment(
                     rid,
