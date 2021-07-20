@@ -225,7 +225,9 @@ namespace Tmds.Linux.Tests
                     { "linux/if_packet.h", typeof(sockaddr_ll) },
                     { "linux/if_packet.h", typeof(packet_mreq) },
                     { "sys/stat.h", typeof(statx)},
-                    { "sys/stat.h", typeof(statx_timestamp)}
+                    { "sys/stat.h", typeof(statx_timestamp)},
+                    { "bluetooth/bluetooth.h", typeof(sockaddr_hci) },
+                    { "bluetooth/bluetooth.h", typeof(sockaddr_l2) },
                 };
     }
 }
