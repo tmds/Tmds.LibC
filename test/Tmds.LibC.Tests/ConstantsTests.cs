@@ -56,7 +56,7 @@ namespace Tmds.Linux.Tests
                         name == "errno" ||
                         name == "SIGRTMAX" ||
                         name == "SIGRTMIN" ||
-                        (name == "SOMAXCONN" && TestEnvironment.Current.Rid == TestEnvironment.TravisRid)) // SOMAXCONN was increased in recent kernels
+                        (name == "SOMAXCONN" && TestEnvironment.Current.Rid == TestEnvironment.GitHubRid)) // SOMAXCONN was increased in recent kernels
                     {
                         continue;
                     }
