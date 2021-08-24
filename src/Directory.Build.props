@@ -9,9 +9,14 @@
     <PackageTags>libc;linux</PackageTags>
     <VersionPrefix>0.5.0</VersionPrefix>
     <Authors>Tom Deseyn</Authors>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/tmds/Tmds.LibC</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Tom Deseyn</Copyright>
+    
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="NerdBank.GitVersioning" Version="3.4.231" PrivateAssets="All" />
+  </ItemGroup>
 </Project>
