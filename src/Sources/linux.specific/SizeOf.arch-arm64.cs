@@ -82,5 +82,7 @@ namespace Tmds.Linux
         public static ushort statx_timestamp => 16;
         public static ushort statx => 256;
         public static ushort open_how => 24;
+        public static ushort sockaddr_hci => 6;
+        public static ushort sockaddr_l2 => 14;
     }
 }
