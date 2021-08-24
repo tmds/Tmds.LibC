@@ -14,12 +14,7 @@ jobs:
     - run: |
         pushd test/Tmds.LibC.Tests && dotnet test && popd
         dotnet pack src/Tmds.LibC --configuration Release --version-suffix "$(date +"%y%m%d")-$TRAVIS_BUILD_NUMBER" --output .
-        
-    - uses: actions/upload-artifact@v2
-      with:
-        name: nuget
-        path: |
-          Tmds.LibC.*.nupkg
+
     - run: |
-        curl -H "X-NuGet-ApiKey: $NUGET_APIKEY" -T Tmds.LibC.*.nupkg https://www.myget.org/F/tmds/api/v2/package
+        curl -H "X-NuGet-ApiKey: ${{ secrets.NUGET_APIKEY }}" -T Tmds.LibC.*.nupkg https://www.myget.org/F/tmds/api/v2/package
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
