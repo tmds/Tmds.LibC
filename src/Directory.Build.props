@@ -7,7 +7,6 @@
 
     <Description>Raw bindings to Linux platform APIs for .NET Core.</Description>
     <PackageTags>libc;linux</PackageTags>
-    <VersionPrefix>0.5.0</VersionPrefix>
     <Authors>Tom Deseyn</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Tom Deseyn</Copyright>
