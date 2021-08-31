@@ -10,6 +10,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - run: |
         sudo apt-get update
@@ -17,7 +19,7 @@ jobs:
 
     - run: |
         pushd test/Tmds.LibC.Tests && dotnet test && popd
-        dotnet pack src/Tmds.LibC --configuration Release --version-suffix "$(date +"%y%m%d")-$TRAVIS_BUILD_NUMBER" --output .
+        dotnet pack src/Tmds.LibC --configuration Release --output .
 
     - run: |
         curl -H "X-NuGet-ApiKey: ${{ secrets.NUGET_APIKEY }}" -T Tmds.LibC.*.nupkg https://www.myget.org/F/tmds/api/v2/package
