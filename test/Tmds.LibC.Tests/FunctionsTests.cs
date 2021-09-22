@@ -262,7 +262,9 @@ namespace Tmds.Linux.Tests
                     { new CIncludes("sys/socket.h",
                                     gnuSource: true),
                       new[] {
-                        "accept4" }
+                        "accept4",
+                        "sendmmsg",
+                        "recvmmsg" }
                     },
                     { "errno.h",
                       new[] {

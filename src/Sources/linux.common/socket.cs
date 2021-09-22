@@ -327,7 +327,11 @@ namespace Tmds.Linux
         [DllImport(libc, SetLastError = true)]
         public static extern ssize_t sendmsg(int socket, msghdr* msg, int flags);
         [DllImport(libc, SetLastError = true)]
+        public static extern int sendmmsg(int sockfd, mmsghdr *msgvec, uint vlen, int flags);
+        [DllImport(libc, SetLastError = true)]
         public static extern ssize_t recvmsg(int socket, msghdr* msg, int flags);
+        [DllImport(libc, SetLastError = true)]
+        public static extern int recvmmsg(int socket, mmsghdr *msgvec, uint vlen, int flags, timespec *timeout);
         [DllImport(libc, SetLastError = true)]
         public static extern int getsockopt(int socket, int level, int optname, void* optval, socklen_t* optlen);
         [DllImport(libc, SetLastError = true)]
