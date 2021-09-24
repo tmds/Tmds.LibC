@@ -288,7 +288,8 @@ namespace Tmds.Linux.Tests
                     },
                     { "grp.h",
                       new[] {
-                        "setgroups"
+                        "setgroups",
+                        "getgrnam_r",
                         }
                     },
                     { "stdio.h",

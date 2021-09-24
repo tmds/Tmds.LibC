@@ -84,5 +84,6 @@ namespace Tmds.Linux
         public static ushort open_how => 24;
         public static ushort sockaddr_hci => 6;
         public static ushort sockaddr_l2 => 14;
+        public static ushort group => 32;
     }
 }
