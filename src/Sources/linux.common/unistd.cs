@@ -155,8 +155,82 @@ namespace Tmds.Linux
         public static extern long_t pathconf(byte* path, int name);
         [DllImport(libc, SetLastError = true)]
         public static extern long_t fpathconf(int fd, int name);
+
+        public static int _SC_ARG_MAX => 0;
+        public static int _SC_CHILD_MAX => 1;
+        public static int _SC_HOST_NAME_MAX => 180;
+        public static int _SC_LOGIN_NAME_MAX => 71;
+        public static int _SC_NGROUPS_MAX => 3;
+        public static int _SC_CLK_TCK => 2;
+        public static int _SC_OPEN_MAX => 4;
+        public static int _SC_PAGESIZE => 30;
+        public static int _SC_PAGE_SIZE => 30;
+        public static int _SC_RE_DUP_MAX => 44;
+        public static int _SC_STREAM_MAX => 5;
+        public static int _SC_SYMLOOP_MAX => 173;
+        public static int _SC_TTY_NAME_MAX => 72;
+        public static int _SC_TZNAME_MAX => 6;
+        public static int _SC_VERSION => 29;
+        public static int _SC_BC_BASE_MAX => 36;
+        public static int _SC_BC_DIM_MAX => 37;
+        public static int _SC_BC_SCALE_MAX => 38;
+        public static int _SC_BC_STRING_MAX => 39;
+        public static int _SC_COLL_WEIGHTS_MAX => 40;
+        public static int _SC_EXPR_NEST_MAX => 42;
+        public static int _SC_LINE_MAX => 43;
+        public static int _SC_2_VERSION => 46;
+        public static int _SC_2_C_DEV => 48;
+        public static int _SC_2_FORT_DEV => 49;
+        public static int _SC_2_FORT_RUN => 50;
+        public static int _SC_2_LOCALEDEF => 52;
+        public static int _SC_2_SW_DEV => 51;
+        public static int _SC_PHYS_PAGES => 85;
+        public static int _SC_AVPHYS_PAGES => 86;
+        public static int _SC_NPROCESSORS_CONF => 83;
+        public static int _SC_NPROCESSORS_ONLN => 84;
+        public static int _SC_AIO_LISTIO_MAX => 23;
+        public static int _SC_AIO_MAX => 24;
+        public static int _SC_AIO_PRIO_DELTA_MAX => 25;
+        public static int _SC_DELAYTIMER_MAX => 26;
+        public static int _SC_MQ_OPEN_MAX => 27;
+        public static int _SC_MQ_PRIO_MAX => 28;
+        public static int _SC_RTSIG_MAX => 31;
+        public static int _SC_SEM_NSEMS_MAX => 32;
+        public static int _SC_SEM_VALUE_MAX => 33;
+        public static int _SC_SIGQUEUE_MAX => 34;
+        public static int _SC_TIMER_MAX => 35;
+        public static int _SC_ASYNCHRONOUS_IO => 12;
+        public static int _SC_FSYNC => 15;
+        public static int _SC_JOB_CONTROL => 7;
+        public static int _SC_MAPPED_FILES => 16;
+        public static int _SC_MEMLOCK => 17;
+        public static int _SC_MEMLOCK_RANGE => 18;
+        public static int _SC_MEMORY_PROTECTION => 19;
+        public static int _SC_MESSAGE_PASSING => 20;
+        public static int _SC_PRIORITIZED_IO => 13;
+        public static int _SC_REALTIME_SIGNALS => 9;
+        public static int _SC_SAVED_IDS => 8;
+        public static int _SC_SEMAPHORES => 21;
+        public static int _SC_SHARED_MEMORY_OBJECTS => 22;
+        public static int _SC_SYNCHRONIZED_IO => 14;
+        public static int _SC_TIMERS => 11;
+        public static int _SC_GETGR_R_SIZE_MAX => 69;
+        public static int _SC_GETPW_R_SIZE_MAX => 70;
+        public static int _SC_THREAD_DESTRUCTOR_ITERATIONS => 73;
+        public static int _SC_THREAD_KEYS_MAX => 74;
+        public static int _SC_THREAD_STACK_MIN => 75;
+        public static int _SC_THREAD_THREADS_MAX => 76;
+        public static int _SC_THREADS => 67;
+        public static int _SC_THREAD_ATTR_STACKADDR => 77;
+        public static int _SC_THREAD_ATTR_STACKSIZE => 78;
+        public static int _SC_THREAD_PRIORITY_SCHEDULING => 79;
+        public static int _SC_THREAD_PRIO_INHERIT => 80;
+        public static int _SC_THREAD_PROCESS_SHARED => 82;
+        public static int _SC_THREAD_SAFE_FUNCTIONS => 68;
+
         [DllImport(libc, SetLastError = true)]
         public static extern long_t sysconf(int name);
+
         [DllImport(libc, SetLastError = true)]
         public static extern size_t confstr(int name, byte* buf, size_t len);
 
