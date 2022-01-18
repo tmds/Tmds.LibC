@@ -100,7 +100,7 @@ namespace Tmds.Linux.Tests
             int actualSize = Marshal.SizeOf(type);
 
             PropertyInfo property = typeof(SizeOf).GetProperty(type.Name);
-            Assert.NotNull(property);
+            Assert.True(property != null, $"SizeOf.{type.Name} is missing");
             int declaredSize = (ushort)property.GetGetMethod().Invoke(null, null);
 
             Assert.Equal(actualSize, declaredSize);
@@ -228,6 +228,7 @@ namespace Tmds.Linux.Tests
                     { "sys/stat.h", typeof(statx_timestamp)},
                     { new CIncludes(new string[] { "bluetooth/bluetooth.h", "bluetooth/hci.h"}),  typeof(sockaddr_hci) },
                     { new CIncludes(new string[] { "bluetooth/bluetooth.h", "bluetooth/l2cap.h"}), typeof(sockaddr_l2) },
+                    { "grp.h", typeof(group) },
                 };
     }
 }
