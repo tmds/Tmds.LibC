@@ -26,6 +26,10 @@ namespace Tmds.Linux
         public static extern speed_t cfgetospeed(termios* p);
         [DllImport(libc)]
         public static extern speed_t cfgetispeed(termios* p);
+        
+        [DllImport(libc, SetLastError = true)]
+        public static extern void cfmakeraw(termios* p);
+        
         [DllImport(libc, SetLastError = true)]
         public static extern int cfsetospeed(termios* p, speed_t speed);
         [DllImport(libc, SetLastError = true)]
