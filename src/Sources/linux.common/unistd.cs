@@ -62,6 +62,8 @@ namespace Tmds.Linux
         public static extern int unlinkat(int dirfd, byte* pathname, int flags);
         [DllImport(libc, SetLastError = true)]
         public static extern int rmdir(byte* pathname);
+        [DllImport(libc, SetLastError = true, CharSet = CharSet.Auto )]
+        public static extern string canonicalize_file_name( string path );
 
         public static int F_OK => 0;
         public static int R_OK => 4;
